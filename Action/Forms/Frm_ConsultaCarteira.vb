@@ -4,6 +4,7 @@
 Public Class Frm_ConsultaCarteira
     Dim Index As Integer = 0
     Dim objCarteira As New Carteira
+    Dim dt As New DataTable
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -14,6 +15,10 @@ Public Class Frm_ConsultaCarteira
         txt_busca1.Visible = False
         txt_busca2.Visible = False
         CarregarListViewer()
+
+        dt = objCarteira.ConsultarCarteira
+        Dgw_Teste.DataSource = dt
+
 
 
 
@@ -128,10 +133,6 @@ Public Class Frm_ConsultaCarteira
     End Sub
 
     Private Sub Frm_ConsultaCarteira_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
-    Private Sub Grb_ConsultaCarteira_Enter(sender As Object, e As EventArgs) Handles Grb_ConsultaCarteira.Enter
 
     End Sub
 End Class

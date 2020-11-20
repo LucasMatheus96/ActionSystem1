@@ -28,9 +28,10 @@ Namespace classes
 
         Public Sub AlterarRendaFixa(Titulo As RendaFixa)
             Try
-                'RendaFixaDAO.CadastrarRendafixa
+                RendaFixaDAO.AlterarRendaFixa(Titulo)
             Catch ex As Exception
 
+                Throw New Exception(ex.Message)
             End Try
 
         End Sub
@@ -46,20 +47,20 @@ Namespace classes
 
         End Function
 
-        Public Function ConsultarRendaFixa(Titulo As RendaFixa) As DataTable
+        Public Function ConsultarRendaFixa() As DataTable
             Try
-                'RendaFixaDAO.CadastrarRendafixa
+                Return RendaFixaDAO.ConsultarRendaFixa
             Catch ex As Exception
-
+                Throw New Exception(ex.Message)
             End Try
 
         End Function
 
         Public Sub ExcluirRendaFixa(IdRendaFixa As Integer)
             Try
-                'RendaFixaDAO.CadastrarRendafixa
+                RendaFixaDAO.ExcluirRendaFixa(IdRendaFixa)
             Catch ex As Exception
-
+                Throw New Exception(ex.Message)
             End Try
 
         End Sub

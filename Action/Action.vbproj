@@ -73,12 +73,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Acao.vb" />
     <Compile Include="Classes\Carteira.vb" />
     <Compile Include="Classes\Criptografia.vb" />
     <Compile Include="Classes\OperadorLogado.vb" />
     <Compile Include="Classes\RendaFixa.vb" />
     <Compile Include="Classes\Usuario.vb" />
     <Compile Include="Conexao\ConexaoBD.vb" />
+    <Compile Include="DAO\AcaoDAO.vb" />
     <Compile Include="DAO\CarteiraDAO.vb" />
     <Compile Include="DAO\RendaFixaDAO.vb" />
     <Compile Include="DAO\UsuarioDAO.vb" />

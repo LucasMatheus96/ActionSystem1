@@ -37,7 +37,9 @@ Partial Class Frm_ConsultaCarteira
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.Dgw_Teste = New System.Windows.Forms.DataGridView()
         Me.Grb_ConsultaCarteira.SuspendLayout()
+        CType(Me.Dgw_Teste, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Grb_ConsultaCarteira
@@ -157,11 +159,20 @@ Partial Class Frm_ConsultaCarteira
         Me.Button3.Text = "Cancelar"
         Me.Button3.UseVisualStyleBackColor = True
         '
+        'Dgw_Teste
+        '
+        Me.Dgw_Teste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.Dgw_Teste.Location = New System.Drawing.Point(12, 477)
+        Me.Dgw_Teste.Name = "Dgw_Teste"
+        Me.Dgw_Teste.Size = New System.Drawing.Size(496, 102)
+        Me.Dgw_Teste.TabIndex = 6
+        '
         'Frm_ConsultaCarteira
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(527, 508)
+        Me.ClientSize = New System.Drawing.Size(527, 591)
+        Me.Controls.Add(Me.Dgw_Teste)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -173,6 +184,7 @@ Partial Class Frm_ConsultaCarteira
         Me.Text = "Frm_ConsultaCarteira"
         Me.Grb_ConsultaCarteira.ResumeLayout(False)
         Me.Grb_ConsultaCarteira.PerformLayout()
+        CType(Me.Dgw_Teste, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -190,4 +202,5 @@ Partial Class Frm_ConsultaCarteira
     Friend WithEvents txt_busca2 As TextBox
     Friend WithEvents txt_busca1 As TextBox
     Friend WithEvents Lbl_a As Label
+    Friend WithEvents Dgw_Teste As DataGridView
 End Class

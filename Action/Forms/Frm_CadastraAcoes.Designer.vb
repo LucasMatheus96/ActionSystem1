@@ -24,17 +24,17 @@ Partial Class Frm_CadastraAcoes
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_CadastraAcoes))
         Me.Grp_CadastroAcao = New System.Windows.Forms.GroupBox()
+        Me.Btn_Cancelar = New System.Windows.Forms.Button()
+        Me.Btn_Limpar = New System.Windows.Forms.Button()
+        Me.Btn_Cadastrar = New System.Windows.Forms.Button()
+        Me.Lbl_TipoAcao = New System.Windows.Forms.Label()
+        Me.Cmb_Tipoacao = New System.Windows.Forms.ComboBox()
         Me.Txt_SetorAtivo = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Txt_Sigla = New System.Windows.Forms.TextBox()
         Me.Lbl_SiglaAtivo = New System.Windows.Forms.Label()
         Me.txt_NomeEmpresa = New System.Windows.Forms.TextBox()
         Me.Lbl_NomeAtivo = New System.Windows.Forms.Label()
-        Me.Cmb_Tipoacao = New System.Windows.Forms.ComboBox()
-        Me.Lbl_TipoAcao = New System.Windows.Forms.Label()
-        Me.Btn_Cancelar = New System.Windows.Forms.Button()
-        Me.Btn_Limpar = New System.Windows.Forms.Button()
-        Me.Btn_Cadastrar = New System.Windows.Forms.Button()
         Me.Grp_CadastroAcao.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -57,6 +57,50 @@ Partial Class Frm_CadastraAcoes
         Me.Grp_CadastroAcao.TabIndex = 0
         Me.Grp_CadastroAcao.TabStop = False
         Me.Grp_CadastroAcao.Text = "Cadastrando ação"
+        '
+        'Btn_Cancelar
+        '
+        Me.Btn_Cancelar.Location = New System.Drawing.Point(170, 270)
+        Me.Btn_Cancelar.Name = "Btn_Cancelar"
+        Me.Btn_Cancelar.Size = New System.Drawing.Size(109, 23)
+        Me.Btn_Cancelar.TabIndex = 11
+        Me.Btn_Cancelar.Text = "Cancelar"
+        Me.Btn_Cancelar.UseVisualStyleBackColor = True
+        '
+        'Btn_Limpar
+        '
+        Me.Btn_Limpar.Location = New System.Drawing.Point(65, 270)
+        Me.Btn_Limpar.Name = "Btn_Limpar"
+        Me.Btn_Limpar.Size = New System.Drawing.Size(99, 23)
+        Me.Btn_Limpar.TabIndex = 10
+        Me.Btn_Limpar.Text = "Limpar"
+        Me.Btn_Limpar.UseVisualStyleBackColor = True
+        '
+        'Btn_Cadastrar
+        '
+        Me.Btn_Cadastrar.Location = New System.Drawing.Point(97, 207)
+        Me.Btn_Cadastrar.Name = "Btn_Cadastrar"
+        Me.Btn_Cadastrar.Size = New System.Drawing.Size(133, 57)
+        Me.Btn_Cadastrar.TabIndex = 9
+        Me.Btn_Cadastrar.Text = "Cadastrar"
+        Me.Btn_Cadastrar.UseVisualStyleBackColor = True
+        '
+        'Lbl_TipoAcao
+        '
+        Me.Lbl_TipoAcao.AutoSize = True
+        Me.Lbl_TipoAcao.Location = New System.Drawing.Point(184, 149)
+        Me.Lbl_TipoAcao.Name = "Lbl_TipoAcao"
+        Me.Lbl_TipoAcao.Size = New System.Drawing.Size(62, 13)
+        Me.Lbl_TipoAcao.TabIndex = 7
+        Me.Lbl_TipoAcao.Text = "Tipo Ação: "
+        '
+        'Cmb_Tipoacao
+        '
+        Me.Cmb_Tipoacao.FormattingEnabled = True
+        Me.Cmb_Tipoacao.Location = New System.Drawing.Point(187, 165)
+        Me.Cmb_Tipoacao.Name = "Cmb_Tipoacao"
+        Me.Cmb_Tipoacao.Size = New System.Drawing.Size(118, 21)
+        Me.Cmb_Tipoacao.TabIndex = 6
         '
         'Txt_SetorAtivo
         '
@@ -105,50 +149,6 @@ Partial Class Frm_CadastraAcoes
         Me.Lbl_NomeAtivo.Size = New System.Drawing.Size(96, 13)
         Me.Lbl_NomeAtivo.TabIndex = 0
         Me.Lbl_NomeAtivo.Text = "Nome da empresa:"
-        '
-        'Cmb_Tipoacao
-        '
-        Me.Cmb_Tipoacao.FormattingEnabled = True
-        Me.Cmb_Tipoacao.Location = New System.Drawing.Point(187, 165)
-        Me.Cmb_Tipoacao.Name = "Cmb_Tipoacao"
-        Me.Cmb_Tipoacao.Size = New System.Drawing.Size(118, 21)
-        Me.Cmb_Tipoacao.TabIndex = 6
-        '
-        'Lbl_TipoAcao
-        '
-        Me.Lbl_TipoAcao.AutoSize = True
-        Me.Lbl_TipoAcao.Location = New System.Drawing.Point(184, 149)
-        Me.Lbl_TipoAcao.Name = "Lbl_TipoAcao"
-        Me.Lbl_TipoAcao.Size = New System.Drawing.Size(62, 13)
-        Me.Lbl_TipoAcao.TabIndex = 7
-        Me.Lbl_TipoAcao.Text = "Tipo Ação: "
-        '
-        'Btn_Cancelar
-        '
-        Me.Btn_Cancelar.Location = New System.Drawing.Point(170, 270)
-        Me.Btn_Cancelar.Name = "Btn_Cancelar"
-        Me.Btn_Cancelar.Size = New System.Drawing.Size(109, 23)
-        Me.Btn_Cancelar.TabIndex = 11
-        Me.Btn_Cancelar.Text = "Cancelar"
-        Me.Btn_Cancelar.UseVisualStyleBackColor = True
-        '
-        'Btn_Limpar
-        '
-        Me.Btn_Limpar.Location = New System.Drawing.Point(65, 270)
-        Me.Btn_Limpar.Name = "Btn_Limpar"
-        Me.Btn_Limpar.Size = New System.Drawing.Size(99, 23)
-        Me.Btn_Limpar.TabIndex = 10
-        Me.Btn_Limpar.Text = "Limpar"
-        Me.Btn_Limpar.UseVisualStyleBackColor = True
-        '
-        'Btn_Cadastrar
-        '
-        Me.Btn_Cadastrar.Location = New System.Drawing.Point(97, 207)
-        Me.Btn_Cadastrar.Name = "Btn_Cadastrar"
-        Me.Btn_Cadastrar.Size = New System.Drawing.Size(133, 57)
-        Me.Btn_Cadastrar.TabIndex = 9
-        Me.Btn_Cadastrar.Text = "Cadastrar"
-        Me.Btn_Cadastrar.UseVisualStyleBackColor = True
         '
         'Frm_CadastraAcoes
         '

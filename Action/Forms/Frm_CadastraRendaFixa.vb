@@ -2,8 +2,12 @@
 
 Public Class Frm_CadastraRendaFixa
 
+
     Dim NovaRendaFixa As New RendaFixa
     Dim Dt As New DataTable
+
+    Public idRendaFixa As Integer
+
 
     Public Sub New()
 
@@ -41,13 +45,28 @@ Public Class Frm_CadastraRendaFixa
 
         If ValidaCampos() = False Then
 
-            NovaRendaFixa.NomeAtivo = txt_titulo.Text
-            NovaRendaFixa.IdTipoRendaFixa = Cmb_TipoTitulo.SelectedIndex + 1
-            NovaRendaFixa.Rendimento = Val(TxT_RentabilidadeTitulo.Text)
-            NovaRendaFixa.CadastrarRendaFixa(NovaRendaFixa)
+            If idRendaFixa > 0 Then
+                NovaRendaFixa.Id = idRendaFixa
+                NovaRendaFixa.NomeAtivo = txt_titulo.Text
+                NovaRendaFixa.IdTipoRendaFixa = Cmb_TipoTitulo.SelectedIndex + 1
+                NovaRendaFixa.Rendimento = Val(TxT_RentabilidadeTitulo.Text)
+                NovaRendaFixa.AlterarRendaFixa(NovaRendaFixa)
+                MsgBox("Titulo alterado com sucesso")
+                Me.Close()
 
-            MsgBox("Titulo Cadastrado com sucesso")
-            LimparCampo()
+            Else
+                NovaRendaFixa.NomeAtivo = txt_titulo.Text
+                NovaRendaFixa.IdTipoRendaFixa = Cmb_TipoTitulo.SelectedIndex + 1
+                NovaRendaFixa.Rendimento = Val(TxT_RentabilidadeTitulo.Text)
+                NovaRendaFixa.CadastrarRendaFixa(NovaRendaFixa)
+
+                MsgBox("Titulo Cadastrado com sucesso")
+                LimparCampo()
+            End If
+
+
+
+
         End If
 
     End Sub
@@ -84,6 +103,10 @@ Public Class Frm_CadastraRendaFixa
 
         txt_titulo.Text = String.Empty
         TxT_RentabilidadeTitulo.Text = String.Empty
+
+    End Sub
+
+    Private Sub Frm_CadastraRendaFixa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
 End Class

@@ -20,3 +20,4 @@ C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastraAcoes.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastraFI.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastrarAtivo.resources
+C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_ConsultarAtivo.resources
