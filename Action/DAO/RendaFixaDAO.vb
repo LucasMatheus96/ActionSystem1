@@ -15,7 +15,7 @@ Namespace Dao
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeAtivo", RendaFixa.NomeAtivo)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@IdTipoRendaFixa", RendaFixa.IdTipoRendaFixa)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Rendimento", RendaFixa.Rendimento)
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 
@@ -37,7 +37,7 @@ Namespace Dao
 
                 ConexaoBD.objCommand.CommandType = CommandType.Text
                 ConexaoBD.objCommand.CommandText = "SELECT * FROM tabTipoRendaFixa"
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
 
                 Dim Da As New SqlDataAdapter(ConexaoBD.objCommand)
@@ -64,7 +64,7 @@ Namespace Dao
 
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.CommandText = "SpSel_ConsultaRendaFixa"
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
 
                 Dim Da As New SqlDataAdapter(ConexaoBD.objCommand)
@@ -89,7 +89,7 @@ Namespace Dao
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.CommandText = "SpDel_DeletaRendaFixa"
                 ConexaoBD.objCommand.Parameters.AddWithValue("@ID", IDRendaFixa)
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 
@@ -114,7 +114,7 @@ Namespace Dao
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeAtivo", RendaFixa.NomeAtivo)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@IdTipoRendaFixa", RendaFixa.IdTipoRendaFixa)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Rendimento", RendaFixa.Rendimento)
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 

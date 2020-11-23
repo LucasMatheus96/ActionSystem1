@@ -4,6 +4,8 @@ Public Class Frm_ConsultarAtivo
 
     Dim Index As Integer = 0
     Dim objAtivo As New RendaFixa
+    Dim objAcoes As New Acao
+    Dim objFundoImobiliario As New FundoImobiliario
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -15,6 +17,8 @@ Public Class Frm_ConsultarAtivo
         CriarColunas()
         Lsw_ListaDeAtivos.Items.Clear()
         CarregaListView()
+        CarregaGridViewAcoes()
+        CarregaGridViewfundoImobiliario()
 
     End Sub
 
@@ -88,7 +92,7 @@ Public Class Frm_ConsultarAtivo
 
     Private Sub Lsw_ListaDeAtivos_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Lsw_ListaDeAtivos.SelectedIndexChanged
         Try
-            If Lsw_ListaDeAtivos.SelectedItems.Count > 1 Then
+            If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
 
                 Index = Lsw_ListaDeAtivos.SelectedItems(0).Index
 
@@ -119,4 +123,39 @@ Public Class Frm_ConsultarAtivo
 
         End If
     End Sub
+
+    Private Sub CarregaGridViewAcoes()
+        DataGridView_Acoes.DataSource = objAcoes.ConsultarAcao
+
+
+        With DataGridView_Acoes
+            .Columns(0).Visible = False
+            .Columns(4).Visible = False
+            .Columns(5).Visible = False
+
+
+
+        End With
+
+    End Sub
+
+    Private Sub CarregaGridViewfundoImobiliario()
+        DataGridView_FundoImobiliario.DataSource = objFundoImobiliario.ConsultarFundoImobiliario
+
+
+        With DataGridView_FundoImobiliario
+            .Columns(0).Visible = False
+            .Columns(3).Visible = False
+            .Columns(4).Visible = False
+
+
+            .Columns(1).Width = 200
+            .Columns(2).Width = 60
+            .Columns(5).Width = 200
+
+
+        End With
+
+    End Sub
+
 End Class

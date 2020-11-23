@@ -3,7 +3,7 @@ Imports Action.Conexao
 Imports System.Data.SqlClient
 Imports Action.classes
 
-Namespace Dao
+Namespace DAO
     Public Class CarteiraDAO
 
         Shared Function DbConsultarUsuario() As DataTable
@@ -20,7 +20,7 @@ Namespace Dao
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
                 conexaoBD.objCommand.Connection = conexaoBD.objConexao
 
-                conexaoBD.objConexao.Open()
+                
 
                 Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
                 Da.Fill(Ds)
@@ -47,7 +47,7 @@ Namespace Dao
                 ConexaoBD.objCommand.Parameters.AddWithValue("@DataTransacao", Carteira.DataCadastro)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@ioperador", Carteira.operador)
                 'ConexaoBD.objCommand.Parameters.AddWithValue("@iOperador")
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 
@@ -63,9 +63,9 @@ Namespace Dao
 
                 ConexaoBD.objCommand.CommandText = "SpUpd_AtualizaCarteira"
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
-                ConexaoBD.objCommand.Parameters.AddWithValue("@ID", Carteira.ID)
+                ConexaoBD.objCommand.Parameters.AddWithValue("@ID", Carteira.Id)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeCarteira", Carteira.NomeCarteira)
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
             Catch ex As Exception
@@ -83,7 +83,7 @@ Namespace Dao
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Parameters.AddWithValue("@ID", IdCliente)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeCarteira", NomeCarteira)
-                ConexaoBD.objConexao.Open()
+                
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 

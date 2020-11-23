@@ -1,4 +1,5 @@
-﻿Imports Action.Dao
+﻿Imports Action.Controller
+Imports Action.DAO
 
 Namespace classes
     Public Class RendaFixa
@@ -19,16 +20,18 @@ Namespace classes
 
         Public Sub CadastrarRendaFixa(Titulo As RendaFixa)
             Try
-                RendaFixaDAO.CadastrarRendaFixa(Titulo)
+                Dim controle As New Controle
+                controle.CadastrarRendaFixa(Titulo)
             Catch ex As Exception
-
+                Throw ex
             End Try
 
         End Sub
 
         Public Sub AlterarRendaFixa(Titulo As RendaFixa)
             Try
-                RendaFixaDAO.AlterarRendaFixa(Titulo)
+                Dim controle As New Controle
+                controle.CadastrarRendaFixa(Titulo)
             Catch ex As Exception
 
                 Throw New Exception(ex.Message)
@@ -38,7 +41,8 @@ Namespace classes
 
         Public Function ConsultarTipoRendaFixa() As DataTable
             Try
-                Return RendaFixaDAO.ConsultarTipoRendaFixa()
+                Dim controle As New Controle
+                Return controle.ConsultarTipoRendaFixa()
 
             Catch ex As Exception
 
@@ -49,7 +53,9 @@ Namespace classes
 
         Public Function ConsultarRendaFixa() As DataTable
             Try
-                Return RendaFixaDAO.ConsultarRendaFixa
+                Dim controle As New Controle
+
+                Return controle.ConsultarRendaFixa
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try
@@ -58,7 +64,8 @@ Namespace classes
 
         Public Sub ExcluirRendaFixa(IdRendaFixa As Integer)
             Try
-                RendaFixaDAO.ExcluirRendaFixa(IdRendaFixa)
+                Dim controle As New Controle
+                controle.ExcluirRendaFixa(IdRendaFixa)
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try

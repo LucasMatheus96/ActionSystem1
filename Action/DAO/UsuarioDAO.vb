@@ -25,8 +25,6 @@ Namespace Dao
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Senha", Cprt.CriptografarSenha(Usuario.Senha))
                 ConexaoBD.objCommand.Parameters.AddWithValue("@DataCadastro", Usuario.DataCadastro)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Permissao", Cprt.CriptografarSenha(Usuario.Permissao))
-
-                ConexaoBD.objConexao.Open()
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
             Catch ex As Exception
@@ -52,7 +50,7 @@ Namespace Dao
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Usuario", Usuario.Usuario)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Senha", Cprt.CriptografarSenha(Usuario.Senha))
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Permissao", Cprt.CriptografarSenha(Usuario.Permissao))
-                ConexaoBD.objConexao.Open()
+
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
             Catch ex As Exception
@@ -72,7 +70,7 @@ Namespace Dao
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 'objCommand.Connection = objConexao
                 ConexaoBD.objCommand.Parameters.AddWithValue("@ID", IdCliente)
-                ConexaoBD.objConexao.Open()
+
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
             Catch ex As Exception
@@ -96,7 +94,7 @@ Namespace Dao
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Connection = ConexaoBD.objConexao
 
-                ConexaoBD.objConexao.Open()
+
                 Dim da As New SqlDataAdapter(ConexaoBD.objCommand)
                 da.Fill(ds)
                 dt = ds.Tables(0)
@@ -127,7 +125,7 @@ Namespace Dao
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Usuario", vLogin)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Senha", Cprt.CriptografarSenha(vSenha))
-                ConexaoBD.objConexao.Open()
+
 
 
 
@@ -151,7 +149,7 @@ Namespace Dao
             'hashTxtSenha = vSenha
 
             'Try
-            '        conexaoBD.objConexao.Open()
+            '        
             '        dr = conexaoBD.objCommand.ExecuteReader()
             '    If dr.HasRows Then
 

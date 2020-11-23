@@ -12,8 +12,6 @@ Namespace Conexao
 
     Public Class ConexaoBD
 
-        Dim Hash As New Criptografia(SHA512.Create())
-        Dim hashTxtSenha As String = ""
 
 
         Public Const strConexao As String = "Data Source=DESKTOP-ISMFG00;Initial Catalog=dbAction;Integrated Security=True"
@@ -25,7 +23,9 @@ Namespace Conexao
         Public objCommand As New SqlCommand(strInstrucao, objConexao)
 
 
-
+        Public Sub New()
+            objConexao.Open()
+        End Sub
     End Class
 
 End Namespace

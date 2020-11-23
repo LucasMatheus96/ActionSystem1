@@ -1,5 +1,6 @@
 ﻿Imports Action.Conexao
-Imports Action.Dao
+Imports Action.Controller
+Imports Action.DAO
 
 Namespace classes
     Public Class Carteira
@@ -18,8 +19,8 @@ Namespace classes
         Public Function ConsultarCarteira() As DataTable
 
             Try
-
-                Return CarteiraDAO.DbConsultarUsuario()
+                Dim Controle As New Controle
+                Return Controle.ConsultarCarteira()
             Catch ex As Exception
 
                 Throw New Exception(ex.Message)
@@ -31,7 +32,8 @@ Namespace classes
         Public Function CadastrarCarteira(carteira As Carteira) As String
 
             Try
-                CarteiraDAO.DBCadastrarCarteira(carteira)
+                Dim Controle As New Controle
+                Controle.CadastrarCarteira(carteira)
             Catch ex As Exception
 
                 Throw New Exception(ex.Message)
@@ -41,7 +43,8 @@ Namespace classes
 
         Public Function AtualizarCarteira(carteira As Carteira) As String
             Try
-                CarteiraDAO.DBAtualizaCarteira(carteira)
+                Dim Controle As New Controle
+                Controle.AtualizarCarteira(carteira)
 
             Catch ex As Exception
                 Throw New Exception(ex.Message)
@@ -53,7 +56,8 @@ Namespace classes
         Public Function ExcluirCarteira(IdCliente As Integer, Optional NomeCarteira As String = "") As String
 
             Try
-                CarteiraDAO.DBExcluirCarteira(IdCliente, NomeCarteira)
+                Dim Controle As New Controle
+                Controle.ExcluirCarteira(IdCliente, NomeCarteira)
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try

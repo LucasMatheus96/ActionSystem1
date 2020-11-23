@@ -2,14 +2,16 @@
 Imports System.Data.SqlClient
 Imports System.Security.Cryptography
 Imports Action.Conexao
-Imports Action.Dao
+Imports Action.Controller
+Imports Action.DAO
 
 Namespace classes
     Public Class Usuario
         Dim Hash As New Criptografia(SHA512.Create())
 #Region "Propriedades"
 
-        Public Id As Integer
+
+        Public Property Id As Integer
         Public Nome As String
         Public Usuario As String
         Public Senha As String
@@ -36,7 +38,8 @@ Namespace classes
         Public Sub CadastrarUsuario(ByVal Usuario As Usuario)
 
             Try
-                UsuarioDAO.DbCadastroUsuario(Usuario)
+                Dim Controle As New Controle
+                Controle.CadastrarUsuario(Usuario)
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try
@@ -47,7 +50,8 @@ Namespace classes
         Public Sub AtualizarUsuario(ByVal Usuario As Usuario)
 
             Try
-                UsuarioDAO.DbAtualizaCadastro(Usuario)
+                Dim Controle As New Controle
+                Controle.AtualizarUsuario(Usuario)
 
             Catch ex As Exception
                 Throw New Exception(ex.Message)
@@ -59,7 +63,9 @@ Namespace classes
         Public Sub ExcluirUsuario(ByVal IdCliente As Integer)
 
             Try
-                UsuarioDAO.DbExcluirCadastro(IdCliente)
+                Dim Controle As New Controle
+                Controle.ExcluirUsuario(IdCliente)
+
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try
@@ -72,7 +78,9 @@ Namespace classes
         Public Function ConsultarUsuario() As DataTable
 
             Try
-                Return UsuarioDAO.DbConsultarUsuario
+                Dim Controle As New Controle
+
+                Return Controle.ConsultarUsuario
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try
@@ -84,7 +92,9 @@ Namespace classes
         Public Function ValidarAcesso(vLogin As String, vSenhaTentativa As String) As DataTable
 
             Try
-                Return UsuarioDAO.DbValidaAcesso(vLogin, vSenhaTentativa)
+                Dim Controle As New Controle
+                Return Controle.ValidarAcesso(vLogin, vSenhaTentativa)
+
             Catch ex As Exception
                 Throw New Exception(ex.Message)
             End Try
@@ -93,43 +103,15 @@ Namespace classes
         End Function
 
         Public Function ChecarCampos(Optional ByVal vlogin As String = "", Optional vSenha As String = "", Optional ByVal vUsuario As String = "", Optional ByVal vConfirmaSenha As String = "") As Boolean
-            Dim vRetorno As Boolean
+            Try
+                Dim Controle As New Controle
 
+                Return Controle.ChecarCampos(vlogin, vSenha, vUsuario, vConfirmaSenha)
 
-            If vlogin = "" And vSenha = "" And vUsuario = "" And vConfirmaSenha = "" Then
-                MsgBox("Preencha todos os campos para se logar")
-                vRetorno = False
+            Catch ex As Exception
+                Throw ex
+            End Try
 
-
-            ElseIf vlogin = "" And vSenha = "" Then
-                MsgBox("Preencha todos os campos para se logar")
-                vRetorno = False
-
-
-                'ElseIf vUsuario = "" Then
-
-                '    MsgBox("Preencha as informações do campo usuario")
-
-
-            ElseIf vSenha = "" Then
-
-                MsgBox("Preencha o campo senha")
-
-                vRetorno = False
-
-                'ElseIf vConfirmaSenha = "" Then
-                '    MsgBox("Confirme sua senha")
-
-            ElseIf vlogin = "" Then
-
-
-                MsgBox("Preencha as informações do campo login")
-                vRetorno = False
-
-            Else
-                vRetorno = True
-            End If
-            Return vRetorno
         End Function
 
 
