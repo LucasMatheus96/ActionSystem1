@@ -1,9 +1,11 @@
 ﻿Imports Action.classes
+Imports Action.Controller
 
 Public Class Frm_CadastraRendaFixa
 
 
     Dim NovaRendaFixa As New RendaFixa
+    Dim controlRendaFixa As New ControladorRendaFixa
     Dim Dt As New DataTable
 
     Public idRendaFixa As Integer
@@ -16,7 +18,7 @@ Public Class Frm_CadastraRendaFixa
 
         ' Adicione qualquer inicialização após a chamada InitializeComponent().
         Me.Text = "Cadastrando Titulo"
-        Dt = NovaRendaFixa.ConsultarTipoRendaFixa
+        Dt = controlRendaFixa.ConsultarTipoRendaFixa
         Cmb_TipoTitulo.Items.Clear()
         Cmb_TipoTitulo.DropDownStyle = ComboBoxStyle.DropDownList
 
@@ -50,7 +52,7 @@ Public Class Frm_CadastraRendaFixa
                 NovaRendaFixa.NomeAtivo = txt_titulo.Text
                 NovaRendaFixa.IdTipoRendaFixa = Cmb_TipoTitulo.SelectedIndex + 1
                 NovaRendaFixa.Rendimento = Val(TxT_RentabilidadeTitulo.Text)
-                NovaRendaFixa.AlterarRendaFixa(NovaRendaFixa)
+                controlRendaFixa.AlterarRendaFixa(NovaRendaFixa)
                 MsgBox("Titulo alterado com sucesso")
                 Me.Close()
 
@@ -58,7 +60,7 @@ Public Class Frm_CadastraRendaFixa
                 NovaRendaFixa.NomeAtivo = txt_titulo.Text
                 NovaRendaFixa.IdTipoRendaFixa = Cmb_TipoTitulo.SelectedIndex + 1
                 NovaRendaFixa.Rendimento = Val(TxT_RentabilidadeTitulo.Text)
-                NovaRendaFixa.CadastrarRendaFixa(NovaRendaFixa)
+                controlRendaFixa.CadastrarRendaFixa(NovaRendaFixa)
 
                 MsgBox("Titulo Cadastrado com sucesso")
                 LimparCampo()

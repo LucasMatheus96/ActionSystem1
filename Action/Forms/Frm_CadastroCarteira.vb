@@ -1,9 +1,11 @@
 ﻿
 Imports Action.classes
+Imports Action.Controller
 
 Public Class Frm_CadastroCarteira
     Dim objDados As New Usuario
     Dim NovaCarteira As New Carteira
+    Dim controlCarteira As New ControladorCarteira
     Public IdCarteira As Integer = 0
     Public Sub New()
 
@@ -42,13 +44,13 @@ Public Class Frm_CadastroCarteira
             If IdCarteira > 0 Then
                 NovaCarteira.Id = IdCarteira
                 NovaCarteira.NomeCarteira = Txt_NomeCarteira.Text
-                NovaCarteira.AtualizarCarteira(NovaCarteira)
+                controlCarteira.AtualizarCarteira(NovaCarteira)
                 Me.Close()
             Else
                 NovaCarteira.NomeCarteira = Txt_NomeCarteira.Text
                 NovaCarteira.DataCadastro = Now
                 NovaCarteira.operador = OperadorID
-                NovaCarteira.CadastrarCarteira(NovaCarteira)
+                controlCarteira.CadastrarCarteira(NovaCarteira)
             End If
 
 

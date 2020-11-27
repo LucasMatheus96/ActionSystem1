@@ -1,4 +1,5 @@
 ﻿Imports Action.classes
+Imports Action.Controller
 
 Public Class Frm_ConsultarAtivo
 
@@ -6,6 +7,12 @@ Public Class Frm_ConsultarAtivo
     Dim objAtivo As New RendaFixa
     Dim objAcoes As New Acao
     Dim objFundoImobiliario As New FundoImobiliario
+    Dim controlAcao As New ControladorAcao
+    Dim controlFundoImobiliario As New ControladorFundoImobiliario
+    Dim controlRendaFixa As New ControladorRendaFixa
+
+
+
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -17,12 +24,15 @@ Public Class Frm_ConsultarAtivo
         CriarColunas()
         Lsw_ListaDeAtivos.Items.Clear()
         CarregaListView()
-        CarregaGridViewAcoes()
-        CarregaGridViewfundoImobiliario()
+
 
     End Sub
 
     Private Sub Frm_ConsultarAtivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        CarregaGridViewAcoes()
+        CarregaGridViewfundoImobiliario()
 
     End Sub
 
@@ -34,7 +44,7 @@ Public Class Frm_ConsultarAtivo
     Private Sub CarregaListView()
 
         Dim Dt As DataTable
-        Dt = objAtivo.ConsultarRendaFixa
+        Dt = controlRendaFixa.ConsultarRendaFixa
 
         For Each linha As DataRow In Dt.Rows
             Dim lista As New ListViewItem()
@@ -75,6 +85,7 @@ Public Class Frm_ConsultarAtivo
         Try
             If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
 
+
                 Dim AlterarRendaFixa As New Frm_CadastraRendaFixa
 
                 AlterarRendaFixa.idRendaFixa = Integer.Parse(Lsw_ListaDeAtivos.Items(Index).Text)
@@ -109,7 +120,7 @@ Public Class Frm_ConsultarAtivo
 
             Try
                 objAtivo.Id = Integer.Parse(Lsw_ListaDeAtivos.SelectedItems(0).Text)
-                objAtivo.ExcluirRendaFixa(objAtivo.Id)
+                controlRendaFixa.ExcluirRendaFixa(objAtivo.Id)
                 MsgBox("Registro excluido com sucesso.")
                 Lsw_ListaDeAtivos.Items.Clear()
                 CarregaListView()
@@ -125,7 +136,7 @@ Public Class Frm_ConsultarAtivo
     End Sub
 
     Private Sub CarregaGridViewAcoes()
-        DataGridView_Acoes.DataSource = objAcoes.ConsultarAcao
+        DataGridView_Acoes.DataSource = controlAcao.ConsultarAcao
 
 
         With DataGridView_Acoes
@@ -133,6 +144,7 @@ Public Class Frm_ConsultarAtivo
             .Columns(4).Visible = False
             .Columns(5).Visible = False
 
+            .ClearSelection()
 
 
         End With
@@ -140,7 +152,7 @@ Public Class Frm_ConsultarAtivo
     End Sub
 
     Private Sub CarregaGridViewfundoImobiliario()
-        DataGridView_FundoImobiliario.DataSource = objFundoImobiliario.ConsultarFundoImobiliario
+        DataGridView_FundoImobiliario.DataSource = controlFundoImobiliario.ConsultarFundoImobiliario
 
 
         With DataGridView_FundoImobiliario
@@ -152,10 +164,27 @@ Public Class Frm_ConsultarAtivo
             .Columns(1).Width = 200
             .Columns(2).Width = 60
             .Columns(5).Width = 200
+            .ClearSelection()
 
 
         End With
 
     End Sub
 
+    Private Sub DataGridView_FundoImobiliario_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView_FundoImobiliario.CellContentClick
+
+    End Sub
+
+    Private Sub Lsw_ListaDeAtivos_Click(sender As Object, e As EventArgs) Handles Lsw_ListaDeAtivos.Click
+        If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
+            DataGridView_Acoes.ClearSelection()
+            DataGridView_FundoImobiliario.ClearSelection()
+        End If
+    End Sub
+
+    Private Sub DataGridView_Acoes_Click(sender As Object, e As EventArgs) Handles DataGridView_Acoes.Click
+
+
+
+    End Sub
 End Class

@@ -1,17 +1,20 @@
 ﻿Imports Action.classes
 Imports Action.Controller
+Imports Action.DAO
 
 Public Class Frm_CadastraAcoes
 
     Dim objAcao As New Acao
     Dim Dt As DataTable
+    Dim acaoDAO As New AcaoDAO
+    Dim control As New ControladorAcao
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
         InitializeComponent()
 
         ' Adicione qualquer inicialização após a chamada InitializeComponent().
-        Dt = objAcao.ConsultarTipoAcao
+        Dt = control.ConsultarTipoAcao
         For i As Integer = 0 To Dt.Rows.Count - 1
             Cmb_Tipoacao.Items.Add(Dt.Rows(i)("NomeTipoAcao"))
         Next
@@ -41,7 +44,9 @@ Public Class Frm_CadastraAcoes
             objAcao.SetorAtivo = Txt_SetorAtivo.Text
             objAcao.SiglaAtivo = Txt_Sigla.Text
             objAcao.IdTipoAcao = Cmb_Tipoacao.SelectedIndex + 1
-            objAcao.CadastrarAcao(objAcao)
+            control.CadastrarAcao(objAcao)
+
+
             MsgBox("Cadastro Efetuado com sucesso")
             LimparCampos()
         End If

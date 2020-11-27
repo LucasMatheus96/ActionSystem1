@@ -1,9 +1,10 @@
 ﻿Imports Action.classes
-
+Imports Action.Controller
 
 Public Class Frm_ConsultaCarteira
     Dim Index As Integer = 0
     Dim objCarteira As New Carteira
+    Dim controlCarteira As New ControladorCarteira
     Dim dt As New DataTable
     Public Sub New()
 
@@ -16,7 +17,7 @@ Public Class Frm_ConsultaCarteira
         txt_busca2.Visible = False
         CarregarListViewer()
 
-        dt = objCarteira.ConsultarCarteira
+        dt = controlCarteira.ConsultarCarteira
         Dgw_Teste.DataSource = dt
 
 
@@ -42,7 +43,7 @@ Public Class Frm_ConsultaCarteira
 
         Lsw_VerCarteira.Items.Clear()
         Dim dt As New DataTable
-        dt = objCarteira.ConsultarCarteira()
+        dt = controlCarteira.ConsultarCarteira()
 
         For Each linha As DataRow In dt.Rows
             Dim lista As New ListViewItem()
@@ -103,7 +104,7 @@ Public Class Frm_ConsultaCarteira
         Try
             If Lsw_VerCarteira.SelectedItems.Count > 0 Then
                 objCarteira.Id = (Integer.Parse(Lsw_VerCarteira.SelectedItems(0).Text))
-                objCarteira.ExcluirCarteira(objCarteira.Id)
+                controlCarteira.ExcluirCarteira(objCarteira.Id)
                 CarregarListViewer()
             End If
         Catch ex As Exception

@@ -1,7 +1,10 @@
 ﻿Imports System.Security.Cryptography
 Imports Action.classes
+Imports Action.Controller
 
 Public Class Frm_TelaCadastro
+    Dim controlUsuario As New ControladorUsuario
+
     Public classe As New Usuario()
 
     Public IdCliente As Integer = 0
@@ -49,7 +52,7 @@ Public Class Frm_TelaCadastro
 
         Try
 
-            If classe.ChecarCampos(Txt_Nome.Text, Txt_Senha.Text, Txt_Usuario.Text, Txt_ConfirmarSenha.Text) = False Then
+            If controlUsuario.ChecarCampos(Txt_Nome.Text, Txt_Senha.Text, Txt_Usuario.Text, Txt_ConfirmarSenha.Text) = False Then
             Else
                 classe.Nome = Txt_Nome.Text
                 classe.Usuario = Txt_Usuario.Text
@@ -61,11 +64,11 @@ Public Class Frm_TelaCadastro
 
                 If IdCliente > 0 Then
                     classe.Id = IdCliente
-                    classe.AtualizarUsuario(classe)
+                    controlUsuario.AtualizarUsuario(classe)
                     MsgBox("Usuario alterado com sucesso")
 
                 Else
-                    classe.CadastrarUsuario(classe)
+                    controlUsuario.CadastrarUsuario(classe)
                     MsgBox("Cadastro efetuado com sucesso")
                     LimparCampos()
                 End If

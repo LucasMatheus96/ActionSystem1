@@ -81,6 +81,11 @@
     <Compile Include="Classes\RendaFixa.vb" />
     <Compile Include="Classes\Usuario.vb" />
     <Compile Include="Conexao\ConexaoBD.vb" />
+    <Compile Include="Controller\ControladorAcao.vb" />
+    <Compile Include="Controller\ControladorCarteira.vb" />
+    <Compile Include="Controller\ControladorFundoImobiliario.vb" />
+    <Compile Include="Controller\ControladorRendaFixa.vb" />
+    <Compile Include="Controller\ControladorUsuario.vb" />
     <Compile Include="Controller\Controle.vb" />
     <Compile Include="DAO\AcaoDAO.vb" />
     <Compile Include="DAO\CarteiraDAO.vb" />

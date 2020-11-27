@@ -1,8 +1,10 @@
 Imports System.ComponentModel
 Imports Action.classes
+Imports Action.Controller
 
 Public Class Frm_Login
     Dim Usuario As New Usuario
+    Dim controlUsuario As New ControladorUsuario
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -23,7 +25,7 @@ Public Class Frm_Login
     Private Sub Frm_Login_Closed(sender As Object, e As EventArgs) Handles MyBase.Closed
 
         Try
-            If Usuario.ValidarAcesso(Txt_Login.Text, Txt_Passoword.Text).Rows.Count = 0 Then
+            If controlUsuario.ValidarAcesso(Txt_Login.Text, Txt_Passoword.Text).Rows.Count = 0 Then
                 Me.Close()
                 Frm_Principal.Close()
             Else
@@ -84,20 +86,20 @@ Public Class Frm_Login
         Frm_Principal.Show()
     End Sub
 
-    Private Sub Btn_Logar_Click(sender As Object, e As EventArgs) Handles  btn_Logar.Click
+    Private Sub Btn_Logar_Click(sender As Object, e As EventArgs) Handles btn_Logar.Click
 
 
         Try
             Dim vLogin As String = Txt_Login.Text
             Dim vSenha As String = Txt_Passoword.Text
 
-            If Usuario.ChecarCampos(vLogin, vSenha) = False Then
+            If controlUsuario.ChecarCampos(vLogin, vSenha) = False Then
                 Exit Sub
             End If
 
-            If Usuario.ValidarAcesso(vLogin, vSenha).Rows.Count = 1 Then
+            If controlUsuario.ValidarAcesso(vLogin, vSenha).Rows.Count = 1 Then
 
-                MsgBox("Acesso autorizado")
+                MessageBox.Show("Acesso Autorizado")
                 Me.Close()
                 Frm_Principal.Show()
                 Frm_Principal.Tsl_UsuarioLogado.Visible = True

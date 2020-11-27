@@ -3,6 +3,7 @@
 Public Class Frm_UsuariosCadastrados
     Dim index As Integer
     Dim objDados As New Usuario
+    Dim controlUsuario As New controladorUsuario
 
 
     Public Sub New()
@@ -37,7 +38,7 @@ Public Class Frm_UsuariosCadastrados
         Try
             Lsw_Verusuarios.Items.Clear()
             Dim dt As New DataTable
-            dt = objDados.ConsultarUsuario()
+            dt = controlUsuario.ConsultarUsuario()
 
             For Each linha As DataRow In dt.Rows
                 Dim lista As New ListViewItem()
@@ -86,7 +87,7 @@ Public Class Frm_UsuariosCadastrados
             Dim UsuarioExcluir As New Usuario
 
             If Lsw_Verusuarios.SelectedItems.Count > 0 Then
-                UsuarioExcluir.ExcluirUsuario(Integer.Parse(Lsw_Verusuarios.Items(index).Text))
+                controlUsuario.ExcluirUsuario(Integer.Parse(Lsw_Verusuarios.Items(index).Text))
                 MsgBox("Registro Excluido com Sucesso")
                 CarregarListView()
 

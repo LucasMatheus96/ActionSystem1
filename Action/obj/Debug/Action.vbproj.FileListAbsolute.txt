@@ -14,10 +14,10 @@ C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_Principal.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_UsuariosCadastrados.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastroCarteira.resources
-C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.vbprojAssemblyReference.cache
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_ConsultaCarteira.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastraRendaFixa.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastraAcoes.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastraFI.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastrarAtivo.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_ConsultarAtivo.resources
+C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.vbprojAssemblyReference.cache
