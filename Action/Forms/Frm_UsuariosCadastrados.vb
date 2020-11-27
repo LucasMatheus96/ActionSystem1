@@ -1,9 +1,10 @@
 ﻿Imports Action.classes
+Imports Action.Controller
 
 Public Class Frm_UsuariosCadastrados
     Dim index As Integer
     Dim objDados As New Usuario
-    Dim controlUsuario As New controladorUsuario
+    Dim controlUsuario As New ControladorUsuario
 
 
     Public Sub New()

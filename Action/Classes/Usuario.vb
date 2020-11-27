@@ -7,7 +7,7 @@ Imports Action.DAO
 
 Namespace classes
     Public Class Usuario
-        Dim Hash As New Criptografia(SHA512.Create())
+
 #Region "Propriedades"
 
 
@@ -23,15 +23,6 @@ Namespace classes
 
 
 #Region "Construtores"
-
-        'Public Sub New(_Nome As String, _Usuario As String)
-
-        '    If _Nome = "" Or _Usuario = "" Then
-        '        Dim Exception As New ArgumentOutOfRangeException("Favor Verificar os dados digitados", _Nome)
-        '    End If
-
-        'End Sub
-
 #End Region
 #Region "Métodos"
 

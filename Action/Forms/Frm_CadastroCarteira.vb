@@ -6,6 +6,7 @@ Public Class Frm_CadastroCarteira
     Dim objDados As New Usuario
     Dim NovaCarteira As New Carteira
     Dim controlCarteira As New ControladorCarteira
+    Dim controlUsuario As New ControladorUsuario
     Public IdCarteira As Integer = 0
     Public Sub New()
 
@@ -28,7 +29,7 @@ Public Class Frm_CadastroCarteira
 
         Try
             Dim dt As New DataTable
-            dt = objDados.ConsultarUsuario()
+            dt = controlUsuario.ConsultarUsuario()
             Dim OperadorID As Integer
 
             'BUSCA INFORMAÇÃO DO USUARIO LOGADO

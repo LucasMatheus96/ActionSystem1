@@ -9,7 +9,7 @@ Namespace classes
         Public Property Id As Integer
         Public Property NomeCarteira As String
         Public Property DataCadastro As DateTime
-        Public Property operador As Integer
+        Public Property Operador As Integer
 #End Region
 #Region "Construtores"
 

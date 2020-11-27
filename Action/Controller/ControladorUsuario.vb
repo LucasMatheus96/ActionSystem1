@@ -1,8 +1,10 @@
 ﻿Imports Action.DAO
 Imports Action.classes
+Imports System.Security.Cryptography
 
 Namespace Controller
     Public Class ControladorUsuario
+
 #Region "Classe Usuario"
         'CONTROLE REFERENTE A CLASSE USUARIO 
         Public Sub CadastrarUsuario(ByVal Usuario As Usuario)
