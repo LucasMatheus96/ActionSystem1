@@ -1,0 +1,2 @@
+Dúvidas: 
+Caso não tenha nenhuma linha selecionada ao clicar nos botão do grid o sistema da erro.

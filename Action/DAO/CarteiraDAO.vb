@@ -6,7 +6,7 @@ Imports Action.classes
 Namespace DAO
     Public Class CarteiraDAO
 
-        Shared Function DbConsultarUsuario() As DataTable
+        Shared Function DBConsultarCarteira(idOperador As Integer) As DataTable
 
             Try
 
@@ -17,10 +17,11 @@ Namespace DAO
 
                 conexaoBD.strInstrucao = "SpSel_ConsultaCarteira"
                 conexaoBD.objCommand.CommandType = CommandType.StoredProcedure
+                conexaoBD.objCommand.Parameters.AddWithValue("@ID", idOperador)
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
                 conexaoBD.objCommand.Connection = conexaoBD.objConexao
 
-                
+
 
                 Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
                 Da.Fill(Ds)
@@ -36,6 +37,35 @@ Namespace DAO
         End Function
 
 
+        Shared Function DbPesquisaUsuario(Nome As String) As DataTable
+
+            Try
+
+                Dim conexaoBD As New ConexaoBD
+
+                Dim Dt As New DataTable
+                Dim Ds As New DataSet
+
+                conexaoBD.strInstrucao = "SELECT * FROM tabCarteira where nomecarteira like '%" + Nome + "%'"
+                conexaoBD.objCommand.Parameters.AddWithValue("@nome", Nome)
+                conexaoBD.objCommand.CommandType = CommandType.Text
+                conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
+                conexaoBD.objCommand.Connection = conexaoBD.objConexao
+
+
+
+                Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
+                Da.Fill(Ds)
+                Dt = Ds.Tables(0)
+                conexaoBD.objConexao.Close()
+
+                Return Dt
+
+            Catch ex As Exception
+
+                Throw New Exception(ex.Message)
+            End Try
+        End Function
 
         Shared Sub DBCadastrarCarteira(Carteira As Carteira)
             Try
@@ -45,9 +75,9 @@ Namespace DAO
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeCarteira", Carteira.NomeCarteira)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@DataTransacao", Carteira.DataCadastro)
-                ConexaoBD.objCommand.Parameters.AddWithValue("@ioperador", Carteira.operador)
+                ConexaoBD.objCommand.Parameters.AddWithValue("@ioperador", Carteira.Operador)
                 'ConexaoBD.objCommand.Parameters.AddWithValue("@iOperador")
-                
+
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 
@@ -65,7 +95,7 @@ Namespace DAO
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Parameters.AddWithValue("@ID", Carteira.Id)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeCarteira", Carteira.NomeCarteira)
-                
+
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
             Catch ex As Exception
@@ -83,7 +113,7 @@ Namespace DAO
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Parameters.AddWithValue("@ID", IdCliente)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@NomeCarteira", NomeCarteira)
-                
+
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
 
@@ -91,8 +121,41 @@ Namespace DAO
 
                 Throw New Exception(ex.Message)
             End Try
-
         End Sub
+
+        Shared Function DbPesquisaUsuarioPorData(dataInicial As Date, dataFinal As Date) As DataTable
+
+            Try
+
+                Dim conexaoBD As New ConexaoBD
+
+                Dim Dt As New DataTable
+                Dim Ds As New DataSet
+
+                conexaoBD.strInstrucao = "SELECT * FROM tabCarteira where dataTransacao between '" + dataInicial + "'" + "And" + "'" + dataFinal + "'"
+                conexaoBD.objCommand.Parameters.AddWithValue("@dataInicial", dataInicial)
+                conexaoBD.objCommand.Parameters.AddWithValue("@dataFinal", dataFinal)
+                conexaoBD.objCommand.CommandType = CommandType.Text
+                conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
+                conexaoBD.objCommand.Connection = conexaoBD.objConexao
+
+
+
+                Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
+                Da.Fill(Ds)
+                Dt = Ds.Tables(0)
+                conexaoBD.objConexao.Close()
+
+                Return Dt
+
+            Catch ex As Exception
+
+                Throw New Exception(ex.Message)
+            End Try
+        End Function
+
+
+
     End Class
 End Namespace
 

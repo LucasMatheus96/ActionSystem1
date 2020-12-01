@@ -64,6 +64,8 @@ Partial Class Frm_ConsultarAtivo
         '
         'Lsw_ListaDeAtivos
         '
+        Me.Lsw_ListaDeAtivos.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Lsw_ListaDeAtivos.FullRowSelect = True
         Me.Lsw_ListaDeAtivos.GridLines = True
         Me.Lsw_ListaDeAtivos.HideSelection = False
@@ -123,6 +125,8 @@ Partial Class Frm_ConsultarAtivo
         '
         'Grb_RendaFixa
         '
+        Me.Grb_RendaFixa.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Grb_RendaFixa.Controls.Add(Me.Lsw_ListaDeAtivos)
         Me.Grb_RendaFixa.Location = New System.Drawing.Point(12, 85)
         Me.Grb_RendaFixa.Name = "Grb_RendaFixa"

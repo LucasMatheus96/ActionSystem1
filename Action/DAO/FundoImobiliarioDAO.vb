@@ -55,11 +55,11 @@ Namespace DAO
                 conexaoBD.strInstrucao = "SpSel_ConsultaFundoImobiliario"
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
                 conexaoBD.objCommand.ExecuteNonQuery()
-
+                conexaoBD.objConexao.Close()
                 Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
                 Da.Fill(Ds)
                 Dt = Ds.Tables(0)
-                conexaoBD.objConexao.Close()
+
 
                 Return Dt
 
@@ -102,11 +102,11 @@ Namespace DAO
                 ConexaoBD.objCommand.CommandText = "SELECT * FROM tabTipoFundoImobiliario"
 
                 ConexaoBD.objCommand.ExecuteNonQuery()
-
+                ConexaoBD.objConexao.Close()
                 Dim Da As New SqlDataAdapter(ConexaoBD.objCommand)
                 Da.Fill(Ds)
                 Dt = Ds.Tables(0)
-                ConexaoBD.objConexao.Close()
+
 
                 Return Dt
 

@@ -4,6 +4,7 @@ Imports Action.Controller
 Public Class Frm_ConsultarAtivo
 
     Dim Index As Integer = 0
+
     Dim objAtivo As New RendaFixa
     Dim objAcoes As New Acao
     Dim objFundoImobiliario As New FundoImobiliario
@@ -30,7 +31,6 @@ Public Class Frm_ConsultarAtivo
 
     Private Sub Frm_ConsultarAtivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
         CarregaGridViewAcoes()
         CarregaGridViewfundoImobiliario()
 
@@ -44,6 +44,7 @@ Public Class Frm_ConsultarAtivo
     Private Sub CarregaListView()
 
         Dim Dt As DataTable
+
         Dt = controlRendaFixa.ConsultarRendaFixa
 
         For Each linha As DataRow In Dt.Rows
@@ -57,6 +58,13 @@ Public Class Frm_ConsultarAtivo
             Lsw_ListaDeAtivos.Items.Add(lista)
 
         Next
+
+
+
+
+
+
+
     End Sub
     Sub FormatarListView()
         ' Formatar o ListView
@@ -83,18 +91,56 @@ Public Class Frm_ConsultarAtivo
     Private Sub Btn_Alterar_Click(sender As Object, e As EventArgs) Handles Btn_Alterar.Click
 
         Try
-            If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
 
 
-                Dim AlterarRendaFixa As New Frm_CadastraRendaFixa
+            If ValidaGrids() = True Then
 
-                AlterarRendaFixa.idRendaFixa = Integer.Parse(Lsw_ListaDeAtivos.Items(Index).Text)
-                AlterarRendaFixa.txt_titulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(1).Text
-                AlterarRendaFixa.TxT_RentabilidadeTitulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(2).Text
-                AlterarRendaFixa.ShowDialog()
-                Lsw_ListaDeAtivos.Items.Clear()
-                CarregaListView()
+                'If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Or DataGridView_Acoes.Rows(Index2).Selected = True Or DataGridView_FundoImobiliario.Rows(Index2).Selected = True Then
+
+                If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
+
+
+                    Dim AlterarRendaFixa As New Frm_CadastraRendaFixa
+
+                    AlterarRendaFixa.idRendaFixa = Integer.Parse(Lsw_ListaDeAtivos.Items(Index).Text)
+                    AlterarRendaFixa.txt_titulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(1).Text
+                    AlterarRendaFixa.TxT_RentabilidadeTitulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(2).Text
+                    AlterarRendaFixa.ShowDialog()
+                    Lsw_ListaDeAtivos.Items.Clear()
+                    CarregaListView()
+
+                ElseIf DataGridView_Acoes.SelectedRows().Count > 0 Then
+
+                    Dim alterarAcao As New Frm_CadastraAcoes
+                    alterarAcao.IdAcao = Integer.Parse(DataGridView_Acoes.SelectedRows(0).Cells(0).Value)
+                    alterarAcao.txt_NomeEmpresa.Text = DataGridView_Acoes.SelectedRows(0).Cells(1).Value
+                    alterarAcao.Txt_Sigla.Text = DataGridView_Acoes.SelectedRows(0).Cells(3).Value
+                    alterarAcao.Txt_SetorAtivo.Text = DataGridView_Acoes.SelectedRows(0).Cells(2).Value
+                    alterarAcao.Cmb_Tipoacao.Text = DataGridView_Acoes.SelectedRows(0).Cells(6).Value
+                    alterarAcao.Btn_Cadastrar.Text = "Alterar"
+                    alterarAcao.ShowDialog()
+                    CarregaGridViewAcoes()
+
+                ElseIf DataGridView_FundoImobiliario.SelectedRows.Count > 0 Then
+
+                    Dim alterarFundo As New Frm_CadastraFI
+                    alterarFundo.idFundoImobiliario = Integer.Parse(DataGridView_FundoImobiliario.SelectedRows(0).Cells(0).Value)
+                    alterarFundo.Txt_NomeFundoImobiliario.Text = DataGridView_FundoImobiliario.SelectedRows(0).Cells(1).Value
+                    alterarFundo.Txt_SiglaFundoImobiliario.Text = DataGridView_FundoImobiliario.SelectedRows(0).Cells(2).Value
+                    alterarFundo.Cmb_FundoImobiliario.Text = DataGridView_FundoImobiliario.SelectedRows(0).Cells(5).Value
+                    alterarFundo.Btn_Cadastrar.Text = "Alterar"
+                    alterarFundo.ShowDialog()
+                    DataGridView_FundoImobiliario.Rows.Clear()
+                    CarregaGridViewAcoes()
+
+
+                End If
+            Else
+                MessageBox.Show("Selecione algum item para ser alterado")
+
             End If
+
+
         Catch ex As Exception
             Throw New Exception(ex.Message)
         End Try
@@ -116,23 +162,45 @@ Public Class Frm_ConsultarAtivo
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-        If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
 
-            Try
-                objAtivo.Id = Integer.Parse(Lsw_ListaDeAtivos.SelectedItems(0).Text)
-                controlRendaFixa.ExcluirRendaFixa(objAtivo.Id)
-                MsgBox("Registro excluido com sucesso.")
-                Lsw_ListaDeAtivos.Items.Clear()
-                CarregaListView()
+        Try
 
-            Catch ex As Exception
-
-                Throw New Exception(ex.Message)
-            End Try
+            If ValidaGrids() = True Then
+                If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
 
 
+                    objAtivo.Id = Integer.Parse(Lsw_ListaDeAtivos.SelectedItems(0).Text)
+                    controlRendaFixa.ExcluirRendaFixa(objAtivo.Id)
+                    MsgBox("Registro excluido com sucesso.")
+                    Lsw_ListaDeAtivos.Items.Clear()
+                    CarregaListView()
 
-        End If
+                End If
+
+                If DataGridView_Acoes.SelectedRows().Count > 0 Then
+                    objAcoes.Id = Integer.Parse(DataGridView_Acoes.SelectedRows(0).Cells(0).Value)
+                    controlAcao.ExcluirAcao(objAcoes.Id)
+                    MessageBox.Show("Registro excluido com sucesso.")
+                    CarregaGridViewAcoes()
+
+                End If
+
+                If DataGridView_FundoImobiliario.SelectedRows().Count > 0 Then
+                    objAcoes.Id = Integer.Parse(DataGridView_Acoes.SelectedRows(0).Cells(0).Value)
+                    controlAcao.ExcluirAcao(objAcoes.Id)
+                    MessageBox.Show("Registro excluido com sucesso.")
+                    CarregaGridViewAcoes()
+
+                End If
+            Else
+                MessageBox.Show("Selecione algum item para ser alterado")
+            End If
+
+        Catch ex As Exception
+
+            Throw New Exception(ex.Message)
+        End Try
+
     End Sub
 
     Private Sub CarregaGridViewAcoes()
@@ -171,9 +239,6 @@ Public Class Frm_ConsultarAtivo
 
     End Sub
 
-    Private Sub DataGridView_FundoImobiliario_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView_FundoImobiliario.CellContentClick
-
-    End Sub
 
     Private Sub Lsw_ListaDeAtivos_Click(sender As Object, e As EventArgs) Handles Lsw_ListaDeAtivos.Click
         If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
@@ -183,8 +248,23 @@ Public Class Frm_ConsultarAtivo
     End Sub
 
     Private Sub DataGridView_Acoes_Click(sender As Object, e As EventArgs) Handles DataGridView_Acoes.Click
+        DataGridView_FundoImobiliario.ClearSelection()
+    End Sub
 
-
+    Private Sub DataGridView_FundoImobiliario_Click(sender As Object, e As EventArgs) Handles DataGridView_FundoImobiliario.Click
+        DataGridView_Acoes.ClearSelection()
 
     End Sub
+
+    Private Function ValidaGrids() As Boolean
+
+        Dim vRetorno As Boolean
+        If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Or DataGridView_Acoes.SelectedRows.Count > 0 Or DataGridView_FundoImobiliario.SelectedRows.Count > 0 Then
+            vRetorno = True
+        End If
+
+        Return vRetorno
+    End Function
+
+
 End Class

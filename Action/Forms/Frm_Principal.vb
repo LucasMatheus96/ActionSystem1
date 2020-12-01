@@ -44,7 +44,7 @@
     End Sub
 
     Private Sub ConsultarAtivosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ConsultarAtivosToolStripMenuItem.Click
-        Dim f As New frm_ConsultarAtivo
-        f.showDialog()
+        Dim f As New Frm_ConsultarAtivo
+        f.ShowDialog()
     End Sub
 End Class

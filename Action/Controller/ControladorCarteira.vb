@@ -6,11 +6,11 @@ Namespace Controller
 #Region "Classe Carteira"
 
 
-        Public Function ConsultarCarteira() As DataTable
+        Public Function ConsultarCarteira(idOperador As Integer) As DataTable
 
             Try
 
-                Return CarteiraDAO.DbConsultarUsuario()
+                Return CarteiraDAO.DBConsultarCarteira(idOperador)
             Catch ex As Exception
 
                 Throw New Exception(ex.Message)
@@ -49,6 +49,22 @@ Namespace Controller
                 Throw New Exception(ex.Message)
             End Try
             Return MsgBox("Carteira Excluida com sucesso.")
+        End Function
+
+        Public Function PesquisarCarteira(nome As String) As DataTable
+            Try
+                Return CarteiraDAO.DbPesquisaUsuario(nome)
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
+
+        Public Function PesquisarCarteiraData(dataInicial As Date, dataFinal As Date) As DataTable
+            Try
+                Return CarteiraDAO.DbPesquisaUsuarioPorData(dataInicial, dataFinal)
+            Catch ex As Exception
+                Throw ex
+            End Try
         End Function
 #End Region
     End Class

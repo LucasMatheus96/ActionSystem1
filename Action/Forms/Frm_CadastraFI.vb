@@ -5,6 +5,8 @@ Public Class Frm_CadastraFI
     Dim objFundoImobiliario As New FundoImobiliario
     Dim controlFundoImobiliario As New ControladorFundoImobiliario
     Dim dt As New DataTable
+
+    Public idFundoImobiliario As Integer
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.

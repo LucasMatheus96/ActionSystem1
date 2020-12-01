@@ -8,6 +8,8 @@ Public Class Frm_CadastraAcoes
     Dim Dt As DataTable
     Dim acaoDAO As New AcaoDAO
     Dim control As New ControladorAcao
+
+    Public IdAcao As Integer
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -39,16 +41,25 @@ Public Class Frm_CadastraAcoes
 
     Private Sub Btn_Cadastrar_Click(sender As Object, e As EventArgs) Handles Btn_Cadastrar.Click
         If ValidaCampos() = True Then
+            If IdAcao = 0 Then
+                objAcao.NomeAtivo = txt_NomeEmpresa.Text
+                objAcao.SetorAtivo = Txt_SetorAtivo.Text
+                objAcao.SiglaAtivo = Txt_Sigla.Text
+                objAcao.IdTipoAcao = Cmb_Tipoacao.SelectedIndex + 1
+                control.CadastrarAcao(objAcao)
+                MsgBox("Cadastro Efetuado com sucesso")
+                LimparCampos()
+            Else
+                objAcao.Id = IdAcao
+                objAcao.NomeAtivo = txt_NomeEmpresa.Text
+                objAcao.SetorAtivo = Txt_SetorAtivo.Text
+                objAcao.SiglaAtivo = Txt_Sigla.Text
+                objAcao.IdTipoAcao = Cmb_Tipoacao.SelectedIndex + 1
+                control.AlterarAcao(objAcao)
+                MsgBox("Cadastro alterado com sucesso.")
 
-            objAcao.NomeAtivo = txt_NomeEmpresa.Text
-            objAcao.SetorAtivo = Txt_SetorAtivo.Text
-            objAcao.SiglaAtivo = Txt_Sigla.Text
-            objAcao.IdTipoAcao = Cmb_Tipoacao.SelectedIndex + 1
-            control.CadastrarAcao(objAcao)
+            End If
 
-
-            MsgBox("Cadastro Efetuado com sucesso")
-            LimparCampos()
         End If
 
     End Sub

@@ -24,6 +24,9 @@ Partial Class Frm_ConsultaCarteira
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ConsultaCarteira))
         Me.Grb_ConsultaCarteira = New System.Windows.Forms.GroupBox()
+        Me.Dtp_FiltroFinal = New System.Windows.Forms.DateTimePicker()
+        Me.Dtp_FiltroInicio = New System.Windows.Forms.DateTimePicker()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Lbl_a = New System.Windows.Forms.Label()
         Me.txt_busca2 = New System.Windows.Forms.TextBox()
         Me.txt_busca1 = New System.Windows.Forms.TextBox()
@@ -37,13 +40,14 @@ Partial Class Frm_ConsultaCarteira
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
-        Me.Dgw_Teste = New System.Windows.Forms.DataGridView()
         Me.Grb_ConsultaCarteira.SuspendLayout()
-        CType(Me.Dgw_Teste, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Grb_ConsultaCarteira
         '
+        Me.Grb_ConsultaCarteira.Controls.Add(Me.Dtp_FiltroFinal)
+        Me.Grb_ConsultaCarteira.Controls.Add(Me.Dtp_FiltroInicio)
+        Me.Grb_ConsultaCarteira.Controls.Add(Me.Button4)
         Me.Grb_ConsultaCarteira.Controls.Add(Me.Lbl_a)
         Me.Grb_ConsultaCarteira.Controls.Add(Me.txt_busca2)
         Me.Grb_ConsultaCarteira.Controls.Add(Me.txt_busca1)
@@ -56,10 +60,35 @@ Partial Class Frm_ConsultaCarteira
         Me.Grb_ConsultaCarteira.TabStop = False
         Me.Grb_ConsultaCarteira.Text = "GroupBox1"
         '
+        'Dtp_FiltroFinal
+        '
+        Me.Dtp_FiltroFinal.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.Dtp_FiltroFinal.Location = New System.Drawing.Point(307, 41)
+        Me.Dtp_FiltroFinal.Name = "Dtp_FiltroFinal"
+        Me.Dtp_FiltroFinal.Size = New System.Drawing.Size(101, 20)
+        Me.Dtp_FiltroFinal.TabIndex = 9
+        '
+        'Dtp_FiltroInicio
+        '
+        Me.Dtp_FiltroInicio.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.Dtp_FiltroInicio.Location = New System.Drawing.Point(181, 41)
+        Me.Dtp_FiltroInicio.Name = "Dtp_FiltroInicio"
+        Me.Dtp_FiltroInicio.Size = New System.Drawing.Size(100, 20)
+        Me.Dtp_FiltroInicio.TabIndex = 8
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(28, 69)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(469, 23)
+        Me.Button4.TabIndex = 7
+        Me.Button4.Text = "Consultar"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
         'Lbl_a
         '
         Me.Lbl_a.AutoSize = True
-        Me.Lbl_a.Location = New System.Drawing.Point(298, 47)
+        Me.Lbl_a.Location = New System.Drawing.Point(288, 41)
         Me.Lbl_a.Name = "Lbl_a"
         Me.Lbl_a.Size = New System.Drawing.Size(13, 13)
         Me.Lbl_a.TabIndex = 4
@@ -67,23 +96,22 @@ Partial Class Frm_ConsultaCarteira
         '
         'txt_busca2
         '
-        Me.txt_busca2.Location = New System.Drawing.Point(321, 43)
+        Me.txt_busca2.Location = New System.Drawing.Point(311, 37)
         Me.txt_busca2.Name = "txt_busca2"
-        Me.txt_busca2.Size = New System.Drawing.Size(100, 20)
+        Me.txt_busca2.Size = New System.Drawing.Size(0, 20)
         Me.txt_busca2.TabIndex = 3
         '
         'txt_busca1
         '
         Me.txt_busca1.Location = New System.Drawing.Point(185, 43)
         Me.txt_busca1.Name = "txt_busca1"
-        Me.txt_busca1.Size = New System.Drawing.Size(100, 20)
+        Me.txt_busca1.Size = New System.Drawing.Size(0, 20)
         Me.txt_busca1.TabIndex = 2
         '
         'Cmb_Filtro
         '
         Me.Cmb_Filtro.FormattingEnabled = True
         Me.Cmb_Filtro.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.Cmb_Filtro.Items.AddRange(New Object() {"Selecione", "Data", "Nome da Carteira"})
         Me.Cmb_Filtro.Location = New System.Drawing.Point(28, 42)
         Me.Cmb_Filtro.Name = "Cmb_Filtro"
         Me.Cmb_Filtro.Size = New System.Drawing.Size(135, 21)
@@ -107,7 +135,7 @@ Partial Class Frm_ConsultaCarteira
         Me.Lsw_VerCarteira.Location = New System.Drawing.Point(12, 118)
         Me.Lsw_VerCarteira.MultiSelect = False
         Me.Lsw_VerCarteira.Name = "Lsw_VerCarteira"
-        Me.Lsw_VerCarteira.Size = New System.Drawing.Size(503, 316)
+        Me.Lsw_VerCarteira.Size = New System.Drawing.Size(503, 415)
         Me.Lsw_VerCarteira.TabIndex = 2
         Me.Lsw_VerCarteira.UseCompatibleStateImageBehavior = False
         Me.Lsw_VerCarteira.View = System.Windows.Forms.View.Details
@@ -134,45 +162,36 @@ Partial Class Frm_ConsultaCarteira
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 448)
+        Me.Button1.Location = New System.Drawing.Point(12, 539)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(155, 23)
+        Me.Button1.Size = New System.Drawing.Size(155, 40)
         Me.Button1.TabIndex = 3
         Me.Button1.Text = "Alterar"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(197, 448)
+        Me.Button2.Location = New System.Drawing.Point(197, 539)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(142, 23)
+        Me.Button2.Size = New System.Drawing.Size(142, 40)
         Me.Button2.TabIndex = 4
         Me.Button2.Text = "Excluir"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(363, 448)
+        Me.Button3.Location = New System.Drawing.Point(363, 539)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(152, 23)
+        Me.Button3.Size = New System.Drawing.Size(152, 35)
         Me.Button3.TabIndex = 5
         Me.Button3.Text = "Cancelar"
         Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Dgw_Teste
-        '
-        Me.Dgw_Teste.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.Dgw_Teste.Location = New System.Drawing.Point(12, 477)
-        Me.Dgw_Teste.Name = "Dgw_Teste"
-        Me.Dgw_Teste.Size = New System.Drawing.Size(496, 102)
-        Me.Dgw_Teste.TabIndex = 6
         '
         'Frm_ConsultaCarteira
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(527, 591)
-        Me.Controls.Add(Me.Dgw_Teste)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
@@ -184,7 +203,6 @@ Partial Class Frm_ConsultaCarteira
         Me.Text = "Frm_ConsultaCarteira"
         Me.Grb_ConsultaCarteira.ResumeLayout(False)
         Me.Grb_ConsultaCarteira.PerformLayout()
-        CType(Me.Dgw_Teste, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -202,5 +220,7 @@ Partial Class Frm_ConsultaCarteira
     Friend WithEvents txt_busca2 As TextBox
     Friend WithEvents txt_busca1 As TextBox
     Friend WithEvents Lbl_a As Label
-    Friend WithEvents Dgw_Teste As DataGridView
+    Friend WithEvents Button4 As Button
+    Friend WithEvents Dtp_FiltroFinal As DateTimePicker
+    Friend WithEvents Dtp_FiltroInicio As DateTimePicker
 End Class

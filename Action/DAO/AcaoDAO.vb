@@ -34,6 +34,7 @@ Namespace DAO
                 conexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 conexaoBD.strInstrucao = "SpUpd_AlteraAcao"
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
+                conexaoBD.objCommand.Parameters.AddWithValue("@ID", objAcao.Id)
                 conexaoBD.objCommand.Parameters.AddWithValue("@NomeAtivo", objAcao.NomeAtivo)
                 conexaoBD.objCommand.Parameters.AddWithValue("@SiglaAtivo", objAcao.SiglaAtivo)
                 conexaoBD.objCommand.Parameters.AddWithValue("@SetorAtivo", objAcao.SetorAtivo)

@@ -8,6 +8,7 @@ Public Class Frm_CadastroCarteira
     Dim controlCarteira As New ControladorCarteira
     Dim controlUsuario As New ControladorUsuario
     Public IdCarteira As Integer = 0
+    Public OperadorID As Integer
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -30,7 +31,7 @@ Public Class Frm_CadastroCarteira
         Try
             Dim dt As New DataTable
             dt = controlUsuario.ConsultarUsuario()
-            Dim OperadorID As Integer
+
 
             'BUSCA INFORMAÇÃO DO USUARIO LOGADO
             Dim usuariologado As String = CapturaTexto(Frm_Principal.Tsl_UsuarioLogado.Text)
