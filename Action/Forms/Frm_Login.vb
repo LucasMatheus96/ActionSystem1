@@ -5,6 +5,7 @@ Imports Action.Controller
 Public Class Frm_Login
     Dim Usuario As New Usuario
     Dim controlUsuario As New ControladorUsuario
+    Public usuarioLogado As String
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.

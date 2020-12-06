@@ -39,7 +39,7 @@ Public Class Frm_CadastroCarteira
             'Captura o Id do operador referente ao usuario logado.
             For i As Integer = 0 To dt.Rows.Count - 1
                 If dt.Rows(i).Item(2) = usuariologado.ToString Then
-                    OperadorID = dt.Rows(i)(0)
+                    OperadorID = dt.Rows(i)("ID")
                 End If
             Next
 

@@ -111,4 +111,8 @@ Public Class Frm_CadastraRendaFixa
     Private Sub Frm_CadastraRendaFixa_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
+    Private Sub Grb_RendaFixa_Enter(sender As Object, e As EventArgs) Handles Grb_RendaFixa.Enter
+
+    End Sub
 End Class

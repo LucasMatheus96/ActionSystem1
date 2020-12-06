@@ -4,7 +4,7 @@ Imports System.Security.Policy
 Imports Action.classes
 Imports Action.Conexao
 
-Namespace Dao
+Namespace DAO
 
     Public Class UsuarioDAO
 
@@ -91,6 +91,37 @@ Namespace Dao
                 Dim ds As New DataSet()
                 ConexaoBD.strInstrucao = "SpSel_ConsultaUsuario"
                 ConexaoBD.objCommand.CommandText = ConexaoBD.strInstrucao
+                ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
+                ConexaoBD.objCommand.Connection = ConexaoBD.objConexao
+
+
+                Dim da As New SqlDataAdapter(ConexaoBD.objCommand)
+                da.Fill(ds)
+                dt = ds.Tables(0)
+
+                ConexaoBD.objConexao.Close()
+                Return dt
+            Catch ex As Exception
+
+                Throw New Exception(ex.Message)
+            End Try
+
+
+
+        End Function
+
+        Shared Function DbConsultarUsuarioLogado(objUsuarioLogado As Usuario) As DataTable
+
+            Try
+
+                Dim ConexaoBD As New ConexaoBD
+                Dim Cprt As New Criptografia(SHA512.Create())
+
+                Dim dt As New DataTable
+                Dim ds As New DataSet()
+                ConexaoBD.strInstrucao = "SpSel_ConsultaUsuario"
+                ConexaoBD.objCommand.CommandText = ConexaoBD.strInstrucao
+                ConexaoBD.objCommand.Parameters.AddWithValue("@Usuario", objUsuarioLogado.Usuario)
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Connection = ConexaoBD.objConexao
 

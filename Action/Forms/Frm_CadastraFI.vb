@@ -50,4 +50,8 @@ Public Class Frm_CadastraFI
         Txt_SiglaFundoImobiliario.Text = String.Empty
         Cmb_FundoImobiliario.ResetText()
     End Sub
+
+    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
+
+    End Sub
 End Class

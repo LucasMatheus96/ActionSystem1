@@ -55,6 +55,18 @@ Namespace Controller
 
         End Function
 
+        Public Function ConsultarUsuarioLogado(objUsuarioLogado As Usuario) As DataTable
+
+            Try
+                Return UsuarioDAO.DbConsultarUsuarioLogado(objUsuarioLogado)
+            Catch ex As Exception
+                Throw New Exception(ex.Message)
+            End Try
+
+
+
+        End Function
+
         Public Function ValidarAcesso(vLogin As String, vSenhaTentativa As String) As DataTable
 
             Try

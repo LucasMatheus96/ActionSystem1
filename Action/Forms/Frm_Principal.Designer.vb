@@ -29,11 +29,14 @@ Partial Class Frm_Principal
         Me.CadastroToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CadastrarCarteiraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultarCarteiraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.UtilitariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EfetuarNovoAcessoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AtivosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CadastrarAtivosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultarAtivosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UtilitariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EfetuarNovoAcessoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.InvestimentosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdicionarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GerenciarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -59,7 +62,7 @@ Partial Class Frm_Principal
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.AtivosToolStripMenuItem, Me.UtilitariosToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastroToolStripMenuItem, Me.InvestimentosToolStripMenuItem, Me.AtivosToolStripMenuItem, Me.UtilitariosToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
@@ -85,19 +88,6 @@ Partial Class Frm_Principal
         Me.ConsultarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.ConsultarCarteiraToolStripMenuItem.Text = "Consultar Carteira"
         '
-        'UtilitariosToolStripMenuItem
-        '
-        Me.UtilitariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EfetuarNovoAcessoToolStripMenuItem})
-        Me.UtilitariosToolStripMenuItem.Name = "UtilitariosToolStripMenuItem"
-        Me.UtilitariosToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
-        Me.UtilitariosToolStripMenuItem.Text = "Utilitarios"
-        '
-        'EfetuarNovoAcessoToolStripMenuItem
-        '
-        Me.EfetuarNovoAcessoToolStripMenuItem.Name = "EfetuarNovoAcessoToolStripMenuItem"
-        Me.EfetuarNovoAcessoToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.EfetuarNovoAcessoToolStripMenuItem.Text = "Efetuar Novo acesso "
-        '
         'AtivosToolStripMenuItem
         '
         Me.AtivosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CadastrarAtivosToolStripMenuItem, Me.ConsultarAtivosToolStripMenuItem})
@@ -116,6 +106,38 @@ Partial Class Frm_Principal
         Me.ConsultarAtivosToolStripMenuItem.Name = "ConsultarAtivosToolStripMenuItem"
         Me.ConsultarAtivosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConsultarAtivosToolStripMenuItem.Text = "Consultar Ativos"
+        '
+        'UtilitariosToolStripMenuItem
+        '
+        Me.UtilitariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EfetuarNovoAcessoToolStripMenuItem})
+        Me.UtilitariosToolStripMenuItem.Name = "UtilitariosToolStripMenuItem"
+        Me.UtilitariosToolStripMenuItem.Size = New System.Drawing.Size(69, 20)
+        Me.UtilitariosToolStripMenuItem.Text = "Utilitarios"
+        '
+        'EfetuarNovoAcessoToolStripMenuItem
+        '
+        Me.EfetuarNovoAcessoToolStripMenuItem.Name = "EfetuarNovoAcessoToolStripMenuItem"
+        Me.EfetuarNovoAcessoToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.EfetuarNovoAcessoToolStripMenuItem.Text = "Efetuar Novo acesso "
+        '
+        'InvestimentosToolStripMenuItem
+        '
+        Me.InvestimentosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AdicionarToolStripMenuItem, Me.GerenciarToolStripMenuItem})
+        Me.InvestimentosToolStripMenuItem.Name = "InvestimentosToolStripMenuItem"
+        Me.InvestimentosToolStripMenuItem.Size = New System.Drawing.Size(93, 20)
+        Me.InvestimentosToolStripMenuItem.Text = "Investimentos"
+        '
+        'AdicionarToolStripMenuItem
+        '
+        Me.AdicionarToolStripMenuItem.Name = "AdicionarToolStripMenuItem"
+        Me.AdicionarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AdicionarToolStripMenuItem.Text = "Adicionar"
+        '
+        'GerenciarToolStripMenuItem
+        '
+        Me.GerenciarToolStripMenuItem.Name = "GerenciarToolStripMenuItem"
+        Me.GerenciarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GerenciarToolStripMenuItem.Text = "Gerenciar"
         '
         'Frm_Principal
         '
@@ -149,4 +171,7 @@ Partial Class Frm_Principal
     Friend WithEvents AtivosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CadastrarAtivosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ConsultarAtivosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InvestimentosToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AdicionarToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GerenciarToolStripMenuItem As ToolStripMenuItem
 End Class

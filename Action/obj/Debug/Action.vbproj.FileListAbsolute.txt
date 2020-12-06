@@ -21,3 +21,4 @@ C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_CadastrarAtivo.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_ConsultarAtivo.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.vbprojAssemblyReference.cache
+C:\Users\Lucas Silva\Desktop\Projetos\Action.Sistema\Action\obj\Debug\Action.Frm_ProdutoCarteira.resources

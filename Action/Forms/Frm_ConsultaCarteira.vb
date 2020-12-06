@@ -6,7 +6,7 @@ Public Class Frm_ConsultaCarteira
     Dim objCarteira As New Carteira
     Dim controlCarteira As New ControladorCarteira
     Dim dt As New DataTable
-    Dim operadorID As Integer
+    Dim objUsuarioLogado As New Usuario
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -23,22 +23,34 @@ Public Class Frm_ConsultaCarteira
 
 
     Private Sub CarregarListViewer()
-        Dim usuarioTela As New Frm_CadastroCarteira
+        'ADICIONA AO OBJETO USUARIO O NOME DO USUARIO QUE ESTA LOGADO
+        objUsuarioLogado.Usuario = GetUsuarioLogado()
 
+
+        'POPULA O OJBETO USUARIO DE ACORDO COM O QUE TA SENDO USADO
+        SetObjetoUsuarioLogado(objUsuarioLogado)
+
+        'LIMPA TODOS OS ITENS DO LIST VIEW
         Lsw_VerCarteira.Items.Clear()
-        dt = controlCarteira.ConsultarCarteira(usuarioTela.OperadorID)
 
+        'ADICIONA AO DATATABLE A CONSULTA DE TODAS AS CARTEIRAS CADASTRADAS
+        dt = controlCarteira.ConsultarCarteira()
 
-
+        'PECORRE TODO O DATA TABLE TODAS COM AS CARTEIRAS CADASTRADAS
         For Each linha As DataRow In dt.Rows
-            Dim lista As New ListViewItem()
-            lista.Text = linha("Id").ToString()
-            lista.SubItems.Add(linha("NomeCarteira").ToString())
-            lista.SubItems.Add(linha("DataTransacao").ToString())
-            lista.SubItems.Add(linha("iOperador").ToString())
+
+            'FILTRA APENAS AS CARTEIRAS REFERENTE AO USUARIO LOGADO
+            If objUsuarioLogado.Usuario = linha(11) Then
+                Dim lista As New ListViewItem()
+                lista.Text = linha("Id").ToString()
+                lista.SubItems.Add(linha("NomeCarteira").ToString())
+                lista.SubItems.Add(linha("DataTransacao").ToString())
+                lista.SubItems.Add(linha("Usuario").ToString())
 
 
-            Lsw_VerCarteira.Items.Add(lista)
+                Lsw_VerCarteira.Items.Add(lista)
+            End If
+
 
         Next
 
@@ -51,11 +63,9 @@ Public Class Frm_ConsultaCarteira
 
         Try
             If Lsw_VerCarteira.Items.Count > 0 Then
-
-
                 Dim AlterarCarteira As New Frm_CadastroCarteira
                 AlterarCarteira.IdCarteira = Integer.Parse(Lsw_VerCarteira.Items(Index).Text)
-                AlterarCarteira.Txt_NomeCarteira.Text = Lsw_VerCarteira.Items(Index).SubItems(0).Text
+                AlterarCarteira.Txt_NomeCarteira.Text = Lsw_VerCarteira.Items(Index).SubItems(1).Text
                 AlterarCarteira.ShowDialog()
                 CarregarListViewer()
             End If
@@ -140,15 +150,19 @@ Public Class Frm_ConsultaCarteira
 
         'PECORRER O NOVO DT E ADICIONA PARA SER EXIBIDO
         For Each linha As DataRow In dt.Rows
-            Dim lista As New ListViewItem()
-            lista.Text = linha("Id").ToString()
-            lista.SubItems.Add(linha("NomeCarteira").ToString())
-            lista.SubItems.Add(linha("DataTransacao").ToString())
-            lista.SubItems.Add(linha("iOperador").ToString())
-
-
-            Lsw_VerCarteira.Items.Add(lista)
+            If objUsuarioLogado.Usuario = linha(11) Then
+                Dim lista As New ListViewItem()
+                lista.Text = linha("Id").ToString()
+                lista.SubItems.Add(linha("NomeCarteira").ToString())
+                lista.SubItems.Add(linha("DataTransacao").ToString())
+                lista.SubItems.Add(linha("Usuario").ToString())
+                Lsw_VerCarteira.Items.Add(lista)
+            End If
         Next
+
+
+
+
 
 
     End Sub
@@ -189,57 +203,82 @@ Public Class Frm_ConsultaCarteira
             dt = controlCarteira.PesquisarCarteiraData(Dtp_FiltroInicio.Value, Dtp_FiltroFinal.Value)
 
             For Each linha As DataRow In dt.Rows
-                Dim lista As New ListViewItem
-                lista.Text = linha("ID").ToString
-                lista.SubItems.Add(linha("NomeCarteira").ToString())
-                lista.SubItems.Add(linha("DataTransacao").ToString())
-                lista.SubItems.Add(linha("iOperador").ToString())
+                If objUsuarioLogado.Usuario = linha(11) Then
+                    Dim lista As New ListViewItem
+                    lista.Text = linha("ID").ToString
+                    lista.SubItems.Add(linha("NomeCarteira").ToString())
+                    lista.SubItems.Add(linha("DataTransacao").ToString())
+                    lista.SubItems.Add(linha("Usuario").ToString())
 
-                Lsw_VerCarteira.Items.Add(lista)
-
+                    Lsw_VerCarteira.Items.Add(lista)
+                End If
             Next
         End If
         'BUSCA POR NOME DA CARTEIRA
+
+
+
         If Cmb_Filtro.SelectedIndex = 2 Then
             Lsw_VerCarteira.Items.Clear()
             dt = controlCarteira.PesquisarCarteira(txt_busca1.Text)
+            If String.IsNullOrEmpty(txt_busca1.Text) Then
+                MessageBox.Show("Digite o nome da carteira")
+            Else
+                For Each linha As DataRow In dt.Rows
+                    If objUsuarioLogado.Usuario = linha("Usuario") Then
+                        Dim lista As New ListViewItem
+                        lista.Text = linha("ID").ToString
+                        lista.SubItems.Add(linha("NomeCarteira").ToString())
+                        lista.SubItems.Add(linha("DataTransacao").ToString())
+                        lista.SubItems.Add(linha("Usuario").ToString())
 
-            For Each linha As DataRow In dt.Rows
-                Dim lista As New ListViewItem
-                lista.Text = linha("ID").ToString
-                lista.SubItems.Add(linha("NomeCarteira").ToString())
-                lista.SubItems.Add(linha("DataTransacao").ToString())
-                lista.SubItems.Add(linha("iOperador").ToString())
+                        Lsw_VerCarteira.Items.Add(lista)
+                    End If
+                Next
+                'Lsw_VerCarteira.Items.Clear()
+                'Dim criterioPesquisa = From aux In dt Where aux.Item("NomeCarteira") _
+                '                                      = Val(txt_busca1.Text.ToString)
+                '                       Select aux
+                'For Each linha As DataRow In criterioPesquisa
 
-                Lsw_VerCarteira.Items.Add(lista)
-
-            Next
-            'Lsw_VerCarteira.Items.Clear()
-            'Dim criterioPesquisa = From aux In dt Where aux.Item("NomeCarteira") _
-            '                                      = Val(txt_busca1.Text.ToString)
-            '                       Select aux
-            'For Each linha As DataRow In criterioPesquisa
-
-            '    Dim lista As New ListViewItem()
-            '    lista.Text = linha("Id").ToString()
-            '    lista.SubItems.Add(linha("NomeCarteira").ToString())
-            '    lista.SubItems.Add(linha("DataTransacao").ToString())
-            '    lista.SubItems.Add(linha("iOperador").ToString())
+                '    Dim lista As New ListViewItem()
+                '    lista.Text = linha("Id").ToString()
+                '    lista.SubItems.Add(linha("NomeCarteira").ToString())
+                '    lista.SubItems.Add(linha("DataTransacao").ToString())
+                '    lista.SubItems.Add(linha("iOperador").ToString())
 
 
-            '    Lsw_VerCarteira.Items.Add(lista)
-            'Next
+                '    Lsw_VerCarteira.Items.Add(lista)
+                'Next
 
+            End If
         End If
-    End Sub
-    Private Function CapturaTexto(usuarioLogado As String) As String
 
-        Dim indice1 As Integer = usuarioLogado.IndexOf(":")
-        Dim NovoUsuarioLogado As String = usuarioLogado.Substring(indice1 + 2)
+    End Sub
+    Private Function GetUsuarioLogado() As String
+
+        Dim usuariologado As String = Frm_Principal.Tsl_UsuarioLogado.Text
+        Dim indice1 As Integer = usuariologado.IndexOf(":")
+        Dim NovoUsuarioLogado As String = usuariologado.Substring(indice1 + 2)
 
         Return NovoUsuarioLogado
 
     End Function
 
+    Private Function SetObjetoUsuarioLogado(objUsuarioLogado As Usuario) As Usuario
+        Dim controlUsuario As New ControladorUsuario
+        dt = controlUsuario.ConsultarUsuarioLogado(objUsuarioLogado)
+        objUsuarioLogado.Id = dt.Rows(0).Item(0)
+        objUsuarioLogado.Nome = dt.Rows(0).Item(1)
+        objUsuarioLogado.Usuario = dt.Rows(0).Item(2)
+        objUsuarioLogado.Senha = dt.Rows(0).Item(3)
+        objUsuarioLogado.DataCadastro = dt.Rows(0).Item(4)
+        objUsuarioLogado.Permissao = dt.Rows(0).Item(5)
 
+        Return objUsuarioLogado
+    End Function
+
+    Private Sub Frm_ConsultaCarteira_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

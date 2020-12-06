@@ -6,11 +6,11 @@ Namespace Controller
 #Region "Classe Carteira"
 
 
-        Public Function ConsultarCarteira(idOperador As Integer) As DataTable
+        Public Function ConsultarCarteira() As DataTable
 
             Try
 
-                Return CarteiraDAO.DBConsultarCarteira(idOperador)
+                Return CarteiraDAO.DBConsultarCarteira()
             Catch ex As Exception
 
                 Throw New Exception(ex.Message)
@@ -53,7 +53,7 @@ Namespace Controller
 
         Public Function PesquisarCarteira(nome As String) As DataTable
             Try
-                Return CarteiraDAO.DbPesquisaUsuario(nome)
+                Return CarteiraDAO.DbPesquisaNomeCarteira(nome)
             Catch ex As Exception
                 Throw ex
             End Try
@@ -61,7 +61,7 @@ Namespace Controller
 
         Public Function PesquisarCarteiraData(dataInicial As Date, dataFinal As Date) As DataTable
             Try
-                Return CarteiraDAO.DbPesquisaUsuarioPorData(dataInicial, dataFinal)
+                Return CarteiraDAO.DbPesquisaCarteiraPorData(dataInicial, dataFinal)
             Catch ex As Exception
                 Throw ex
             End Try

@@ -6,7 +6,7 @@ Imports Action.classes
 Namespace DAO
     Public Class CarteiraDAO
 
-        Shared Function DBConsultarCarteira(idOperador As Integer) As DataTable
+        Shared Function DBConsultarCarteira() As DataTable
 
             Try
 
@@ -17,7 +17,6 @@ Namespace DAO
 
                 conexaoBD.strInstrucao = "SpSel_ConsultaCarteira"
                 conexaoBD.objCommand.CommandType = CommandType.StoredProcedure
-                conexaoBD.objCommand.Parameters.AddWithValue("@ID", idOperador)
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
                 conexaoBD.objCommand.Connection = conexaoBD.objConexao
 
@@ -37,7 +36,7 @@ Namespace DAO
         End Function
 
 
-        Shared Function DbPesquisaUsuario(Nome As String) As DataTable
+        Shared Function DbPesquisaNomeCarteira(Nome As String) As DataTable
 
             Try
 
@@ -46,7 +45,9 @@ Namespace DAO
                 Dim Dt As New DataTable
                 Dim Ds As New DataSet
 
-                conexaoBD.strInstrucao = "SELECT * FROM tabCarteira where nomecarteira like '%" + Nome + "%'"
+                conexaoBD.strInstrucao = "SELECT * FROM tabCarteira 
+                                          INNER JOIN tabUsuario ON TabCarteira.IOperador = tabUsuario.id   
+                                          where nomecarteira like '%" + Nome + "%'"
                 conexaoBD.objCommand.Parameters.AddWithValue("@nome", Nome)
                 conexaoBD.objCommand.CommandType = CommandType.Text
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
@@ -123,7 +124,7 @@ Namespace DAO
             End Try
         End Sub
 
-        Shared Function DbPesquisaUsuarioPorData(dataInicial As Date, dataFinal As Date) As DataTable
+        Shared Function DbPesquisaCarteiraPorData(dataInicial As Date, dataFinal As Date) As DataTable
 
             Try
 
@@ -132,7 +133,9 @@ Namespace DAO
                 Dim Dt As New DataTable
                 Dim Ds As New DataSet
 
-                conexaoBD.strInstrucao = "SELECT * FROM tabCarteira where dataTransacao between '" + dataInicial + "'" + "And" + "'" + dataFinal + "'"
+                conexaoBD.strInstrucao = "SELECT * FROM tabCarteira 
+                                          INNER JOIN tabUsuario ON TabCarteira.IOperador = tabUsuario.id   
+                                          where dataTransacao between '" + dataInicial + "'" + "And" + "'" + dataFinal + "'"
                 conexaoBD.objCommand.Parameters.AddWithValue("@dataInicial", dataInicial)
                 conexaoBD.objCommand.Parameters.AddWithValue("@dataFinal", dataFinal)
                 conexaoBD.objCommand.CommandType = CommandType.Text

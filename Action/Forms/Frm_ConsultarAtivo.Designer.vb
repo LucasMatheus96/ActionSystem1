@@ -104,6 +104,7 @@ Partial Class Frm_ConsultarAtivo
         '
         'DataGridView_Acoes
         '
+        Me.DataGridView_Acoes.AllowUserToAddRows = False
         Me.DataGridView_Acoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView_Acoes.Location = New System.Drawing.Point(6, 19)
         Me.DataGridView_Acoes.MultiSelect = False
@@ -121,7 +122,6 @@ Partial Class Frm_ConsultarAtivo
         Me.DataGridView_FundoImobiliario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView_FundoImobiliario.Size = New System.Drawing.Size(483, 91)
         Me.DataGridView_FundoImobiliario.TabIndex = 11
-        Me.DataGridView_FundoImobiliario.UseWaitCursor = True
         '
         'Grb_RendaFixa
         '

@@ -47,4 +47,9 @@
         Dim f As New Frm_ConsultarAtivo
         f.ShowDialog()
     End Sub
+
+    Private Sub AdicionarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdicionarToolStripMenuItem.Click
+        Dim f As New Frm_ProdutoCarteira
+        f.ShowDialog()
+    End Sub
 End Class
