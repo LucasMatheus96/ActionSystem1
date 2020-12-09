@@ -97,14 +97,19 @@ Public Class Frm_Login
             If controlUsuario.ChecarCampos(vLogin, vSenha) = False Then
                 Exit Sub
             End If
+            Dim dt As New DataTable
+            dt = controlUsuario.ValidarAcesso(vLogin, vSenha)
 
-            If controlUsuario.ValidarAcesso(vLogin, vSenha).Rows.Count = 1 Then
+            If dt.Rows.Count = 1 Then
 
+                ObjAtributos.AtbNome = dt.Rows(0)("Nome")
+                ObjAtributos.AtbUsuario = dt.Rows(0)("Usuario")
+                ObjAtributos.AtbId = dt.Rows(0)("id")
                 MessageBox.Show("Acesso Autorizado")
                 Me.Close()
                 Frm_Principal.Show()
                 Frm_Principal.Tsl_UsuarioLogado.Visible = True
-                Frm_Principal.Tsl_UsuarioLogado.Text = "Usuario Logado: " + Txt_Login.Text
+                Frm_Principal.Tsl_UsuarioLogado.Text = "Usuario Logado: " + ObjAtributos.AtbUsuario
 
 
             Else

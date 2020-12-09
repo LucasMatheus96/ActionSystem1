@@ -1,9 +1,9 @@
 ﻿Imports System.Data.Common
 Imports System.Data.SqlClient
 Imports System.Security.Policy
-Imports Action.classes
+Imports Action.Classes
 
-Imports Action.classes.hash
+
 Imports System.Security.Cryptography
 Imports System.Reflection
 
@@ -14,7 +14,7 @@ Namespace Conexao
 
 
 
-        Public Const strConexao As String = "Data Source=DESKTOP-ISMFG00;Initial Catalog=dbAction;Integrated Security=True"
+        Public Const strConexao As String = "Data Source=DESKTOP-4B780T1;Initial Catalog=dbAction;Integrated Security=True"
         'Variável que receberá a Instrução SQL, que será passada de acordo com o método usado
         Public strInstrucao As String = String.Empty
         'Objeto instanciado da classe SqlConnection, com a string de conexão como parâmetro

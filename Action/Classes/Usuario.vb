@@ -5,22 +5,19 @@ Imports Action.Conexao
 Imports Action.Controller
 Imports Action.DAO
 
-Namespace classes
+Namespace Classes
     Public Class Usuario
 
 #Region "Propriedades"
 
 
         Public Property Id As Integer
-        Public Nome As String
-        Public Usuario As String
-        Public Senha As String
-        Public DataCadastro As Date = Now
-        Public Permissao As String
+        Public Property Nome As String
+        Public Property Usuario As String
+        Public Property Senha As String
+        Public Property DataCadastro As Date = Now
+        Public Property Permissao As String
 #End Region
-
-
-
 
 #Region "Construtores"
 #End Region

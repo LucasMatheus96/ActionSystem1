@@ -66,6 +66,14 @@ Namespace Controller
                 Throw ex
             End Try
         End Function
+
+        Public Function FiltrarCarteiraPorOperadorLogado(idOperador As Integer)
+            Try
+                Return CarteiraDAO.DbFiltraCarteiraPorUsuario(idOperador)
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
 #End Region
     End Class
 End Namespace

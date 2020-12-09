@@ -23,15 +23,6 @@ Public Class Frm_ConsultaCarteira
 
 
     Private Sub CarregarListViewer()
-        'ADICIONA AO OBJETO USUARIO O NOME DO USUARIO QUE ESTA LOGADO
-        objUsuarioLogado.Usuario = GetUsuarioLogado()
-
-
-        'POPULA O OJBETO USUARIO DE ACORDO COM O QUE TA SENDO USADO
-        SetObjetoUsuarioLogado(objUsuarioLogado)
-
-        'LIMPA TODOS OS ITENS DO LIST VIEW
-        Lsw_VerCarteira.Items.Clear()
 
         'ADICIONA AO DATATABLE A CONSULTA DE TODAS AS CARTEIRAS CADASTRADAS
         dt = controlCarteira.ConsultarCarteira()
@@ -40,7 +31,7 @@ Public Class Frm_ConsultaCarteira
         For Each linha As DataRow In dt.Rows
 
             'FILTRA APENAS AS CARTEIRAS REFERENTE AO USUARIO LOGADO
-            If objUsuarioLogado.Usuario = linha(11) Then
+            If ObjAtributos.AtbId = linha("iOperador") Then
                 Dim lista As New ListViewItem()
                 lista.Text = linha("Id").ToString()
                 lista.SubItems.Add(linha("NomeCarteira").ToString())
@@ -255,30 +246,5 @@ Public Class Frm_ConsultaCarteira
         End If
 
     End Sub
-    Private Function GetUsuarioLogado() As String
 
-        Dim usuariologado As String = Frm_Principal.Tsl_UsuarioLogado.Text
-        Dim indice1 As Integer = usuariologado.IndexOf(":")
-        Dim NovoUsuarioLogado As String = usuariologado.Substring(indice1 + 2)
-
-        Return NovoUsuarioLogado
-
-    End Function
-
-    Private Function SetObjetoUsuarioLogado(objUsuarioLogado As Usuario) As Usuario
-        Dim controlUsuario As New ControladorUsuario
-        dt = controlUsuario.ConsultarUsuarioLogado(objUsuarioLogado)
-        objUsuarioLogado.Id = dt.Rows(0).Item(0)
-        objUsuarioLogado.Nome = dt.Rows(0).Item(1)
-        objUsuarioLogado.Usuario = dt.Rows(0).Item(2)
-        objUsuarioLogado.Senha = dt.Rows(0).Item(3)
-        objUsuarioLogado.DataCadastro = dt.Rows(0).Item(4)
-        objUsuarioLogado.Permissao = dt.Rows(0).Item(5)
-
-        Return objUsuarioLogado
-    End Function
-
-    Private Sub Frm_ConsultaCarteira_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

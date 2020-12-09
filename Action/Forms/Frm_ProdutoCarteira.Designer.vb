@@ -41,7 +41,13 @@ Partial Class Frm_ProdutoCarteira
         Me.Cmb_NomeCarteira = New System.Windows.Forms.ComboBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorker2 = New System.ComponentModel.BackgroundWorker()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Grb_AtivosCadastrados = New System.Windows.Forms.GroupBox()
+        Me.Btn_Confirmar = New System.Windows.Forms.Button()
+        Me.Btn_fechar = New System.Windows.Forms.Button()
         Me.Grb_Adicionar.SuspendLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Grb_AtivosCadastrados.SuspendLayout()
         Me.SuspendLayout()
         '
         'Grb_Adicionar
@@ -192,11 +198,55 @@ Partial Class Frm_ProdutoCarteira
         Me.Cmb_NomeCarteira.Size = New System.Drawing.Size(149, 21)
         Me.Cmb_NomeCarteira.TabIndex = 0
         '
+        'DataGridView1
+        '
+        Me.DataGridView1.AllowUserToAddRows = False
+        Me.DataGridView1.AllowUserToOrderColumns = True
+        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataGridView1.Location = New System.Drawing.Point(6, 19)
+        Me.DataGridView1.MultiSelect = False
+        Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.ReadOnly = True
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridView1.Size = New System.Drawing.Size(507, 182)
+        Me.DataGridView1.TabIndex = 1
+        '
+        'Grb_AtivosCadastrados
+        '
+        Me.Grb_AtivosCadastrados.Controls.Add(Me.DataGridView1)
+        Me.Grb_AtivosCadastrados.Location = New System.Drawing.Point(12, 267)
+        Me.Grb_AtivosCadastrados.Name = "Grb_AtivosCadastrados"
+        Me.Grb_AtivosCadastrados.Size = New System.Drawing.Size(533, 217)
+        Me.Grb_AtivosCadastrados.TabIndex = 2
+        Me.Grb_AtivosCadastrados.TabStop = False
+        Me.Grb_AtivosCadastrados.Text = "Ativos a serem adicionados"
+        '
+        'Btn_Confirmar
+        '
+        Me.Btn_Confirmar.Location = New System.Drawing.Point(29, 490)
+        Me.Btn_Confirmar.Name = "Btn_Confirmar"
+        Me.Btn_Confirmar.Size = New System.Drawing.Size(244, 23)
+        Me.Btn_Confirmar.TabIndex = 3
+        Me.Btn_Confirmar.Text = "Confirmar"
+        Me.Btn_Confirmar.UseVisualStyleBackColor = True
+        '
+        'Btn_fechar
+        '
+        Me.Btn_fechar.Location = New System.Drawing.Point(283, 490)
+        Me.Btn_fechar.Name = "Btn_fechar"
+        Me.Btn_fechar.Size = New System.Drawing.Size(244, 23)
+        Me.Btn_fechar.TabIndex = 4
+        Me.Btn_fechar.Text = "Fechar"
+        Me.Btn_fechar.UseVisualStyleBackColor = True
+        '
         'Frm_ProdutoCarteira
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(557, 530)
+        Me.Controls.Add(Me.Btn_fechar)
+        Me.Controls.Add(Me.Btn_Confirmar)
+        Me.Controls.Add(Me.Grb_AtivosCadastrados)
         Me.Controls.Add(Me.Grb_Adicionar)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Frm_ProdutoCarteira"
@@ -204,6 +254,8 @@ Partial Class Frm_ProdutoCarteira
         Me.Text = "Frm_ProdutoCarteira"
         Me.Grb_Adicionar.ResumeLayout(False)
         Me.Grb_Adicionar.PerformLayout()
+        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Grb_AtivosCadastrados.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -226,4 +278,8 @@ Partial Class Frm_ProdutoCarteira
     Friend WithEvents Txt_TotalAplicado As TextBox
     Friend WithEvents Lbl_InstituiçãoFinanceira As Label
     Friend WithEvents Txt_descricao As TextBox
+    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents Grb_AtivosCadastrados As GroupBox
+    Friend WithEvents Btn_Confirmar As Button
+    Friend WithEvents Btn_fechar As Button
 End Class

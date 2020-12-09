@@ -36,6 +36,38 @@ Namespace DAO
         End Function
 
 
+        Shared Function DbFiltraCarteiraPorUsuario(idOperador As Integer) As DataTable
+
+            Try
+
+                Dim conexaoBD As New ConexaoBD
+
+                Dim Dt As New DataTable
+                Dim Ds As New DataSet
+
+                conexaoBD.strInstrucao = " SELECT * FROM tabCarteira 
+                                           INNER Join tabUsuario ON TabCarteira.IOperador = tabUsuario.id   
+                                           where tabCarteira.iOperador = @id"
+                conexaoBD.objCommand.Parameters.AddWithValue("@Id", idOperador)
+                conexaoBD.objCommand.CommandType = CommandType.Text
+                conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
+                conexaoBD.objCommand.Connection = conexaoBD.objConexao
+
+
+
+                Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
+                Da.Fill(Ds)
+                Dt = Ds.Tables(0)
+                conexaoBD.objConexao.Close()
+
+                Return Dt
+
+            Catch ex As Exception
+
+                Throw New Exception(ex.Message)
+            End Try
+        End Function
+
         Shared Function DbPesquisaNomeCarteira(Nome As String) As DataTable
 
             Try

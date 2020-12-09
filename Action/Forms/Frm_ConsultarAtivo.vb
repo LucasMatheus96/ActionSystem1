@@ -43,23 +43,28 @@ Public Class Frm_ConsultarAtivo
 
     Private Sub CarregaListView()
 
-        Dim Dt As DataTable
+        Try
+            Dim Dt As DataTable
 
-        Dt = controlRendaFixa.ConsultarRendaFixa
+            Dt = controlRendaFixa.ConsultarRendaFixa
 
-        For Each linha As DataRow In Dt.Rows
-            Dim lista As New ListViewItem()
-            lista.Text = linha("Id").ToString()
-            lista.SubItems.Add(linha("NomeAtivo").ToString())
-            lista.SubItems.Add(linha("Rendimento").ToString())
-            lista.SubItems.Add(linha("Sigla").ToString())
-
-
-            Lsw_ListaDeAtivos.Items.Add(lista)
-
-        Next
+            For Each linha As DataRow In Dt.Rows
+                Dim lista As New ListViewItem()
+                lista.Text = linha("Id").ToString()
+                lista.SubItems.Add(linha("NomeAtivo").ToString())
+                lista.SubItems.Add(linha("Rendimento").ToString())
+                lista.SubItems.Add(linha("Sigla").ToString())
 
 
+                Lsw_ListaDeAtivos.Items.Add(lista)
+
+            Next
+
+
+
+        Catch ex As Exception
+            Throw ex
+        End Try
 
 
 
@@ -68,12 +73,17 @@ Public Class Frm_ConsultarAtivo
     End Sub
     Sub FormatarListView()
         ' Formatar o ListView
+        Try
 
-        Lsw_ListaDeAtivos.View = View.Details
-        Lsw_ListaDeAtivos.LabelEdit = False
-        Lsw_ListaDeAtivos.AllowColumnReorder = False
-        Lsw_ListaDeAtivos.FullRowSelect = True
-        Lsw_ListaDeAtivos.GridLines = True
+            Lsw_ListaDeAtivos.View = View.Details
+            Lsw_ListaDeAtivos.LabelEdit = False
+            Lsw_ListaDeAtivos.AllowColumnReorder = False
+            Lsw_ListaDeAtivos.FullRowSelect = True
+            Lsw_ListaDeAtivos.GridLines = True
+        Catch ex As Exception
+            Throw ex
+        End Try
+
 
     End Sub
 
@@ -82,10 +92,16 @@ Public Class Frm_ConsultarAtivo
     Sub CriarColunas()
         ' Configurar colunas
 
-        Lsw_ListaDeAtivos.Columns.Add("Id", 100, HorizontalAlignment.Center)
-        Lsw_ListaDeAtivos.Columns.Add("NomeAtivo", 150, HorizontalAlignment.Center)
-        Lsw_ListaDeAtivos.Columns.Add("Rendimento", 150, HorizontalAlignment.Center)
-        Lsw_ListaDeAtivos.Columns.Add("Sigla", 100, HorizontalAlignment.Center)
+        Try
+
+            Lsw_ListaDeAtivos.Columns.Add("Id", 100, HorizontalAlignment.Center)
+            Lsw_ListaDeAtivos.Columns.Add("NomeAtivo", 150, HorizontalAlignment.Center)
+            Lsw_ListaDeAtivos.Columns.Add("Rendimento", 150, HorizontalAlignment.Center)
+            Lsw_ListaDeAtivos.Columns.Add("Sigla", 100, HorizontalAlignment.Center)
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Sub
 
     Private Sub Btn_Alterar_Click(sender As Object, e As EventArgs) Handles Btn_Alterar.Click
@@ -204,66 +220,95 @@ Public Class Frm_ConsultarAtivo
     End Sub
 
     Private Sub CarregaGridViewAcoes()
-        DataGridView_Acoes.DataSource = controlAcao.ConsultarAcao
+        Try
+            DataGridView_Acoes.DataSource = controlAcao.ConsultarAcao
 
 
-        With DataGridView_Acoes
-            .Columns(0).Visible = False
-            .Columns(4).Visible = False
-            .Columns(5).Visible = False
+            With DataGridView_Acoes
+                .Columns(0).Visible = False
+                .Columns(4).Visible = False
+                .Columns(5).Visible = False
 
-            .ClearSelection()
+                .ClearSelection()
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
 
-
-        End With
 
     End Sub
 
     Private Sub CarregaGridViewfundoImobiliario()
-        DataGridView_FundoImobiliario.DataSource = controlFundoImobiliario.ConsultarFundoImobiliario
+        Try
+
+            DataGridView_FundoImobiliario.DataSource = controlFundoImobiliario.ConsultarFundoImobiliario
 
 
-        With DataGridView_FundoImobiliario
-            .Columns(0).Visible = False
-            .Columns(3).Visible = False
-            .Columns(4).Visible = False
+            With DataGridView_FundoImobiliario
+                .Columns(0).Visible = False
+                .Columns(3).Visible = False
+                .Columns(4).Visible = False
 
 
-            .Columns(1).Width = 200
-            .Columns(2).Width = 60
-            .Columns(5).Width = 200
-            .ClearSelection()
+                .Columns(1).Width = 200
+                .Columns(2).Width = 60
+                .Columns(5).Width = 200
+                .ClearSelection()
 
 
-        End With
+            End With
+        Catch ex As Exception
+            Throw ex
+        End Try
+
 
     End Sub
 
 
     Private Sub Lsw_ListaDeAtivos_Click(sender As Object, e As EventArgs) Handles Lsw_ListaDeAtivos.Click
-        If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
-            DataGridView_Acoes.ClearSelection()
-            DataGridView_FundoImobiliario.ClearSelection()
-        End If
+        Try
+            If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
+                DataGridView_Acoes.ClearSelection()
+                DataGridView_FundoImobiliario.ClearSelection()
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Sub
 
     Private Sub DataGridView_Acoes_Click(sender As Object, e As EventArgs) Handles DataGridView_Acoes.Click
-        DataGridView_FundoImobiliario.ClearSelection()
+        Try
+            DataGridView_FundoImobiliario.ClearSelection()
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Sub
 
     Private Sub DataGridView_FundoImobiliario_Click(sender As Object, e As EventArgs) Handles DataGridView_FundoImobiliario.Click
-        DataGridView_Acoes.ClearSelection()
+        Try
+            DataGridView_Acoes.ClearSelection()
+        Catch ex As Exception
+            Throw ex
+        End Try
+
 
     End Sub
 
     Private Function ValidaGrids() As Boolean
 
-        Dim vRetorno As Boolean
-        If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Or DataGridView_Acoes.SelectedRows.Count > 0 Or DataGridView_FundoImobiliario.SelectedRows.Count > 0 Then
-            vRetorno = True
-        End If
+        Try
+            Dim vRetorno As Boolean
+            If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Or DataGridView_Acoes.SelectedRows.Count > 0 Or DataGridView_FundoImobiliario.SelectedRows.Count > 0 Then
+                vRetorno = True
+            End If
 
-        Return vRetorno
+            Return vRetorno
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Function
 
 
