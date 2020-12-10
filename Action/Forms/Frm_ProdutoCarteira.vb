@@ -14,6 +14,8 @@ Public Class Frm_ProdutoCarteira
     Dim dtFundoImobiliario As New DataTable
     Dim dtRendaFixa As New DataTable
     Dim dtUsuario As New DataTable
+
+    Dim indice As Integer = 0
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -184,12 +186,15 @@ Public Class Frm_ProdutoCarteira
 
             If ValidaCampos() = True Then
 
+
+
+
                 PopularGrid()
-                MessageBox.Show("Ativo adicionado com sucesso.", "Messagem", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    MessageBox.Show("Ativo adicionado com sucesso.", "Messagem", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
 
-            Else
-                MessageBox.Show("Preencha todas as informações para inserir o cadastro", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Preencha todas as informações para inserir o cadastro", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
         Catch ex As Exception
@@ -280,6 +285,7 @@ Public Class Frm_ProdutoCarteira
 
 
 
+
             Catch ex As Exception
                 Throw ex
             End Try
@@ -292,8 +298,32 @@ Public Class Frm_ProdutoCarteira
 
     Private Sub PopularGrid()
 
-        DataGridView1.Rows.Add(Cmb_NomeCarteira.SelectedValue, Txt_descricao.Text, Cmb_NomeCarteira.SelectedItem("NomeCarteira"), Cmb_TipoAtivo.SelectedIndex,
-                               Cmb_Ativo.Text, txt_preco.Text, Txt_quantidade.Text, Txt_TotalAplicado.Text, Cmb_Ativo.SelectedValue)
+        If DataGridView1.SelectedRows.Count > 0 Then
+
+            indice = DataGridView1.SelectedRows(0).Index
+
+            
+
+
+            DataGridView1.Rows(indice).Cells(0).Value = Cmb_NomeCarteira.SelectedValue
+            DataGridView1.Rows(indice).Cells(1).Value = Txt_descricao.Text
+            DataGridView1.Rows(indice).Cells(2).Value = Cmb_NomeCarteira.SelectedItem("NomeCarteira")
+            DataGridView1.Rows(indice).Cells(3).Value = Cmb_TipoAtivo.SelectedIndex
+            DataGridView1.Rows(indice).Cells(4).Value = Cmb_Ativo.Text
+            DataGridView1.Rows(indice).Cells(5).Value = txt_preco.Text
+            DataGridView1.Rows(indice).Cells(6).Value = Txt_quantidade.Text
+            DataGridView1.Rows(indice).Cells(7).Value = Txt_TotalAplicado.Text
+            DataGridView1.Rows(indice).Cells(8).Value = Cmb_Ativo.SelectedValue
+
+
+        Else
+
+            DataGridView1.Rows.Add(Cmb_NomeCarteira.SelectedValue, Txt_descricao.Text, Cmb_NomeCarteira.SelectedItem("NomeCarteira"), Cmb_TipoAtivo.SelectedIndex,
+                                   Cmb_Ativo.Text, txt_preco.Text, Txt_quantidade.Text, Txt_TotalAplicado.Text, Cmb_Ativo.SelectedValue)
+            DataGridView1.ClearSelection()
+        End If
+
+
 
 
 
@@ -305,7 +335,7 @@ Public Class Frm_ProdutoCarteira
             If DataGridView1.Rows.Count >= 1 Then
                 For i As Integer = 0 To DataGridView1.Rows.Count - 1
 
-                    Dim controle As Integer = 0
+
                     objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
                     objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
                     objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
@@ -321,6 +351,7 @@ Public Class Frm_ProdutoCarteira
                 Next
                 MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 DataGridView1.Rows.Clear()
+
             End If
         Catch ex As Exception
 
@@ -360,25 +391,29 @@ Public Class Frm_ProdutoCarteira
 
     End Sub
 
-    Private Sub DataGridView1_MouseClick(sender As Object, e As MouseEventArgs) Handles DataGridView1.MouseClick
+    Private Sub DataGridView1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DataGridView1.MouseDoubleClick
         Try
-            If DataGridView1.SelectedRows.Count >= 1 Then
+            If DataGridView1.SelectedRows.Count > 0 Then
+                indice = DataGridView1.SelectedRows(0).Index
                 Btn_Adicionar.Text = "Alterar"
 
-                Txt_descricao.Text = DataGridView1.Rows(0).Cells(1).Value
-                Cmb_TipoAtivo.SelectedIndex = DataGridView1.Rows(0).Cells(3).Value
-                objInvestimento.SiglaAtivo = DataGridView1.Rows(0).Cells(4).Value
-                Cmb_Ativo.SelectedValue = DataGridView1.Rows(0).Cells(8).Value
+
+                Txt_descricao.Text = DataGridView1.Rows(indice).Cells(1).Value
+                Cmb_TipoAtivo.SelectedIndex = DataGridView1.Rows(indice).Cells(3).Value
+                objInvestimento.SiglaAtivo = DataGridView1.Rows(indice).Cells(4).Value
+                Cmb_Ativo.SelectedValue = DataGridView1.Rows(indice).Cells(8).Value
 
 
-                txt_preco.Text = DataGridView1.Rows(0).Cells(5).Value
-                objInvestimento.PrecoAtivo = DataGridView1.Rows(0).Cells(5).Value
+                txt_preco.Text = DataGridView1.Rows(indice).Cells(5).Value
+                objInvestimento.PrecoAtivo = DataGridView1.Rows(indice).Cells(5).Value
 
-                Txt_quantidade.Text = DataGridView1.Rows(0).Cells(6).Value
+                Txt_quantidade.Text = DataGridView1.Rows(indice).Cells(6).Value
 
-                Txt_TotalAplicado.Text = DataGridView1.Rows(0).Cells(5).Value * DataGridView1.Rows(0).Cells(6).Value
+                Txt_TotalAplicado.Text = DataGridView1.Rows(indice).Cells(5).Value * DataGridView1.Rows(0).Cells(6).Value
 
-                Cmb_NomeCarteira.SelectedValue = DataGridView1.Rows(0).Cells(0).Value
+                Cmb_NomeCarteira.SelectedValue = DataGridView1.Rows(indice).Cells(0).Value
+
+
 
 
                 ''objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
@@ -388,6 +423,8 @@ Public Class Frm_ProdutoCarteira
             Throw ex
         End Try
     End Sub
+
+
 
 
 
