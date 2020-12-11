@@ -46,3 +46,4 @@ C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.vbproj.Core
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.exe
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.xml
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.pdb
+C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.Frm_GerenciarProduto.resources

@@ -1,4 +1,5 @@
-﻿Imports Action.Classes
+﻿Imports System.Data.SqlClient
+Imports Action.Classes
 Imports Action.Conexao
 
 Namespace DAO
@@ -50,6 +51,31 @@ Namespace DAO
                 Throw New Exception(ex.Message)
             End Try
         End Sub
+
+
+        Shared Function ConsultaInvestimentos(idOperador As Integer) As DataTable
+
+            Try
+                Dim conexaoBD As New ConexaoBD
+                Dim Dt As New DataTable
+                Dim Ds As New DataSet
+
+                conexaoBD.strInstrucao = "SpSel_ConsultaRegistroInvestimento"
+                conexaoBD.objCommand.CommandType = CommandType.StoredProcedure
+                conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
+                conexaoBD.objCommand.Parameters.AddWithValue("@iOperador", idOperador)
+                conexaoBD.objCommand.ExecuteNonQuery()
+                conexaoBD.objConexao.Close()
+                Dim Da As New SqlDataAdapter(conexaoBD.objCommand)
+                Da.Fill(Ds)
+                Dt = Ds.Tables(0)
+                Return Dt
+
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+        End Function
     End Class
 End Namespace
 

@@ -9,12 +9,13 @@ Public Class Frm_ProdutoCarteira
     Dim objInvestimento As New Investimento
     Dim objRendaFixa As New RendaFixa
     Dim objUsuarioLogado As New Usuario
+    Dim controlInvestimentos As New ControladorInvestimento
     Dim dtCarteira As New DataTable
     Dim dtAcoes As New DataTable
     Dim dtFundoImobiliario As New DataTable
     Dim dtRendaFixa As New DataTable
     Dim dtUsuario As New DataTable
-
+    Dim dtInvestimento As New DataTable
     Dim indice As Integer = 0
     Public Sub New()
 
@@ -190,12 +191,19 @@ Public Class Frm_ProdutoCarteira
 
 
                 PopularGrid()
+
+                If Btn_Adicionar.Text = "Alterar" Then
+
+                    MessageBox.Show("Ativo alterado com sucesso.", "Messagem", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
                     MessageBox.Show("Ativo adicionado com sucesso.", "Messagem", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
 
-                Else
-                    MessageBox.Show("Preencha todas as informações para inserir o cadastro", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End If
+            Else
+                MessageBox.Show("Preencha todas as informações para inserir o cadastro", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
+
 
         Catch ex As Exception
             Throw New Exception(ex.Message)
@@ -253,7 +261,7 @@ Public Class Frm_ProdutoCarteira
     End Sub
 
     Private Sub Txt_quantidade_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_quantidade.KeyUp
-        totalInvestido()
+        TotalInvestido()
     End Sub
 
     Private Sub ConfiguracaoDataGridViwer()
@@ -298,13 +306,14 @@ Public Class Frm_ProdutoCarteira
 
     Private Sub PopularGrid()
 
+        'Valida se o grid possui linhas 
         If DataGridView1.SelectedRows.Count > 0 Then
 
+
+            ' traz informação do indice da linha selecionada
             indice = DataGridView1.SelectedRows(0).Index
 
-            
-
-
+            'Aualiza as informações da linha do grid após alterações
             DataGridView1.Rows(indice).Cells(0).Value = Cmb_NomeCarteira.SelectedValue
             DataGridView1.Rows(indice).Cells(1).Value = Txt_descricao.Text
             DataGridView1.Rows(indice).Cells(2).Value = Cmb_NomeCarteira.SelectedItem("NomeCarteira")
@@ -317,7 +326,7 @@ Public Class Frm_ProdutoCarteira
 
 
         Else
-
+            'Insere os dados no grid
             DataGridView1.Rows.Add(Cmb_NomeCarteira.SelectedValue, Txt_descricao.Text, Cmb_NomeCarteira.SelectedItem("NomeCarteira"), Cmb_TipoAtivo.SelectedIndex,
                                    Cmb_Ativo.Text, txt_preco.Text, Txt_quantidade.Text, Txt_TotalAplicado.Text, Cmb_Ativo.SelectedValue)
             DataGridView1.ClearSelection()
@@ -332,27 +341,60 @@ Public Class Frm_ProdutoCarteira
     Private Sub Btn_Confirmar_Click(sender As Object, e As EventArgs) Handles Btn_Confirmar.Click
 
         Try
+
+            dtInvestimento = ControladorInvestimento.ConsultaInvestimentos(ObjAtributos.AtbId)
             If DataGridView1.Rows.Count >= 1 Then
-                For i As Integer = 0 To DataGridView1.Rows.Count - 1
 
 
-                    objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
-                    objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
-                    objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
-                    objInvestimento.PrecoAtivo = DataGridView1.Rows(i).Cells(5).Value
-                    objInvestimento.Quantidade = DataGridView1.Rows(i).Cells(6).Value
-                    objInvestimento.PrecoMedio = DataGridView1.Rows(i).Cells(7).Value / DataGridView1.Rows(0).Cells(6).Value
-                    objInvestimento.DataTransacao = Now
-                    objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
-                    objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                    ControladorInvestimento.InsereInvestimento(objInvestimento)
+                For j As Integer = 0 To dtInvestimento.Rows.Count - 1
+
+                    If dtInvestimento.Rows(j)("SiglaAtivo") = Cmb_Ativo.Text Then
+                        For i As Integer = 0 To DataGridView1.Rows.Count - 1
+
+                            objInvestimento.Id = dtInvestimento.Rows(j)("ID")
+                            objInvestimento.PrecoAtivo = dtInvestimento.Rows(j)("PrecoAtivo")
+                            objInvestimento.Quantidade = dtInvestimento.Rows(j)("Quantidade")
+                            objInvestimento.PrecoMedio = dtInvestimento.Rows(j)("PrecoMedio")
+
+                            objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
+                            objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
+                            objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
+                            objInvestimento.PrecoAtivo += DataGridView1.Rows(i).Cells(5).Value
+                            objInvestimento.Quantidade += DataGridView1.Rows(i).Cells(6).Value
+                            objInvestimento.PrecoMedio += DataGridView1.Rows(i).Cells(7).Value / DataGridView1.Rows(0).Cells(6).Value
+                            objInvestimento.DataTransacao = Now
+                            objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
+                            objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
+                            ControladorInvestimento.AlteraInvestimento(objInvestimento)
+
+
+                        Next
+
+                    Else
+                        For i As Integer = 0 To DataGridView1.Rows.Count - 1
+                            objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
+                            objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
+                            objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
+                            objInvestimento.PrecoAtivo = DataGridView1.Rows(i).Cells(5).Value
+                            objInvestimento.Quantidade = DataGridView1.Rows(i).Cells(6).Value
+                            objInvestimento.PrecoMedio = DataGridView1.Rows(i).Cells(7).Value / DataGridView1.Rows(0).Cells(6).Value
+                            objInvestimento.DataTransacao = Now
+                            objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
+                            objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
+                            ControladorInvestimento.InsereInvestimento(objInvestimento)
+                        Next
+
+                    End If
 
 
                 Next
+
                 MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 DataGridView1.Rows.Clear()
 
             End If
+
+
         Catch ex As Exception
 
             Throw ex
@@ -396,14 +438,10 @@ Public Class Frm_ProdutoCarteira
             If DataGridView1.SelectedRows.Count > 0 Then
                 indice = DataGridView1.SelectedRows(0).Index
                 Btn_Adicionar.Text = "Alterar"
-
-
                 Txt_descricao.Text = DataGridView1.Rows(indice).Cells(1).Value
                 Cmb_TipoAtivo.SelectedIndex = DataGridView1.Rows(indice).Cells(3).Value
                 objInvestimento.SiglaAtivo = DataGridView1.Rows(indice).Cells(4).Value
                 Cmb_Ativo.SelectedValue = DataGridView1.Rows(indice).Cells(8).Value
-
-
                 txt_preco.Text = DataGridView1.Rows(indice).Cells(5).Value
                 objInvestimento.PrecoAtivo = DataGridView1.Rows(indice).Cells(5).Value
 

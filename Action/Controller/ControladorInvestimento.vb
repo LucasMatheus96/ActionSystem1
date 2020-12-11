@@ -27,8 +27,21 @@ Namespace Controller
                 Throw New Exception(ex.Message)
             End Try
         End Sub
+        Shared Function ConsultaInvestimentos(idOperador As Integer) As DataTable
+            Try
+
+                Return InvestimentoDAO.ConsultaInvestimentos(idOperador)
+
+            Catch ex As Exception
+
+                Throw New Exception(ex.Message)
+            End Try
+        End Function
 
     End Class
+
+
+
 
 End Namespace
 
