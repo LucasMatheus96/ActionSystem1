@@ -26,7 +26,6 @@ C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\bin\Debug\Action.exe.config
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\bin\Debug\Action.exe
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\bin\Debug\Action.pdb
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\bin\Debug\Action.xml
-C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.vbprojAssemblyReference.cache
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.Frm_AlteraSenha.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.Frm_CadastraAcoes.resources
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.Frm_CadastrarAtivo.resources
@@ -47,3 +46,4 @@ C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.exe
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.xml
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.pdb
 C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.Frm_GerenciarProduto.resources
+C:\Users\Lucas Silva\Desktop\Projetos\Action\Action\obj\Debug\Action.vbprojAssemblyReference.cache

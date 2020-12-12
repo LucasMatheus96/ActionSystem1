@@ -56,5 +56,6 @@
     Private Sub GerenciarToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GerenciarToolStripMenuItem.Click
         Dim f As New Frm_GerenciarProduto
         f.ShowDialog()
+
     End Sub
 End Class

@@ -247,13 +247,13 @@ Public Class Frm_ProdutoCarteira
     Private Sub TotalInvestido()
 
         Try
-            Dim v1 As Double = txt_preco.Text
-            Dim v2 As Double = Txt_quantidade.Text
-            Dim v3 As Double = 0
+            Dim precoAtivo As Double = txt_preco.Text
+            Dim quantidade As Double = Txt_quantidade.Text
+            Dim totalInvestido As Double = 0
 
-            v3 = v1 * v2
+            totalInvestido = precoAtivo * quantidade
 
-            Txt_TotalAplicado.Text = v3.ToString
+            Txt_TotalAplicado.Text = totalInvestido.ToString("C2")
         Catch ex As Exception
             Throw ex
         End Try
@@ -319,9 +319,9 @@ Public Class Frm_ProdutoCarteira
             DataGridView1.Rows(indice).Cells(2).Value = Cmb_NomeCarteira.SelectedItem("NomeCarteira")
             DataGridView1.Rows(indice).Cells(3).Value = Cmb_TipoAtivo.SelectedIndex
             DataGridView1.Rows(indice).Cells(4).Value = Cmb_Ativo.Text
-            DataGridView1.Rows(indice).Cells(5).Value = txt_preco.Text
+            DataGridView1.Rows(indice).Cells(5).Value = Double.Parse(txt_preco.Text).ToString("C2")
             DataGridView1.Rows(indice).Cells(6).Value = Txt_quantidade.Text
-            DataGridView1.Rows(indice).Cells(7).Value = Txt_TotalAplicado.Text
+            DataGridView1.Rows(indice).Cells(7).Value = Double.Parse(Txt_TotalAplicado.Text)
             DataGridView1.Rows(indice).Cells(8).Value = Cmb_Ativo.SelectedValue
 
 
@@ -343,61 +343,80 @@ Public Class Frm_ProdutoCarteira
         Try
 
             dtInvestimento = ControladorInvestimento.ConsultaInvestimentos(ObjAtributos.AtbId)
-            If DataGridView1.Rows.Count >= 1 Then
+
+            If dtInvestimento.Rows.Count < 1 Then
+                For i As Integer = 0 To DataGridView1.Rows.Count - 1
+                    objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
+                    objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
+                    objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
+                    objInvestimento.PrecoAtivo = DataGridView1.Rows(i).Cells(5).Value
+                    objInvestimento.Quantidade = DataGridView1.Rows(i).Cells(6).Value
+                    objInvestimento.PrecoTotal = DataGridView1.Rows(i).Cells(7).Value
+                    objInvestimento.DataTransacao = Now
+                    objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
+                    objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
+                    ControladorInvestimento.InsereInvestimento(objInvestimento)
+                Next
 
 
+            ElseIf dtInvestimento.Rows.Count >= 1 Then
                 For j As Integer = 0 To dtInvestimento.Rows.Count - 1
-
                     If dtInvestimento.Rows(j)("SiglaAtivo") = Cmb_Ativo.Text Then
                         For i As Integer = 0 To DataGridView1.Rows.Count - 1
 
                             objInvestimento.Id = dtInvestimento.Rows(j)("ID")
                             objInvestimento.PrecoAtivo = dtInvestimento.Rows(j)("PrecoAtivo")
                             objInvestimento.Quantidade = dtInvestimento.Rows(j)("Quantidade")
-                            objInvestimento.PrecoMedio = dtInvestimento.Rows(j)("PrecoMedio")
-
-                            objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
-                            objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
-                            objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
-                            objInvestimento.PrecoAtivo += DataGridView1.Rows(i).Cells(5).Value
-                            objInvestimento.Quantidade += DataGridView1.Rows(i).Cells(6).Value
-                            objInvestimento.PrecoMedio += DataGridView1.Rows(i).Cells(7).Value / DataGridView1.Rows(0).Cells(6).Value
-                            objInvestimento.DataTransacao = Now
-                            objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
-                            objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                            ControladorInvestimento.AlteraInvestimento(objInvestimento)
+                            objInvestimento.PrecoTotal = dtInvestimento.Rows(j)("PrecoTotal")
 
 
-                        Next
-
-                    Else
-                        For i As Integer = 0 To DataGridView1.Rows.Count - 1
                             objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
                             objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
                             objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
                             objInvestimento.PrecoAtivo = DataGridView1.Rows(i).Cells(5).Value
-                            objInvestimento.Quantidade = DataGridView1.Rows(i).Cells(6).Value
-                            objInvestimento.PrecoMedio = DataGridView1.Rows(i).Cells(7).Value / DataGridView1.Rows(0).Cells(6).Value
+                            objInvestimento.Quantidade += DataGridView1.Rows(i).Cells(6).Value
+                            objInvestimento.PrecoTotal += DataGridView1.Rows(i).Cells(7).Value
                             objInvestimento.DataTransacao = Now
                             objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
                             objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                            ControladorInvestimento.InsereInvestimento(objInvestimento)
+                            ControladorInvestimento.AlteraInvestimento(objInvestimento)
                         Next
+                        MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        DataGridView1.Rows.Clear()
+                        Btn_Adicionar.Text = "Adicionar"
 
                     End If
 
 
                 Next
 
-                MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                DataGridView1.Rows.Clear()
+                If DataGridView1.Rows.Count >= 1 Then
+
+                    For i As Integer = 0 To DataGridView1.Rows.Count - 1
+                        objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
+                        objInvestimento.SiglaAtivo = DataGridView1.Rows(i).Cells(4).Value
+                        objInvestimento.IdAtivo = DataGridView1.Rows(i).Cells(8).Value
+                        objInvestimento.PrecoAtivo = DataGridView1.Rows(i).Cells(5).Value
+                        objInvestimento.Quantidade = DataGridView1.Rows(i).Cells(6).Value
+                        objInvestimento.PrecoTotal = DataGridView1.Rows(i).Cells(7).Value
+                        objInvestimento.DataTransacao = Now
+                        objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
+                        objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
+                        ControladorInvestimento.InsereInvestimento(objInvestimento)
+                    Next
+                    MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    DataGridView1.Rows.Clear()
+                    Btn_Adicionar.Text = "Adicionar"
+
+                End If
 
             End If
 
 
-        Catch ex As Exception
 
+        Catch ex As Exception
             Throw ex
+            'MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
 
 
@@ -423,12 +442,16 @@ Public Class Frm_ProdutoCarteira
 
     Private Sub Frm_ProdutoCarteira_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
 
-        DialogResult = MessageBox.Show("Deseja realmente sair? os itens informados não serão salvos", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-        If DialogResult = DialogResult.Yes Then
-            Me.Dispose()
-            Me.Close()
-        Else DialogResult = DialogResult.No
-            e.Cancel = True
+        If DataGridView1.Rows.Count >= 1 Then
+            DialogResult = MessageBox.Show("Deseja realmente sair? os itens informados não serão salvos", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+
+            If DialogResult = DialogResult.Yes Then
+                Me.Dispose()
+                Me.Close()
+            Else DialogResult = DialogResult.No
+                e.Cancel = True
+            End If
+
         End If
 
     End Sub
@@ -450,9 +473,6 @@ Public Class Frm_ProdutoCarteira
                 Txt_TotalAplicado.Text = DataGridView1.Rows(indice).Cells(5).Value * DataGridView1.Rows(0).Cells(6).Value
 
                 Cmb_NomeCarteira.SelectedValue = DataGridView1.Rows(indice).Cells(0).Value
-
-
-
 
                 ''objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
                 'ControladorInvestimento.InsereInvestimento(objInvestimento)
