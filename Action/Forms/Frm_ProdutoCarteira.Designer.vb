@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm_ProdutoCarteira
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Frm_ProdutoCarteira
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_ProdutoCarteira))
         Me.Grb_Adicionar = New System.Windows.Forms.GroupBox()
@@ -79,7 +79,7 @@ Partial Class Frm_ProdutoCarteira
         Me.Txt_descricao.Location = New System.Drawing.Point(13, 32)
         Me.Txt_descricao.Name = "Txt_descricao"
         Me.Txt_descricao.Size = New System.Drawing.Size(500, 20)
-        Me.Txt_descricao.TabIndex = 15
+        Me.Txt_descricao.TabIndex = 0
         '
         'Lbl_InstituiçãoFinanceira
         '
@@ -133,6 +133,7 @@ Partial Class Frm_ProdutoCarteira
         '
         'Cmb_Ativo
         '
+        Me.Cmb_Ativo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_Ativo.FormattingEnabled = True
         Me.Cmb_Ativo.Location = New System.Drawing.Point(366, 70)
         Me.Cmb_Ativo.Name = "Cmb_Ativo"
@@ -166,6 +167,7 @@ Partial Class Frm_ProdutoCarteira
         '
         'Cmb_TipoAtivo
         '
+        Me.Cmb_TipoAtivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_TipoAtivo.FormattingEnabled = True
         Me.Cmb_TipoAtivo.Location = New System.Drawing.Point(189, 70)
         Me.Cmb_TipoAtivo.Name = "Cmb_TipoAtivo"

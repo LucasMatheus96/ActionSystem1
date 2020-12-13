@@ -39,14 +39,14 @@ Namespace DAO
                 conexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 conexaoBD.objCommand.CommandText = conexaoBD.strInstrucao
                 conexaoBD.objCommand.Parameters.AddWithValue("@Id", objInvestimento.Id)
-                conexaoBD.objCommand.Parameters.AddWithValue("@NomeAtivo", objInvestimento.NomeAtivo)
-                conexaoBD.objCommand.Parameters.AddWithValue("@SiglaAtivo", objInvestimento.SiglaAtivo)
-                conexaoBD.objCommand.Parameters.AddWithValue("@IdAtivo", objInvestimento.IdAtivo)
-                conexaoBD.objCommand.Parameters.AddWithValue("@PrecoAtivo", objInvestimento.PrecoAtivo)
-                conexaoBD.objCommand.Parameters.AddWithValue("@Quantidade", objInvestimento.Quantidade)
-                conexaoBD.objCommand.Parameters.AddWithValue("@PrecoTotal", objInvestimento.PrecoTotal)
-                conexaoBD.objCommand.Parameters.AddWithValue("@IdCarteira", objInvestimento.IdCarteira)
-                conexaoBD.objCommand.Parameters.AddWithValue("@IdTipoAtivo", objInvestimento.IdTipoAtivo)
+                conexaoBD.objCommand.Parameters.AddWithValue("@NomeAtivo", IIf(objInvestimento.NomeAtivo IsNot Nothing, objInvestimento.NomeAtivo, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@SiglaAtivo", IIf(objInvestimento.SiglaAtivo IsNot Nothing, objInvestimento.SiglaAtivo, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@IdAtivo", IIf(objInvestimento.IdAtivo <> 0, objInvestimento.IdAtivo, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@PrecoAtivo", IIf(objInvestimento.PrecoAtivo <> 0, objInvestimento.PrecoAtivo, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@Quantidade", IIf(objInvestimento.Quantidade <> 0, objInvestimento.Quantidade, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@PrecoTotal", IIf(objInvestimento.PrecoTotal <> 0, objInvestimento.PrecoTotal, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@IdCarteira", IIf(objInvestimento.IdCarteira <> 0, objInvestimento.IdCarteira, DBNull.Value))
+                conexaoBD.objCommand.Parameters.AddWithValue("@IdTipoAtivo", IIf(objInvestimento.IdTipoAtivo <> 0, objInvestimento.IdTipoAtivo, DBNull.Value))
                 conexaoBD.objCommand.ExecuteNonQuery()
                 conexaoBD.objConexao.Close()
 
@@ -223,6 +223,22 @@ Namespace DAO
             End Try
         End Function
 
+        Shared Sub ExcluirInvestimento(idInvestimento As Integer)
+
+            Try
+                Dim ConexaoBD As New ConexaoBD
+                ConexaoBD.strInstrucao = "SpDel_DeletaRegistroInvestimento"
+                ConexaoBD.objCommand.Parameters.AddWithValue("@ID", idInvestimento)
+                ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
+                ConexaoBD.objCommand.CommandText = ConexaoBD.strInstrucao
+                ConexaoBD.objCommand.ExecuteNonQuery()
+                ConexaoBD.objConexao.Close()
+
+            Catch ex As Exception
+                Throw ex
+            End Try
+
+        End Sub
     End Class
 End Namespace
 

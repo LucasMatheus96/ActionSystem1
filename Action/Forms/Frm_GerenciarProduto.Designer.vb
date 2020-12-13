@@ -129,9 +129,11 @@ Partial Class Frm_GerenciarProduto
         'Dgw_Ativos
         '
         Me.Dgw_Ativos.AllowUserToAddRows = False
+        Me.Dgw_Ativos.AllowUserToDeleteRows = False
         Me.Dgw_Ativos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.Dgw_Ativos.Location = New System.Drawing.Point(15, 33)
         Me.Dgw_Ativos.Name = "Dgw_Ativos"
+        Me.Dgw_Ativos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.Dgw_Ativos.Size = New System.Drawing.Size(722, 264)
         Me.Dgw_Ativos.TabIndex = 0
         '

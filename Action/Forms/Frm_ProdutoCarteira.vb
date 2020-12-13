@@ -2,14 +2,14 @@
 Imports Action.Controller
 
 Public Class Frm_ProdutoCarteira
-    Dim objCarteira As New ControladorCarteira
-    Dim objControlRendaFixa As New ControladorRendaFixa
-    Dim objAcao As New ControladorAcao
-    Dim objFundoImobiliario As New ControladorFundoImobiliario
+    Dim controladorCarteira As New ControladorCarteira
+    Dim controladorRendaFixa As New ControladorRendaFixa
+    Dim controladorAcao As New ControladorAcao
+    Dim controladorFundoImobiliario As New ControladorFundoImobiliario
+    Dim controladorInvestimentos As New ControladorInvestimento
     Dim objInvestimento As New Investimento
     Dim objRendaFixa As New RendaFixa
     Dim objUsuarioLogado As New Usuario
-    Dim controlInvestimentos As New ControladorInvestimento
     Dim dtCarteira As New DataTable
     Dim dtAcoes As New DataTable
     Dim dtFundoImobiliario As New DataTable
@@ -25,6 +25,9 @@ Public Class Frm_ProdutoCarteira
         ' Adicione qualquer inicialização após a chamada InitializeComponent().
 
         Me.Text = "Adicionar"
+        Txt_TotalAplicado.ReadOnly = True
+
+
         CarregaComboCarteira()
         CarregaComboTipoAtivo()
         ConfiguracaoDataGridViwer()
@@ -39,7 +42,7 @@ Public Class Frm_ProdutoCarteira
 
         Try
             Cmb_Ativo.DataSource = Nothing
-            dtCarteira = objCarteira.FiltrarCarteiraPorOperadorLogado(ObjAtributos.AtbId)
+            dtCarteira = controladorCarteira.FiltrarCarteiraPorOperadorLogado(ObjAtributos.AtbId)
 
 
             For Each linha As DataRow In dtCarteira.Rows
@@ -48,11 +51,13 @@ Public Class Frm_ProdutoCarteira
                     With Cmb_NomeCarteira
 
                         .SelectionStart = 1
+
                         .DataSource = dtCarteira
 
                         .DisplayMember = "NomeCarteira"
 
                         .ValueMember = "Id"
+
 
 
 
@@ -116,7 +121,7 @@ Public Class Frm_ProdutoCarteira
             Cmb_Ativo.DataSource = Nothing
 
 
-            dtRendaFixa = objControlRendaFixa.ConsultarRendaFixa
+            dtRendaFixa = controladorRendaFixa.ConsultarRendaFixa
 
             For i As Integer = 0 To dtRendaFixa.Rows.Count - 1
                 'Cmb_Ativo.Items().Add(dtRendaFixa.Rows(i)("Sigla"))
@@ -139,7 +144,7 @@ Public Class Frm_ProdutoCarteira
 
         ElseIf Cmb_TipoAtivo.SelectedIndex = 2 Then
             Cmb_Ativo.DataSource = Nothing
-            dtAcoes = objAcao.ConsultarAcao
+            dtAcoes = controladorAcao.ConsultarAcao
 
             For i As Integer = 0 To dtAcoes.Rows.Count - 1
                 'Cmb_Ativo.Items().Add(dtAcoes.Rows(i)("SiglaAtivo"))
@@ -159,7 +164,7 @@ Public Class Frm_ProdutoCarteira
         ElseIf Cmb_TipoAtivo.SelectedIndex = 3 Then
 
             Cmb_Ativo.DataSource = Nothing
-            dtFundoImobiliario = objFundoImobiliario.ConsultarFundoImobiliario
+            dtFundoImobiliario = controladorFundoImobiliario.ConsultarFundoImobiliario
 
             For i As Integer = 0 To dtFundoImobiliario.Rows.Count - 1
                 With Cmb_Ativo
@@ -232,9 +237,7 @@ Public Class Frm_ProdutoCarteira
 
     End Function
 
-    Private Sub Txt_TotalAplicado_TextChanged(sender As Object, e As EventArgs) Handles Txt_TotalAplicado.TextChanged
-        Txt_TotalAplicado.Text = Val(txt_preco.Text.ToString) * Val(Txt_quantidade.Text.ToString)
-    End Sub
+
 
 
 
@@ -251,18 +254,16 @@ Public Class Frm_ProdutoCarteira
             Dim quantidade As Double = Txt_quantidade.Text
             Dim totalInvestido As Double = 0
 
-            totalInvestido = precoAtivo * quantidade
 
+            totalInvestido = precoAtivo * quantidade
             Txt_TotalAplicado.Text = totalInvestido.ToString("C2")
+
         Catch ex As Exception
             Throw ex
         End Try
 
     End Sub
 
-    Private Sub Txt_quantidade_KeyUp(sender As Object, e As KeyEventArgs) Handles Txt_quantidade.KeyUp
-        TotalInvestido()
-    End Sub
 
     Private Sub ConfiguracaoDataGridViwer()
 
@@ -342,7 +343,7 @@ Public Class Frm_ProdutoCarteira
 
         Try
 
-            dtInvestimento = ControladorInvestimento.ConsultaInvestimentos(ObjAtributos.AtbId)
+            dtInvestimento = controladorInvestimentos.ConsultaInvestimentos(ObjAtributos.AtbId)
 
             If dtInvestimento.Rows.Count < 1 Then
                 For i As Integer = 0 To DataGridView1.Rows.Count - 1
@@ -355,7 +356,7 @@ Public Class Frm_ProdutoCarteira
                     objInvestimento.DataTransacao = Now
                     objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
                     objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                    ControladorInvestimento.InsereInvestimento(objInvestimento)
+                    controladorInvestimentos.InsereInvestimento(objInvestimento)
                 Next
 
 
@@ -379,7 +380,7 @@ Public Class Frm_ProdutoCarteira
                             objInvestimento.DataTransacao = Now
                             objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
                             objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                            ControladorInvestimento.AlteraInvestimento(objInvestimento)
+                            controladorInvestimentos.AlteraInvestimento(objInvestimento)
                         Next
                         MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         DataGridView1.Rows.Clear()
@@ -402,7 +403,7 @@ Public Class Frm_ProdutoCarteira
                         objInvestimento.DataTransacao = Now
                         objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
                         objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                        ControladorInvestimento.InsereInvestimento(objInvestimento)
+                        controladorInvestimentos.InsereInvestimento(objInvestimento)
                     Next
                     MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     DataGridView1.Rows.Clear()
@@ -423,23 +424,6 @@ Public Class Frm_ProdutoCarteira
 
     End Sub
 
-    'Private Sub Btn_fechar_Click(sender As Object, e As EventArgs) Handles Btn_fechar.Click
-    '    If DataGridView1.Rows.Count >= 1 Then
-
-    '        DialogResult = MessageBox.Show("Deseja realmente sair? os itens informados não serão salvos", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-    '        If DialogResult = DialogResult.Yes Then
-    '            Me.Close()
-    '        Else
-
-    '        End If
-
-
-    '    Else
-
-    '    End If
-    'End Sub
-
     Private Sub Frm_ProdutoCarteira_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
 
         If DataGridView1.Rows.Count >= 1 Then
@@ -451,7 +435,6 @@ Public Class Frm_ProdutoCarteira
             Else DialogResult = DialogResult.No
                 e.Cancel = True
             End If
-
         End If
 
     End Sub
@@ -482,19 +465,49 @@ Public Class Frm_ProdutoCarteira
         End Try
     End Sub
 
+    Private Sub Txt_quantidade_TextChanged(sender As Object, e As EventArgs) Handles Txt_quantidade.TextChanged
+        Try
+
+            If String.IsNullOrEmpty(Txt_quantidade.Text) Then
+                Txt_quantidade.Focus()
+                Txt_TotalAplicado.Text = ""
+            ElseIf String.IsNullOrEmpty(txt_preco.Text) Then
+                txt_preco.Focus()
+                Txt_TotalAplicado.Text = ""
+            Else
+
+                TotalInvestido()
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 
 
 
+    Private Sub Btn_fechar_Click(sender As Object, e As EventArgs) Handles Btn_fechar.Click
 
-    'Private Sub Frm_ProdutoCarteira_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        Me.Close()
 
-    '    DialogResult = MessageBox.Show("Deseja realmente sair? os itens informados não serão salvos", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-    '    If DialogResult = DialogResult.No Then
-    '        e.cancel = True
+    End Sub
 
-    '    ElseIf DialogResult = DialogResult.No Then
+    Private Sub txt_preco_TextChanged(sender As Object, e As EventArgs) Handles txt_preco.TextChanged
+        Try
+            If String.IsNullOrEmpty(Txt_quantidade.Text) Then
+                txt_preco.Focus()
+                Txt_TotalAplicado.Text = ""
+            ElseIf String.IsNullOrEmpty(txt_preco.Text) Then
+                txt_preco.Focus()
+                Txt_TotalAplicado.Text = ""
 
+            Else
 
-    '    End If
-    'End Sub
+                TotalInvestido()
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 End Class

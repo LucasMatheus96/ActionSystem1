@@ -2,7 +2,7 @@
 Imports Action.Controller
 
 Public Class Frm_GerenciarProduto
-    Dim controlInvestimento As New ControladorInvestimento
+    Dim controladorInvestimento As New ControladorInvestimento
     Dim dtConsultaRegistroInvestimentos As New DataTable
     Public Sub New()
 
@@ -26,7 +26,7 @@ Public Class Frm_GerenciarProduto
 
         With Dgw_Ativos
 
-            dtConsultaRegistroInvestimentos = ControladorInvestimento.ConsultaInvestimentos(ObjAtributos.AtbId)
+            dtConsultaRegistroInvestimentos = controladorInvestimento.ConsultaInvestimentos(ObjAtributos.AtbId)
             Dgw_Ativos.DataSource = dtConsultaRegistroInvestimentos
 
             .Columns(7).Visible = False
@@ -316,4 +316,20 @@ Public Class Frm_GerenciarProduto
         Return dtFiltro
 
     End Function
+
+    Private Sub Btn_VenderAtivo_Click(sender As Object, e As EventArgs) Handles Btn_VenderAtivo.Click
+        Try
+
+            Dim venderAtivo As New Frm_VenderAtivo
+            venderAtivo.IdAtivo = Dgw_Ativos.SelectedRows(0).Cells("ID").Value
+            venderAtivo.Txt_Ativo.Text = Dgw_Ativos.SelectedRows(0).Cells("SiglaAtivo").Value
+            venderAtivo.Txt_QuantidadeDisponivel.Text = Dgw_Ativos.SelectedRows(0).Cells("Quantidade").Value
+            venderAtivo.Txt_PosicaoAtual.Text = Dgw_Ativos.SelectedRows(0).Cells("PrecoTotal").Value
+            venderAtivo.ShowDialog()
+            ConfigurarGrid()
+        Catch ex As Exception
+            Throw ex
+        End Try
+
+    End Sub
 End Class

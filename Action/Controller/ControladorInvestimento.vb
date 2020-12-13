@@ -6,7 +6,7 @@ Namespace Controller
     Public Class ControladorInvestimento
 
 
-        Shared Sub InsereInvestimento(objInvestimento As Investimento)
+        Public Sub InsereInvestimento(objInvestimento As Investimento)
             Try
 
                 InvestimentoDAO.InsereInvestimento(objInvestimento)
@@ -17,7 +17,7 @@ Namespace Controller
             End Try
         End Sub
 
-        Shared Sub AlteraInvestimento(objInvestimento As Investimento)
+        Public Sub AlteraInvestimento(objInvestimento As Investimento)
             Try
 
                 InvestimentoDAO.AlteraInvestimento(objInvestimento)
@@ -27,7 +27,7 @@ Namespace Controller
                 Throw New Exception(ex.Message)
             End Try
         End Sub
-        Shared Function ConsultaInvestimentos(idOperador As Integer) As DataTable
+        Public Function ConsultaInvestimentos(idOperador As Integer) As DataTable
             Try
 
                 Return InvestimentoDAO.ConsultaInvestimentos(idOperador)
@@ -102,6 +102,15 @@ Namespace Controller
 
         End Function
 
+        Public Sub ExcluirInvestimento(idInvestimento As Integer)
+
+            Try
+                InvestimentoDAO.ExcluirInvestimento(idInvestimento)
+            Catch ex As Exception
+
+                Throw New Exception(ex.Message)
+            End Try
+        End Sub
     End Class
 
 
