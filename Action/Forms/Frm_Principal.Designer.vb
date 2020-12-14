@@ -38,12 +38,13 @@ Partial Class Frm_Principal
         Me.UtilitariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EfetuarNovoAcessoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Pnl_Top = New System.Windows.Forms.Panel()
-        Me.Btn_CadastrarCarteira = New System.Windows.Forms.Button()
-        Me.Btn_AdicionarInvestimento = New System.Windows.Forms.Button()
-        Me.Btn_GerenciarInvestimento = New System.Windows.Forms.Button()
-        Me.Btn_Cadastraativos = New System.Windows.Forms.Button()
-        Me.Btn_ConsultarAtivos = New System.Windows.Forms.Button()
         Me.Btn_ConsultarCarteira = New System.Windows.Forms.Button()
+        Me.Btn_ConsultarAtivos = New System.Windows.Forms.Button()
+        Me.Btn_Cadastraativos = New System.Windows.Forms.Button()
+        Me.Btn_GerenciarInvestimento = New System.Windows.Forms.Button()
+        Me.Btn_AdicionarInvestimento = New System.Windows.Forms.Button()
+        Me.Btn_CadastrarCarteira = New System.Windows.Forms.Button()
+        Me.UsuarioToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.Pnl_Top.SuspendLayout()
@@ -89,14 +90,14 @@ Partial Class Frm_Principal
         '
         Me.CadastrarCarteiraToolStripMenuItem.Image = CType(resources.GetObject("CadastrarCarteiraToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CadastrarCarteiraToolStripMenuItem.Name = "CadastrarCarteiraToolStripMenuItem"
-        Me.CadastrarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CadastrarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.CadastrarCarteiraToolStripMenuItem.Text = "Cadastrar Carteira "
         '
         'ConsultarCarteiraToolStripMenuItem
         '
         Me.ConsultarCarteiraToolStripMenuItem.Image = CType(resources.GetObject("ConsultarCarteiraToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ConsultarCarteiraToolStripMenuItem.Name = "ConsultarCarteiraToolStripMenuItem"
-        Me.ConsultarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConsultarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.ConsultarCarteiraToolStripMenuItem.Text = "Consultar Carteira"
         '
         'InvestimentosToolStripMenuItem
@@ -111,14 +112,14 @@ Partial Class Frm_Principal
         '
         Me.AdicionarToolStripMenuItem.Image = CType(resources.GetObject("AdicionarToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AdicionarToolStripMenuItem.Name = "AdicionarToolStripMenuItem"
-        Me.AdicionarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.AdicionarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.AdicionarToolStripMenuItem.Text = "Adicionar"
         '
         'GerenciarToolStripMenuItem
         '
         Me.GerenciarToolStripMenuItem.Image = CType(resources.GetObject("GerenciarToolStripMenuItem.Image"), System.Drawing.Image)
         Me.GerenciarToolStripMenuItem.Name = "GerenciarToolStripMenuItem"
-        Me.GerenciarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.GerenciarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
         Me.GerenciarToolStripMenuItem.Text = "Gerenciar"
         '
         'AtivosToolStripMenuItem
@@ -134,19 +135,19 @@ Partial Class Frm_Principal
         '
         Me.CadastrarAtivosToolStripMenuItem.Image = CType(resources.GetObject("CadastrarAtivosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CadastrarAtivosToolStripMenuItem.Name = "CadastrarAtivosToolStripMenuItem"
-        Me.CadastrarAtivosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.CadastrarAtivosToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.CadastrarAtivosToolStripMenuItem.Text = "Cadastrar Ativos"
         '
         'ConsultarAtivosToolStripMenuItem
         '
         Me.ConsultarAtivosToolStripMenuItem.Image = CType(resources.GetObject("ConsultarAtivosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ConsultarAtivosToolStripMenuItem.Name = "ConsultarAtivosToolStripMenuItem"
-        Me.ConsultarAtivosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConsultarAtivosToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
         Me.ConsultarAtivosToolStripMenuItem.Text = "Consultar Ativos"
         '
         'UtilitariosToolStripMenuItem
         '
-        Me.UtilitariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EfetuarNovoAcessoToolStripMenuItem})
+        Me.UtilitariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EfetuarNovoAcessoToolStripMenuItem, Me.UsuarioToolStripMenuItem})
         Me.UtilitariosToolStripMenuItem.Image = CType(resources.GetObject("UtilitariosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.UtilitariosToolStripMenuItem.Name = "UtilitariosToolStripMenuItem"
         Me.UtilitariosToolStripMenuItem.Size = New System.Drawing.Size(85, 20)
@@ -174,6 +175,71 @@ Partial Class Frm_Principal
         Me.Pnl_Top.Size = New System.Drawing.Size(1102, 75)
         Me.Pnl_Top.TabIndex = 3
         '
+        'Btn_ConsultarCarteira
+        '
+        Me.Btn_ConsultarCarteira.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_ConsultarCarteira.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ConsultarCarteira.FlatAppearance.BorderSize = 0
+        Me.Btn_ConsultarCarteira.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_ConsultarCarteira.Image = CType(resources.GetObject("Btn_ConsultarCarteira.Image"), System.Drawing.Image)
+        Me.Btn_ConsultarCarteira.Location = New System.Drawing.Point(104, 6)
+        Me.Btn_ConsultarCarteira.Name = "Btn_ConsultarCarteira"
+        Me.Btn_ConsultarCarteira.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_ConsultarCarteira.TabIndex = 5
+        Me.Btn_ConsultarCarteira.UseVisualStyleBackColor = False
+        '
+        'Btn_ConsultarAtivos
+        '
+        Me.Btn_ConsultarAtivos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_ConsultarAtivos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ConsultarAtivos.FlatAppearance.BorderSize = 0
+        Me.Btn_ConsultarAtivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_ConsultarAtivos.Image = CType(resources.GetObject("Btn_ConsultarAtivos.Image"), System.Drawing.Image)
+        Me.Btn_ConsultarAtivos.Location = New System.Drawing.Point(428, 6)
+        Me.Btn_ConsultarAtivos.Name = "Btn_ConsultarAtivos"
+        Me.Btn_ConsultarAtivos.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_ConsultarAtivos.TabIndex = 4
+        Me.Btn_ConsultarAtivos.UseVisualStyleBackColor = False
+        '
+        'Btn_Cadastraativos
+        '
+        Me.Btn_Cadastraativos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_Cadastraativos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Cadastraativos.FlatAppearance.BorderSize = 0
+        Me.Btn_Cadastraativos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Cadastraativos.Image = CType(resources.GetObject("Btn_Cadastraativos.Image"), System.Drawing.Image)
+        Me.Btn_Cadastraativos.Location = New System.Drawing.Point(347, 6)
+        Me.Btn_Cadastraativos.Name = "Btn_Cadastraativos"
+        Me.Btn_Cadastraativos.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_Cadastraativos.TabIndex = 3
+        Me.Btn_Cadastraativos.UseVisualStyleBackColor = False
+        '
+        'Btn_GerenciarInvestimento
+        '
+        Me.Btn_GerenciarInvestimento.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_GerenciarInvestimento.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_GerenciarInvestimento.FlatAppearance.BorderSize = 0
+        Me.Btn_GerenciarInvestimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_GerenciarInvestimento.Image = CType(resources.GetObject("Btn_GerenciarInvestimento.Image"), System.Drawing.Image)
+        Me.Btn_GerenciarInvestimento.Location = New System.Drawing.Point(266, 7)
+        Me.Btn_GerenciarInvestimento.Name = "Btn_GerenciarInvestimento"
+        Me.Btn_GerenciarInvestimento.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_GerenciarInvestimento.TabIndex = 2
+        Me.Btn_GerenciarInvestimento.UseVisualStyleBackColor = False
+        '
+        'Btn_AdicionarInvestimento
+        '
+        Me.Btn_AdicionarInvestimento.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_AdicionarInvestimento.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_AdicionarInvestimento.FlatAppearance.BorderSize = 0
+        Me.Btn_AdicionarInvestimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_AdicionarInvestimento.Image = CType(resources.GetObject("Btn_AdicionarInvestimento.Image"), System.Drawing.Image)
+        Me.Btn_AdicionarInvestimento.Location = New System.Drawing.Point(185, 6)
+        Me.Btn_AdicionarInvestimento.Name = "Btn_AdicionarInvestimento"
+        Me.Btn_AdicionarInvestimento.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_AdicionarInvestimento.TabIndex = 1
+        Me.Btn_AdicionarInvestimento.UseVisualStyleBackColor = False
+        '
         'Btn_CadastrarCarteira
         '
         Me.Btn_CadastrarCarteira.AccessibleDescription = ""
@@ -190,70 +256,11 @@ Partial Class Frm_Principal
         Me.Btn_CadastrarCarteira.TabIndex = 0
         Me.Btn_CadastrarCarteira.UseVisualStyleBackColor = False
         '
-        'Btn_AdicionarInvestimento
+        'UsuarioToolStripMenuItem
         '
-        Me.Btn_AdicionarInvestimento.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_AdicionarInvestimento.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_AdicionarInvestimento.FlatAppearance.BorderSize = 0
-        Me.Btn_AdicionarInvestimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_AdicionarInvestimento.Image = CType(resources.GetObject("Btn_AdicionarInvestimento.Image"), System.Drawing.Image)
-        Me.Btn_AdicionarInvestimento.Location = New System.Drawing.Point(185, 6)
-        Me.Btn_AdicionarInvestimento.Name = "Btn_AdicionarInvestimento"
-        Me.Btn_AdicionarInvestimento.Size = New System.Drawing.Size(75, 65)
-        Me.Btn_AdicionarInvestimento.TabIndex = 1
-        Me.Btn_AdicionarInvestimento.UseVisualStyleBackColor = False
-        '
-        'Btn_GerenciarInvestimento
-        '
-        Me.Btn_GerenciarInvestimento.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_GerenciarInvestimento.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_GerenciarInvestimento.FlatAppearance.BorderSize = 0
-        Me.Btn_GerenciarInvestimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_GerenciarInvestimento.Image = CType(resources.GetObject("Btn_GerenciarInvestimento.Image"), System.Drawing.Image)
-        Me.Btn_GerenciarInvestimento.Location = New System.Drawing.Point(266, 7)
-        Me.Btn_GerenciarInvestimento.Name = "Btn_GerenciarInvestimento"
-        Me.Btn_GerenciarInvestimento.Size = New System.Drawing.Size(75, 65)
-        Me.Btn_GerenciarInvestimento.TabIndex = 2
-        Me.Btn_GerenciarInvestimento.UseVisualStyleBackColor = False
-        '
-        'Btn_Cadastraativos
-        '
-        Me.Btn_Cadastraativos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_Cadastraativos.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_Cadastraativos.FlatAppearance.BorderSize = 0
-        Me.Btn_Cadastraativos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_Cadastraativos.Image = CType(resources.GetObject("Btn_Cadastraativos.Image"), System.Drawing.Image)
-        Me.Btn_Cadastraativos.Location = New System.Drawing.Point(347, 6)
-        Me.Btn_Cadastraativos.Name = "Btn_Cadastraativos"
-        Me.Btn_Cadastraativos.Size = New System.Drawing.Size(75, 65)
-        Me.Btn_Cadastraativos.TabIndex = 3
-        Me.Btn_Cadastraativos.UseVisualStyleBackColor = False
-        '
-        'Btn_ConsultarAtivos
-        '
-        Me.Btn_ConsultarAtivos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_ConsultarAtivos.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_ConsultarAtivos.FlatAppearance.BorderSize = 0
-        Me.Btn_ConsultarAtivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_ConsultarAtivos.Image = CType(resources.GetObject("Btn_ConsultarAtivos.Image"), System.Drawing.Image)
-        Me.Btn_ConsultarAtivos.Location = New System.Drawing.Point(428, 6)
-        Me.Btn_ConsultarAtivos.Name = "Btn_ConsultarAtivos"
-        Me.Btn_ConsultarAtivos.Size = New System.Drawing.Size(75, 65)
-        Me.Btn_ConsultarAtivos.TabIndex = 4
-        Me.Btn_ConsultarAtivos.UseVisualStyleBackColor = False
-        '
-        'Btn_ConsultarCarteira
-        '
-        Me.Btn_ConsultarCarteira.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
-        Me.Btn_ConsultarCarteira.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.Btn_ConsultarCarteira.FlatAppearance.BorderSize = 0
-        Me.Btn_ConsultarCarteira.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Btn_ConsultarCarteira.Image = CType(resources.GetObject("Btn_ConsultarCarteira.Image"), System.Drawing.Image)
-        Me.Btn_ConsultarCarteira.Location = New System.Drawing.Point(104, 6)
-        Me.Btn_ConsultarCarteira.Name = "Btn_ConsultarCarteira"
-        Me.Btn_ConsultarCarteira.Size = New System.Drawing.Size(75, 65)
-        Me.Btn_ConsultarCarteira.TabIndex = 5
-        Me.Btn_ConsultarCarteira.UseVisualStyleBackColor = False
+        Me.UsuarioToolStripMenuItem.Name = "UsuarioToolStripMenuItem"
+        Me.UsuarioToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
+        Me.UsuarioToolStripMenuItem.Text = "Usuario"
         '
         'Frm_Principal
         '
@@ -300,4 +307,5 @@ Partial Class Frm_Principal
     Friend WithEvents Btn_Cadastraativos As Button
     Friend WithEvents Btn_ConsultarCarteira As Button
     Friend WithEvents Btn_ConsultarAtivos As Button
+    Friend WithEvents UsuarioToolStripMenuItem As ToolStripMenuItem
 End Class

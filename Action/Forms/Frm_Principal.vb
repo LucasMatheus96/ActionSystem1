@@ -96,4 +96,9 @@
         Dim f As New Frm_ConsultarAtivo
         f.ShowDialog()
     End Sub
+
+    Private Sub UsuarioToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsuarioToolStripMenuItem.Click
+        Dim f As New Frm_UsuariosCadastrados
+        f.ShowDialog()
+    End Sub
 End Class
