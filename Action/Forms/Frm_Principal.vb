@@ -62,4 +62,38 @@
     Private Sub CadastroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CadastroToolStripMenuItem.Click
 
     End Sub
+
+    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Pnl_Top.Paint
+
+    End Sub
+
+    Private Sub Btn_CadastrarCarteira_Click(sender As Object, e As EventArgs) Handles Btn_CadastrarCarteira.Click
+        Dim f As New Frm_CadastroCarteira
+        f.ShowDialog()
+    End Sub
+
+    Private Sub Btn_ConsultarCarteira_Click(sender As Object, e As EventArgs) Handles Btn_ConsultarCarteira.Click
+        Dim f As New Frm_ConsultaCarteira
+        f.ShowDialog()
+    End Sub
+
+    Private Sub Btn_AdicionarInvestimento_Click(sender As Object, e As EventArgs) Handles Btn_AdicionarInvestimento.Click
+        Dim f As New Frm_ProdutoCarteira
+        f.ShowDialog()
+    End Sub
+
+    Private Sub Btn_GerenciarInvestimento_Click(sender As Object, e As EventArgs) Handles Btn_GerenciarInvestimento.Click
+        Dim f As New Frm_GerenciarProduto
+        f.ShowDialog()
+    End Sub
+
+    Private Sub Btn_Cadastraativos_Click(sender As Object, e As EventArgs) Handles Btn_Cadastraativos.Click
+        Dim f As New Frm_CadastrarAtivo
+        f.ShowDialog()
+    End Sub
+
+    Private Sub Btn_ConsultarAtivos_Click(sender As Object, e As EventArgs) Handles Btn_ConsultarAtivos.Click
+        Dim f As New Frm_ConsultarAtivo
+        f.ShowDialog()
+    End Sub
 End Class

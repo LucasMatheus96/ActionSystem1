@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Frm_Principal
     Inherits System.Windows.Forms.Form
 
     'Descartar substituições de formulário para limpar a lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Frm_Principal
     'OBSERVAÇÃO: o procedimento a seguir é exigido pelo Windows Form Designer
     'Pode ser modificado usando o Windows Form Designer.  
     'Não o modifique usando o editor de códigos.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_Principal))
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -37,10 +37,16 @@ Partial Class Frm_Principal
         Me.ConsultarAtivosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UtilitariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EfetuarNovoAcessoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.Pnl_Top = New System.Windows.Forms.Panel()
+        Me.Btn_CadastrarCarteira = New System.Windows.Forms.Button()
+        Me.Btn_AdicionarInvestimento = New System.Windows.Forms.Button()
+        Me.Btn_GerenciarInvestimento = New System.Windows.Forms.Button()
+        Me.Btn_Cadastraativos = New System.Windows.Forms.Button()
+        Me.Btn_ConsultarAtivos = New System.Windows.Forms.Button()
+        Me.Btn_ConsultarCarteira = New System.Windows.Forms.Button()
         Me.ToolStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Pnl_Top.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
@@ -152,15 +158,102 @@ Partial Class Frm_Principal
         Me.EfetuarNovoAcessoToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
         Me.EfetuarNovoAcessoToolStripMenuItem.Text = "Efetuar Novo acesso "
         '
-        'PictureBox1
+        'Pnl_Top
         '
-        Me.PictureBox1.BackColor = System.Drawing.SystemColors.HotTrack
-        Me.PictureBox1.Location = New System.Drawing.Point(0, 27)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(804, 93)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
-        Me.PictureBox1.TabIndex = 3
-        Me.PictureBox1.TabStop = False
+        Me.Pnl_Top.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Pnl_Top.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Pnl_Top.Controls.Add(Me.Btn_ConsultarCarteira)
+        Me.Pnl_Top.Controls.Add(Me.Btn_ConsultarAtivos)
+        Me.Pnl_Top.Controls.Add(Me.Btn_Cadastraativos)
+        Me.Pnl_Top.Controls.Add(Me.Btn_GerenciarInvestimento)
+        Me.Pnl_Top.Controls.Add(Me.Btn_AdicionarInvestimento)
+        Me.Pnl_Top.Controls.Add(Me.Btn_CadastrarCarteira)
+        Me.Pnl_Top.Location = New System.Drawing.Point(0, 24)
+        Me.Pnl_Top.Name = "Pnl_Top"
+        Me.Pnl_Top.Size = New System.Drawing.Size(1102, 75)
+        Me.Pnl_Top.TabIndex = 3
+        '
+        'Btn_CadastrarCarteira
+        '
+        Me.Btn_CadastrarCarteira.AccessibleDescription = ""
+        Me.Btn_CadastrarCarteira.AccessibleName = ""
+        Me.Btn_CadastrarCarteira.AccessibleRole = System.Windows.Forms.AccessibleRole.Cursor
+        Me.Btn_CadastrarCarteira.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_CadastrarCarteira.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_CadastrarCarteira.FlatAppearance.BorderSize = 0
+        Me.Btn_CadastrarCarteira.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_CadastrarCarteira.Image = CType(resources.GetObject("Btn_CadastrarCarteira.Image"), System.Drawing.Image)
+        Me.Btn_CadastrarCarteira.Location = New System.Drawing.Point(23, 3)
+        Me.Btn_CadastrarCarteira.Name = "Btn_CadastrarCarteira"
+        Me.Btn_CadastrarCarteira.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_CadastrarCarteira.TabIndex = 0
+        Me.Btn_CadastrarCarteira.UseVisualStyleBackColor = False
+        '
+        'Btn_AdicionarInvestimento
+        '
+        Me.Btn_AdicionarInvestimento.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_AdicionarInvestimento.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_AdicionarInvestimento.FlatAppearance.BorderSize = 0
+        Me.Btn_AdicionarInvestimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_AdicionarInvestimento.Image = CType(resources.GetObject("Btn_AdicionarInvestimento.Image"), System.Drawing.Image)
+        Me.Btn_AdicionarInvestimento.Location = New System.Drawing.Point(185, 6)
+        Me.Btn_AdicionarInvestimento.Name = "Btn_AdicionarInvestimento"
+        Me.Btn_AdicionarInvestimento.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_AdicionarInvestimento.TabIndex = 1
+        Me.Btn_AdicionarInvestimento.UseVisualStyleBackColor = False
+        '
+        'Btn_GerenciarInvestimento
+        '
+        Me.Btn_GerenciarInvestimento.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_GerenciarInvestimento.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_GerenciarInvestimento.FlatAppearance.BorderSize = 0
+        Me.Btn_GerenciarInvestimento.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_GerenciarInvestimento.Image = CType(resources.GetObject("Btn_GerenciarInvestimento.Image"), System.Drawing.Image)
+        Me.Btn_GerenciarInvestimento.Location = New System.Drawing.Point(266, 7)
+        Me.Btn_GerenciarInvestimento.Name = "Btn_GerenciarInvestimento"
+        Me.Btn_GerenciarInvestimento.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_GerenciarInvestimento.TabIndex = 2
+        Me.Btn_GerenciarInvestimento.UseVisualStyleBackColor = False
+        '
+        'Btn_Cadastraativos
+        '
+        Me.Btn_Cadastraativos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_Cadastraativos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_Cadastraativos.FlatAppearance.BorderSize = 0
+        Me.Btn_Cadastraativos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_Cadastraativos.Image = CType(resources.GetObject("Btn_Cadastraativos.Image"), System.Drawing.Image)
+        Me.Btn_Cadastraativos.Location = New System.Drawing.Point(347, 6)
+        Me.Btn_Cadastraativos.Name = "Btn_Cadastraativos"
+        Me.Btn_Cadastraativos.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_Cadastraativos.TabIndex = 3
+        Me.Btn_Cadastraativos.UseVisualStyleBackColor = False
+        '
+        'Btn_ConsultarAtivos
+        '
+        Me.Btn_ConsultarAtivos.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_ConsultarAtivos.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ConsultarAtivos.FlatAppearance.BorderSize = 0
+        Me.Btn_ConsultarAtivos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_ConsultarAtivos.Image = CType(resources.GetObject("Btn_ConsultarAtivos.Image"), System.Drawing.Image)
+        Me.Btn_ConsultarAtivos.Location = New System.Drawing.Point(428, 6)
+        Me.Btn_ConsultarAtivos.Name = "Btn_ConsultarAtivos"
+        Me.Btn_ConsultarAtivos.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_ConsultarAtivos.TabIndex = 4
+        Me.Btn_ConsultarAtivos.UseVisualStyleBackColor = False
+        '
+        'Btn_ConsultarCarteira
+        '
+        Me.Btn_ConsultarCarteira.BackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        Me.Btn_ConsultarCarteira.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Btn_ConsultarCarteira.FlatAppearance.BorderSize = 0
+        Me.Btn_ConsultarCarteira.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Btn_ConsultarCarteira.Image = CType(resources.GetObject("Btn_ConsultarCarteira.Image"), System.Drawing.Image)
+        Me.Btn_ConsultarCarteira.Location = New System.Drawing.Point(104, 6)
+        Me.Btn_ConsultarCarteira.Name = "Btn_ConsultarCarteira"
+        Me.Btn_ConsultarCarteira.Size = New System.Drawing.Size(75, 65)
+        Me.Btn_ConsultarCarteira.TabIndex = 5
+        Me.Btn_ConsultarCarteira.UseVisualStyleBackColor = False
         '
         'Frm_Principal
         '
@@ -168,7 +261,7 @@ Partial Class Frm_Principal
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ActiveCaption
         Me.ClientSize = New System.Drawing.Size(1102, 564)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.Pnl_Top)
         Me.Controls.Add(Me.ToolStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -181,7 +274,7 @@ Partial Class Frm_Principal
         Me.ToolStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Pnl_Top.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -200,5 +293,11 @@ Partial Class Frm_Principal
     Friend WithEvents InvestimentosToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AdicionarToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GerenciarToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents Pnl_Top As Panel
+    Friend WithEvents Btn_CadastrarCarteira As Button
+    Friend WithEvents Btn_GerenciarInvestimento As Button
+    Friend WithEvents Btn_AdicionarInvestimento As Button
+    Friend WithEvents Btn_Cadastraativos As Button
+    Friend WithEvents Btn_ConsultarCarteira As Button
+    Friend WithEvents Btn_ConsultarAtivos As Button
 End Class

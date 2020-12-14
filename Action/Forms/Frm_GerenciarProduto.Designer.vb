@@ -69,7 +69,7 @@ Partial Class Frm_GerenciarProduto
         Me.Btn_Buscar.Location = New System.Drawing.Point(15, 44)
         Me.Btn_Buscar.Name = "Btn_Buscar"
         Me.Btn_Buscar.Size = New System.Drawing.Size(843, 27)
-        Me.Btn_Buscar.TabIndex = 5
+        Me.Btn_Buscar.TabIndex = 2
         Me.Btn_Buscar.Text = "Buscar"
         Me.Btn_Buscar.UseVisualStyleBackColor = True
         '
@@ -80,7 +80,7 @@ Partial Class Frm_GerenciarProduto
         Me.Cmb_TipoAtivo.Location = New System.Drawing.Point(174, 17)
         Me.Cmb_TipoAtivo.Name = "Cmb_TipoAtivo"
         Me.Cmb_TipoAtivo.Size = New System.Drawing.Size(0, 21)
-        Me.Cmb_TipoAtivo.TabIndex = 5
+        Me.Cmb_TipoAtivo.TabIndex = 1
         '
         'Txt_Busca
         '
@@ -97,7 +97,7 @@ Partial Class Frm_GerenciarProduto
         Me.Lbl_a.Location = New System.Drawing.Point(299, 22)
         Me.Lbl_a.Name = "Lbl_a"
         Me.Lbl_a.Size = New System.Drawing.Size(13, 13)
-        Me.Lbl_a.TabIndex = 3
+        Me.Lbl_a.TabIndex = 5
         Me.Lbl_a.Text = "a"
         '
         'DateTimePicker2
@@ -109,7 +109,7 @@ Partial Class Frm_GerenciarProduto
         Me.DateTimePicker2.Location = New System.Drawing.Point(318, 19)
         Me.DateTimePicker2.Name = "DateTimePicker2"
         Me.DateTimePicker2.Size = New System.Drawing.Size(84, 20)
-        Me.DateTimePicker2.TabIndex = 2
+        Me.DateTimePicker2.TabIndex = 1
         '
         'DateTimePicker1
         '
@@ -118,7 +118,7 @@ Partial Class Frm_GerenciarProduto
         Me.DateTimePicker1.Location = New System.Drawing.Point(191, 19)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(97, 20)
-        Me.DateTimePicker1.TabIndex = 1
+        Me.DateTimePicker1.TabIndex = 4
         Me.DateTimePicker1.Value = New Date(2020, 12, 12, 0, 0, 0, 0)
         '
         'Cmb_Filtro
@@ -129,7 +129,7 @@ Partial Class Frm_GerenciarProduto
         Me.Cmb_Filtro.Location = New System.Drawing.Point(15, 19)
         Me.Cmb_Filtro.Name = "Cmb_Filtro"
         Me.Cmb_Filtro.Size = New System.Drawing.Size(148, 21)
-        Me.Cmb_Filtro.TabIndex = 0
+        Me.Cmb_Filtro.TabIndex = 1
         '
         'Grb_Produtos
         '
