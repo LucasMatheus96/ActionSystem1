@@ -1,7 +1,7 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Security.Cryptography
 Imports System.Security.Policy
-Imports Action.classes
+Imports Action.Classes
 Imports Action.Conexao
 
 Namespace DAO
@@ -24,7 +24,7 @@ Namespace DAO
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Usuario", Usuario.Usuario)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Senha", Cprt.CriptografarSenha(Usuario.Senha))
                 ConexaoBD.objCommand.Parameters.AddWithValue("@DataCadastro", Usuario.DataCadastro)
-                ConexaoBD.objCommand.Parameters.AddWithValue("@Permissao", Cprt.CriptografarSenha(Usuario.Permissao))
+                ConexaoBD.objCommand.Parameters.AddWithValue("@Permissao", (Usuario.Permissao))
                 ConexaoBD.objCommand.ExecuteNonQuery()
                 ConexaoBD.objConexao.Close()
             Catch ex As Exception
@@ -156,10 +156,6 @@ Namespace DAO
                 ConexaoBD.objCommand.CommandType = CommandType.StoredProcedure
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Usuario", vLogin)
                 ConexaoBD.objCommand.Parameters.AddWithValue("@Senha", Cprt.CriptografarSenha(vSenha))
-
-
-
-
                 Dim da As New SqlDataAdapter(ConexaoBD.objCommand)
                 da.Fill(ds)
                 dt = ds.Tables(0)
@@ -171,34 +167,6 @@ Namespace DAO
                 Throw New Exception(ex.Message)
             End Try
 
-            'Dim conexaoBD As New ConexaoBD
-            'Dim dr As SqlDataReader
-            'Dim vRetorno As Boolean
-            'conexaoBD.objCommand.CommandText = "Select * from tabUsuario where usuario = @vLogin and senha= @vSenha"
-            'conexaoBD.objCommand.Parameters.AddWithValue("@vLogin", vLogin)
-            'conexaoBD.objCommand.Parameters.AddWithValue("@vSenha", vSenha)
-            'hashTxtSenha = vSenha
-
-            'Try
-            '        
-            '        dr = conexaoBD.objCommand.ExecuteReader()
-            '    If dr.HasRows Then
-
-            '        vRetorno = True
-
-            '        If Hash.VerificarSenha(hashTxtSenha, vSenha) Then
-            '            vRetorno = True
-            '        Else
-            '            vRetorno = False
-            '        End If
-            '    End If
-            'Catch ex As SqlException
-
-            '        MsgBox(ex.Message)
-
-            '    End Try
-
-            'Return vRetorno
         End Function
 
     End Class

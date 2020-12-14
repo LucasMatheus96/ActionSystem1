@@ -24,6 +24,8 @@ Partial Class Frm_VenderAtivo
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Frm_VenderAtivo))
         Me.Grb_VendaAtivos = New System.Windows.Forms.GroupBox()
+        Me.Txt_PosicaoAtual = New System.Windows.Forms.TextBox()
+        Me.lbl_PosicaoAtual = New System.Windows.Forms.Label()
         Me.Txt_TotalVenda = New System.Windows.Forms.TextBox()
         Me.Lbl_TotalVenda = New System.Windows.Forms.Label()
         Me.Btn_Vender = New System.Windows.Forms.Button()
@@ -35,8 +37,6 @@ Partial Class Frm_VenderAtivo
         Me.lbl_quantidadeDisponivel = New System.Windows.Forms.Label()
         Me.Txt_quantidadeVenda = New System.Windows.Forms.TextBox()
         Me.Lbl_Quantidade = New System.Windows.Forms.Label()
-        Me.Txt_PosicaoAtual = New System.Windows.Forms.TextBox()
-        Me.lbl_PosicaoAtual = New System.Windows.Forms.Label()
         Me.Grb_VendaAtivos.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -61,6 +61,22 @@ Partial Class Frm_VenderAtivo
         Me.Grb_VendaAtivos.TabIndex = 0
         Me.Grb_VendaAtivos.TabStop = False
         Me.Grb_VendaAtivos.Text = "Vendendo ativos"
+        '
+        'Txt_PosicaoAtual
+        '
+        Me.Txt_PosicaoAtual.Location = New System.Drawing.Point(212, 47)
+        Me.Txt_PosicaoAtual.Name = "Txt_PosicaoAtual"
+        Me.Txt_PosicaoAtual.Size = New System.Drawing.Size(68, 20)
+        Me.Txt_PosicaoAtual.TabIndex = 0
+        '
+        'lbl_PosicaoAtual
+        '
+        Me.lbl_PosicaoAtual.AutoSize = True
+        Me.lbl_PosicaoAtual.Location = New System.Drawing.Point(209, 31)
+        Me.lbl_PosicaoAtual.Name = "lbl_PosicaoAtual"
+        Me.lbl_PosicaoAtual.Size = New System.Drawing.Size(71, 13)
+        Me.lbl_PosicaoAtual.TabIndex = 11
+        Me.lbl_PosicaoAtual.Text = "Posição atual"
         '
         'Txt_TotalVenda
         '
@@ -92,7 +108,7 @@ Partial Class Frm_VenderAtivo
         Me.Txt_PrecoVenda.Location = New System.Drawing.Point(297, 47)
         Me.Txt_PrecoVenda.Name = "Txt_PrecoVenda"
         Me.Txt_PrecoVenda.Size = New System.Drawing.Size(59, 20)
-        Me.Txt_PrecoVenda.TabIndex = 1
+        Me.Txt_PrecoVenda.TabIndex = 0
         '
         'Lbl_PreçoVenda
         '
@@ -150,22 +166,6 @@ Partial Class Frm_VenderAtivo
         Me.Lbl_Quantidade.Size = New System.Drawing.Size(62, 13)
         Me.Lbl_Quantidade.TabIndex = 0
         Me.Lbl_Quantidade.Text = "Quantidade"
-        '
-        'Txt_PosicaoAtual
-        '
-        Me.Txt_PosicaoAtual.Location = New System.Drawing.Point(212, 47)
-        Me.Txt_PosicaoAtual.Name = "Txt_PosicaoAtual"
-        Me.Txt_PosicaoAtual.Size = New System.Drawing.Size(68, 20)
-        Me.Txt_PosicaoAtual.TabIndex = 0
-        '
-        'lbl_PosicaoAtual
-        '
-        Me.lbl_PosicaoAtual.AutoSize = True
-        Me.lbl_PosicaoAtual.Location = New System.Drawing.Point(209, 31)
-        Me.lbl_PosicaoAtual.Name = "lbl_PosicaoAtual"
-        Me.lbl_PosicaoAtual.Size = New System.Drawing.Size(71, 13)
-        Me.lbl_PosicaoAtual.TabIndex = 11
-        Me.lbl_PosicaoAtual.Text = "Posição atual"
         '
         'Frm_VenderAtivo
         '

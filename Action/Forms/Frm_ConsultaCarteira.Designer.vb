@@ -198,6 +198,7 @@ Partial Class Frm_ConsultaCarteira
         Me.Controls.Add(Me.Lsw_VerCarteira)
         Me.Controls.Add(Me.Grb_ConsultaCarteira)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Frm_ConsultaCarteira"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Frm_ConsultaCarteira"

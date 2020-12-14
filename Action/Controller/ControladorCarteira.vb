@@ -27,7 +27,7 @@ Namespace Controller
 
                 Throw New Exception(ex.Message)
             End Try
-            Return MsgBox("Cadastro Efetuado com sucesso.")
+            Return MessageBox.Show("Cadastro Efetuado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Function
 
         Public Function AtualizarCarteira(carteira As Carteira) As String

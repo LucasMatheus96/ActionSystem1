@@ -1,4 +1,4 @@
-﻿Imports Action.classes
+﻿Imports Action.Classes
 Imports Action.Controller
 
 Public Class Frm_UsuariosCadastrados
@@ -27,13 +27,22 @@ Public Class Frm_UsuariosCadastrados
 
 
 
+    'FUNÇÃO PARA BUSCAR O INDICE DE ACORDO COM O ITEM SELECIONADO NO LIST
     Private Sub Lsw_Verusuarios_Click(sender As Object, e As EventArgs) Handles Lsw_Verusuarios.Click
-        If Lsw_Verusuarios.SelectedItems.Count > 0 Then
+        Try
+            If Lsw_Verusuarios.SelectedItems.Count > 0 Then
 
-            index = Lsw_Verusuarios.SelectedItems(0).Index
+                index = Lsw_Verusuarios.SelectedItems(0).Index
 
-        End If
+            End If
+        Catch ex As Exception
+
+            Throw ex
+        End Try
+
     End Sub
+
+    'FUNÇÃO PARA CARREGAR O LISTVIEW
 
     Private Sub CarregarListView()
         Try
@@ -60,21 +69,17 @@ Public Class Frm_UsuariosCadastrados
     Private Sub Btn_AlterarUsuario_Click(sender As Object, e As EventArgs) Handles Btn_AlterarUsuario.Click
 
         Try
+            'VERIFICA SE ALGUM ITEM FOI SELECIONADO NA LISTA
             If Lsw_Verusuarios.Items.Count > 0 Then
-
-
                 Dim AlterarCadastro As New Frm_TelaCadastro
                 AlterarCadastro.IdCliente = Integer.Parse(Lsw_Verusuarios.Items(index).Text)
                 AlterarCadastro.Txt_Nome.Text = Lsw_Verusuarios.Items(index).SubItems(1).Text
                 AlterarCadastro.Txt_Usuario.Text = Lsw_Verusuarios.Items(index).SubItems(2).Text
                 AlterarCadastro.CarregaCheckbox(Lsw_Verusuarios.Items(index).SubItems(4).Text)
-                'If AlterarCadastro.classe.ChecarCampos = False Then
-                '    AlterarCadastro.classe.ChecarCampos()
-                'End If
-                'AlterarCadastro.Txt_Senha.Text = Lsw_Verusuarios.Items(index).SubItems(3).Text
                 AlterarCadastro.ShowDialog()
                 Me.Close()
                 CarregarListView()
+
             End If
 
         Catch ex As Exception
@@ -87,6 +92,7 @@ Public Class Frm_UsuariosCadastrados
         Try
             Dim UsuarioExcluir As New Usuario
 
+            'VERIFICA SE ALGUM ITEM FOI SELECIONADO NA LISTA
             If Lsw_Verusuarios.SelectedItems.Count > 0 Then
                 controlUsuario.ExcluirUsuario(Integer.Parse(Lsw_Verusuarios.Items(index).Text))
                 MsgBox("Registro Excluido com Sucesso")

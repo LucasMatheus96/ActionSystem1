@@ -52,11 +52,13 @@ Partial Class Frm_ProdutoCarteira
         '
         'Grb_Adicionar
         '
+        Me.Grb_Adicionar.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Grb_Adicionar.Controls.Add(Me.Txt_descricao)
+        Me.Grb_Adicionar.Controls.Add(Me.Btn_Adicionar)
         Me.Grb_Adicionar.Controls.Add(Me.Lbl_InstituiçãoFinanceira)
         Me.Grb_Adicionar.Controls.Add(Me.Lbl_TotalAplicado)
         Me.Grb_Adicionar.Controls.Add(Me.Txt_TotalAplicado)
-        Me.Grb_Adicionar.Controls.Add(Me.Btn_Adicionar)
         Me.Grb_Adicionar.Controls.Add(Me.Lbl_Precomedio)
         Me.Grb_Adicionar.Controls.Add(Me.txt_preco)
         Me.Grb_Adicionar.Controls.Add(Me.Cmb_Ativo)
@@ -69,7 +71,7 @@ Partial Class Frm_ProdutoCarteira
         Me.Grb_Adicionar.Controls.Add(Me.Cmb_NomeCarteira)
         Me.Grb_Adicionar.Location = New System.Drawing.Point(12, 26)
         Me.Grb_Adicionar.Name = "Grb_Adicionar"
-        Me.Grb_Adicionar.Size = New System.Drawing.Size(533, 223)
+        Me.Grb_Adicionar.Size = New System.Drawing.Size(661, 235)
         Me.Grb_Adicionar.TabIndex = 0
         Me.Grb_Adicionar.TabStop = False
         Me.Grb_Adicionar.Text = "Adicionando ativo na carteira"
@@ -78,7 +80,7 @@ Partial Class Frm_ProdutoCarteira
         '
         Me.Txt_descricao.Location = New System.Drawing.Point(13, 32)
         Me.Txt_descricao.Name = "Txt_descricao"
-        Me.Txt_descricao.Size = New System.Drawing.Size(500, 20)
+        Me.Txt_descricao.Size = New System.Drawing.Size(628, 20)
         Me.Txt_descricao.TabIndex = 0
         '
         'Lbl_InstituiçãoFinanceira
@@ -93,7 +95,7 @@ Partial Class Frm_ProdutoCarteira
         'Lbl_TotalAplicado
         '
         Me.Lbl_TotalAplicado.AutoSize = True
-        Me.Lbl_TotalAplicado.Location = New System.Drawing.Point(364, 136)
+        Me.Lbl_TotalAplicado.Location = New System.Drawing.Point(20, 177)
         Me.Lbl_TotalAplicado.Name = "Lbl_TotalAplicado"
         Me.Lbl_TotalAplicado.Size = New System.Drawing.Size(31, 13)
         Me.Lbl_TotalAplicado.TabIndex = 12
@@ -101,16 +103,16 @@ Partial Class Frm_ProdutoCarteira
         '
         'Txt_TotalAplicado
         '
-        Me.Txt_TotalAplicado.Location = New System.Drawing.Point(367, 152)
+        Me.Txt_TotalAplicado.Location = New System.Drawing.Point(23, 193)
         Me.Txt_TotalAplicado.Name = "Txt_TotalAplicado"
         Me.Txt_TotalAplicado.Size = New System.Drawing.Size(92, 20)
         Me.Txt_TotalAplicado.TabIndex = 11
         '
         'Btn_Adicionar
         '
-        Me.Btn_Adicionar.Location = New System.Drawing.Point(15, 186)
+        Me.Btn_Adicionar.Location = New System.Drawing.Point(196, 115)
         Me.Btn_Adicionar.Name = "Btn_Adicionar"
-        Me.Btn_Adicionar.Size = New System.Drawing.Size(500, 23)
+        Me.Btn_Adicionar.Size = New System.Drawing.Size(445, 114)
         Me.Btn_Adicionar.TabIndex = 10
         Me.Btn_Adicionar.Text = "Adicionar"
         Me.Btn_Adicionar.UseVisualStyleBackColor = True
@@ -118,7 +120,7 @@ Partial Class Frm_ProdutoCarteira
         'Lbl_Precomedio
         '
         Me.Lbl_Precomedio.AutoSize = True
-        Me.Lbl_Precomedio.Location = New System.Drawing.Point(12, 138)
+        Me.Lbl_Precomedio.Location = New System.Drawing.Point(20, 99)
         Me.Lbl_Precomedio.Name = "Lbl_Precomedio"
         Me.Lbl_Precomedio.Size = New System.Drawing.Size(35, 13)
         Me.Lbl_Precomedio.TabIndex = 9
@@ -126,7 +128,7 @@ Partial Class Frm_ProdutoCarteira
         '
         'txt_preco
         '
-        Me.txt_preco.Location = New System.Drawing.Point(15, 154)
+        Me.txt_preco.Location = New System.Drawing.Point(23, 115)
         Me.txt_preco.Name = "txt_preco"
         Me.txt_preco.Size = New System.Drawing.Size(110, 20)
         Me.txt_preco.TabIndex = 8
@@ -135,15 +137,15 @@ Partial Class Frm_ProdutoCarteira
         '
         Me.Cmb_Ativo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_Ativo.FormattingEnabled = True
-        Me.Cmb_Ativo.Location = New System.Drawing.Point(366, 70)
+        Me.Cmb_Ativo.Location = New System.Drawing.Point(471, 70)
         Me.Cmb_Ativo.Name = "Cmb_Ativo"
-        Me.Cmb_Ativo.Size = New System.Drawing.Size(149, 21)
+        Me.Cmb_Ativo.Size = New System.Drawing.Size(167, 21)
         Me.Cmb_Ativo.TabIndex = 7
         '
         'Lbl_SiglaAtivo
         '
         Me.Lbl_SiglaAtivo.AutoSize = True
-        Me.Lbl_SiglaAtivo.Location = New System.Drawing.Point(363, 54)
+        Me.Lbl_SiglaAtivo.Location = New System.Drawing.Point(468, 54)
         Me.Lbl_SiglaAtivo.Name = "Lbl_SiglaAtivo"
         Me.Lbl_SiglaAtivo.Size = New System.Drawing.Size(31, 13)
         Me.Lbl_SiglaAtivo.TabIndex = 6
@@ -152,7 +154,7 @@ Partial Class Frm_ProdutoCarteira
         'Lbl_Quantidade
         '
         Me.Lbl_Quantidade.AutoSize = True
-        Me.Lbl_Quantidade.Location = New System.Drawing.Point(186, 138)
+        Me.Lbl_Quantidade.Location = New System.Drawing.Point(20, 138)
         Me.Lbl_Quantidade.Name = "Lbl_Quantidade"
         Me.Lbl_Quantidade.Size = New System.Drawing.Size(62, 13)
         Me.Lbl_Quantidade.TabIndex = 5
@@ -160,7 +162,7 @@ Partial Class Frm_ProdutoCarteira
         '
         'Txt_quantidade
         '
-        Me.Txt_quantidade.Location = New System.Drawing.Point(189, 154)
+        Me.Txt_quantidade.Location = New System.Drawing.Point(23, 154)
         Me.Txt_quantidade.Name = "Txt_quantidade"
         Me.Txt_quantidade.Size = New System.Drawing.Size(59, 20)
         Me.Txt_quantidade.TabIndex = 4
@@ -169,7 +171,7 @@ Partial Class Frm_ProdutoCarteira
         '
         Me.Cmb_TipoAtivo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_TipoAtivo.FormattingEnabled = True
-        Me.Cmb_TipoAtivo.Location = New System.Drawing.Point(189, 70)
+        Me.Cmb_TipoAtivo.Location = New System.Drawing.Point(256, 70)
         Me.Cmb_TipoAtivo.Name = "Cmb_TipoAtivo"
         Me.Cmb_TipoAtivo.Size = New System.Drawing.Size(149, 21)
         Me.Cmb_TipoAtivo.TabIndex = 3
@@ -177,7 +179,7 @@ Partial Class Frm_ProdutoCarteira
         'Lbl_TipoAtivo
         '
         Me.Lbl_TipoAtivo.AutoSize = True
-        Me.Lbl_TipoAtivo.Location = New System.Drawing.Point(186, 54)
+        Me.Lbl_TipoAtivo.Location = New System.Drawing.Point(253, 54)
         Me.Lbl_TipoAtivo.Name = "Lbl_TipoAtivo"
         Me.Lbl_TipoAtivo.Size = New System.Drawing.Size(55, 13)
         Me.Lbl_TipoAtivo.TabIndex = 2
@@ -186,7 +188,7 @@ Partial Class Frm_ProdutoCarteira
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 54)
+        Me.Label1.Location = New System.Drawing.Point(15, 54)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(43, 13)
         Me.Label1.TabIndex = 1
@@ -195,9 +197,9 @@ Partial Class Frm_ProdutoCarteira
         'Cmb_NomeCarteira
         '
         Me.Cmb_NomeCarteira.FormattingEnabled = True
-        Me.Cmb_NomeCarteira.Location = New System.Drawing.Point(15, 70)
+        Me.Cmb_NomeCarteira.Location = New System.Drawing.Point(18, 70)
         Me.Cmb_NomeCarteira.Name = "Cmb_NomeCarteira"
-        Me.Cmb_NomeCarteira.Size = New System.Drawing.Size(149, 21)
+        Me.Cmb_NomeCarteira.Size = New System.Drawing.Size(175, 21)
         Me.Cmb_NomeCarteira.TabIndex = 0
         '
         'DataGridView1
@@ -210,7 +212,7 @@ Partial Class Frm_ProdutoCarteira
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(507, 182)
+        Me.DataGridView1.Size = New System.Drawing.Size(635, 182)
         Me.DataGridView1.TabIndex = 1
         '
         'Grb_AtivosCadastrados
@@ -218,25 +220,25 @@ Partial Class Frm_ProdutoCarteira
         Me.Grb_AtivosCadastrados.Controls.Add(Me.DataGridView1)
         Me.Grb_AtivosCadastrados.Location = New System.Drawing.Point(12, 267)
         Me.Grb_AtivosCadastrados.Name = "Grb_AtivosCadastrados"
-        Me.Grb_AtivosCadastrados.Size = New System.Drawing.Size(533, 217)
+        Me.Grb_AtivosCadastrados.Size = New System.Drawing.Size(661, 217)
         Me.Grb_AtivosCadastrados.TabIndex = 2
         Me.Grb_AtivosCadastrados.TabStop = False
         Me.Grb_AtivosCadastrados.Text = "Ativos a serem adicionados"
         '
         'Btn_Confirmar
         '
-        Me.Btn_Confirmar.Location = New System.Drawing.Point(29, 490)
+        Me.Btn_Confirmar.Location = New System.Drawing.Point(62, 490)
         Me.Btn_Confirmar.Name = "Btn_Confirmar"
-        Me.Btn_Confirmar.Size = New System.Drawing.Size(244, 23)
+        Me.Btn_Confirmar.Size = New System.Drawing.Size(244, 28)
         Me.Btn_Confirmar.TabIndex = 3
         Me.Btn_Confirmar.Text = "Confirmar"
         Me.Btn_Confirmar.UseVisualStyleBackColor = True
         '
         'Btn_fechar
         '
-        Me.Btn_fechar.Location = New System.Drawing.Point(283, 490)
+        Me.Btn_fechar.Location = New System.Drawing.Point(409, 490)
         Me.Btn_fechar.Name = "Btn_fechar"
-        Me.Btn_fechar.Size = New System.Drawing.Size(244, 23)
+        Me.Btn_fechar.Size = New System.Drawing.Size(244, 28)
         Me.Btn_fechar.TabIndex = 4
         Me.Btn_fechar.Text = "Fechar"
         Me.Btn_fechar.UseVisualStyleBackColor = True
@@ -245,13 +247,15 @@ Partial Class Frm_ProdutoCarteira
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(557, 530)
+        Me.ClientSize = New System.Drawing.Size(685, 530)
         Me.Controls.Add(Me.Btn_fechar)
         Me.Controls.Add(Me.Btn_Confirmar)
         Me.Controls.Add(Me.Grb_AtivosCadastrados)
         Me.Controls.Add(Me.Grb_Adicionar)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Frm_ProdutoCarteira"
+        Me.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Frm_ProdutoCarteira"
         Me.Grb_Adicionar.ResumeLayout(False)

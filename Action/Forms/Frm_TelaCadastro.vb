@@ -251,54 +251,63 @@ Public Class Frm_TelaCadastro
     End Sub
 
     Private Sub LimparCampos()
+        Try
+            Txt_ConfirmarSenha.Text = String.Empty
+            Txt_Nome.Text = String.Empty
+            Txt_Senha.Text = String.Empty
+            Txt_Usuario.Text = String.Empty
+            CheckBox_Administrador.Checked = False
+            CheckBox_Alterar.Checked = False
+            Checkbox_CadastroAtivo.Checked = False
+            CheckBox_Excluir.Checked = False
+            CheckBox_Permissao.Checked = False
+            CheckBox_Naosei.Checked = False
+            CheckBox_Relatorio.Checked = False
+            Check_Consulta.Checked = False
+        Catch ex As Exception
+            Throw ex
+        End Try
 
-        Txt_ConfirmarSenha.Text = String.Empty
-        Txt_Nome.Text = String.Empty
-        Txt_Senha.Text = String.Empty
-        Txt_Usuario.Text = String.Empty
-        CheckBox_Administrador.Checked = False
-        CheckBox_Alterar.Checked = False
-        Checkbox_CadastroAtivo.Checked = False
-        CheckBox_Excluir.Checked = False
-        CheckBox_Permissao.Checked = False
-        CheckBox_Naosei.Checked = False
-        CheckBox_Relatorio.Checked = False
-        Check_Consulta.Checked = False
 
     End Sub
 
 
     Private Sub CheckBox()
 
+        Try
+            If CheckBox_Administrador.Checked Then
 
-        If CheckBox_Administrador.Checked Then
+                classe.Permissao = "999;"
+                Exit Sub
+            End If
+            If Checkbox_CadastroAtivo.Checked Then
+                classe.Permissao += "001;"
+            End If
+            If CheckBox_Alterar.Checked Then
+                classe.Permissao += "002;"
+            End If
+            If CheckBox_Excluir.Checked Then
+                classe.Permissao += "003;"
+            End If
+            If CheckBox_Naosei.Checked Then
+                classe.Permissao += "004;"
+            End If
+            If CheckBox_Relatorio.Checked Then
+                classe.Permissao += "005;"
 
-            classe.Permissao = "999;"
-            Exit Sub
-        End If
-        If Checkbox_CadastroAtivo.Checked Then
-            classe.Permissao += "001;"
-        End If
-        If CheckBox_Alterar.Checked Then
-            classe.Permissao += "002;"
-        End If
-        If CheckBox_Excluir.Checked Then
-            classe.Permissao += "003;"
-        End If
-        If CheckBox_Naosei.Checked Then
-            classe.Permissao += "004;"
-        End If
-        If CheckBox_Relatorio.Checked Then
-            classe.Permissao += "005;"
+            End If
+            If CheckBox_Permissao.Checked Then
+                classe.Permissao += "006;"
+            End If
+            If Check_Consulta.Checked Then
+                classe.Permissao += "007;"
 
-        End If
-        If CheckBox_Permissao.Checked Then
-            classe.Permissao += "006;"
-        End If
-        If Check_Consulta.Checked Then
-            classe.Permissao += "007;"
+            End If
+        Catch ex As Exception
+            Throw ex
 
-        End If
+        End Try
+
     End Sub
 
     Public Sub CarregaCheckbox(vString As String)

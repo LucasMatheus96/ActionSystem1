@@ -31,7 +31,7 @@ Public Class Frm_ProdutoCarteira
         CarregaComboCarteira()
         CarregaComboTipoAtivo()
         ConfiguracaoDataGridViwer()
-
+        Me.FormBorderStyle = FormBorderStyle.Fixed3D
 
 
 
@@ -84,104 +84,113 @@ Public Class Frm_ProdutoCarteira
 
     'CARREGA AS INFORMAÇÕES DO COMBOBOX REFERENTE AO TIPO DE ATIVO(AÇÃO, RENDA FIXA...)
     Private Sub CarregaComboTipoAtivo()
-        Cmb_Ativo.DataSource = Nothing
 
-        Dim tipoAtivo As New List(Of String)
-        tipoAtivo.Add("<Selecione>")
-        tipoAtivo.Add("Renda Fixa")
-        tipoAtivo.Add("Ações")
-        tipoAtivo.Add("Fundo imobiliario")
+        Try
+            Cmb_Ativo.DataSource = Nothing
 
-        For Each item In tipoAtivo
-            With Cmb_TipoAtivo
+            Dim tipoAtivo As New List(Of String)
+            tipoAtivo.Add("<Selecione>")
+            tipoAtivo.Add("Renda Fixa")
+            tipoAtivo.Add("Ações")
+            tipoAtivo.Add("Fundo imobiliario")
 
-                .DataSource = tipoAtivo
+            For Each item In tipoAtivo
+                With Cmb_TipoAtivo
 
-                .DisplayMember = tipoAtivo.Item(0)
+                    .DataSource = tipoAtivo
 
-            End With
+                    .DisplayMember = tipoAtivo.Item(0)
 
-        Next
+                End With
+
+            Next
 
 
+
+        Catch ex As Exception
+
+            Throw ex
+        End Try
 
 
     End Sub
 
     'CARREGA AS INFORMAÇÕES SOBRE O O QUE SERÁ INSERIDO DE ACORDO COM O TIPOATIVO
-
-
-
     Private Sub Cmb_TipoAtivo_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Cmb_TipoAtivo.SelectedIndexChanged
 
+        Try
+
+            If Cmb_TipoAtivo.SelectedIndex = 1 Then
+                Cmb_Ativo.DataSource = Nothing
 
 
+                dtRendaFixa = controladorRendaFixa.ConsultarRendaFixa
 
-        If Cmb_TipoAtivo.SelectedIndex = 1 Then
-            Cmb_Ativo.DataSource = Nothing
+                For i As Integer = 0 To dtRendaFixa.Rows.Count - 1
+                    'Cmb_Ativo.Items().Add(dtRendaFixa.Rows(i)("Sigla"))
+                    With Cmb_Ativo
 
+                        .DataSource = dtRendaFixa
 
-            dtRendaFixa = controladorRendaFixa.ConsultarRendaFixa
+                        .DisplayMember = "Sigla"
 
-            For i As Integer = 0 To dtRendaFixa.Rows.Count - 1
-                'Cmb_Ativo.Items().Add(dtRendaFixa.Rows(i)("Sigla"))
-                With Cmb_Ativo
-
-                    .DataSource = dtRendaFixa
-
-                    .DisplayMember = "Sigla"
-
-                    .ValueMember = "Id"
+                        .ValueMember = "Id"
 
 
-                    '.SelectedIndex = -1
-                End With
+                        '.SelectedIndex = -1
+                    End With
 
 
-            Next
-            Cmb_Ativo.Text = "<Selecione>"
+                Next
+                Cmb_Ativo.Text = "<Selecione>"
 
 
-        ElseIf Cmb_TipoAtivo.SelectedIndex = 2 Then
-            Cmb_Ativo.DataSource = Nothing
-            dtAcoes = controladorAcao.ConsultarAcao
+            ElseIf Cmb_TipoAtivo.SelectedIndex = 2 Then
+                Cmb_Ativo.DataSource = Nothing
+                dtAcoes = controladorAcao.ConsultarAcao
 
-            For i As Integer = 0 To dtAcoes.Rows.Count - 1
-                'Cmb_Ativo.Items().Add(dtAcoes.Rows(i)("SiglaAtivo"))
+                For i As Integer = 0 To dtAcoes.Rows.Count - 1
 
-                With Cmb_Ativo
+                    With Cmb_Ativo
 
-                    .DataSource = dtAcoes
+                        .DataSource = dtAcoes
 
-                    .DisplayMember = "SiglaAtivo"
+                        .DisplayMember = "SiglaAtivo"
 
-                    .ValueMember = "Id"
+                        .ValueMember = "Id"
 
-                End With
-            Next
-            Cmb_Ativo.Text = "<Selecione>"
+                    End With
+                Next
+                Cmb_Ativo.Text = "<Selecione>"
 
-        ElseIf Cmb_TipoAtivo.SelectedIndex = 3 Then
+            ElseIf Cmb_TipoAtivo.SelectedIndex = 3 Then
 
-            Cmb_Ativo.DataSource = Nothing
-            dtFundoImobiliario = controladorFundoImobiliario.ConsultarFundoImobiliario
+                Cmb_Ativo.DataSource = Nothing
+                dtFundoImobiliario = controladorFundoImobiliario.ConsultarFundoImobiliario
 
-            For i As Integer = 0 To dtFundoImobiliario.Rows.Count - 1
-                With Cmb_Ativo
+                For i As Integer = 0 To dtFundoImobiliario.Rows.Count - 1
+                    With Cmb_Ativo
 
-                    .DataSource = dtFundoImobiliario
+                        .DataSource = dtFundoImobiliario
 
-                    .DisplayMember = "SiglaAtivo"
+                        .DisplayMember = "SiglaAtivo"
 
-                    .ValueMember = "Id"
+                        .ValueMember = "Id"
 
-                End With
-            Next
-            Cmb_Ativo.Text = "<Selecione>"
-        Else
+                    End With
+                Next
+                Cmb_Ativo.Text = "<Selecione>"
+            Else
 
-            Cmb_Ativo.Text = "<Selecione>"
-        End If
+                Cmb_Ativo.Text = "<Selecione>"
+            End If
+        Catch ex As Exception
+
+            Throw ex
+
+        End Try
+
+
 
     End Sub
 
@@ -192,17 +201,14 @@ Public Class Frm_ProdutoCarteira
 
             If ValidaCampos() = True Then
 
-
-
-
                 PopularGrid()
 
                 If Btn_Adicionar.Text = "Alterar" Then
 
                     MessageBox.Show("Ativo alterado com sucesso.", "Messagem", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 Else
                     MessageBox.Show("Ativo adicionado com sucesso.", "Messagem", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
 
                 End If
             Else
@@ -218,7 +224,6 @@ Public Class Frm_ProdutoCarteira
     End Sub
 
     'FUNÇÃO PRIVADA PARA VALIDAR SE TODOS OS CAMPOS FORAM PREENCHIDOS
-
     Private Function ValidaCampos() As Boolean
 
         Try
@@ -238,22 +243,12 @@ Public Class Frm_ProdutoCarteira
     End Function
 
 
-
-
-
-    'Private Sub SetObjRendaFixa()
-
-    '    objRendaFixa.
-    'End Sub
-
-
     Private Sub TotalInvestido()
 
         Try
             Dim precoAtivo As Double = txt_preco.Text
             Dim quantidade As Double = Txt_quantidade.Text
             Dim totalInvestido As Double = 0
-
 
             totalInvestido = precoAtivo * quantidade
             Txt_TotalAplicado.Text = totalInvestido.ToString("C2")
@@ -264,12 +259,12 @@ Public Class Frm_ProdutoCarteira
 
     End Sub
 
-
+    'CONFIGURA E MONTA O GRID EXIBIDO AO USUARIO
     Private Sub ConfiguracaoDataGridViwer()
 
+        Try
+            With DataGridView1
 
-        With DataGridView1
-            Try
                 'CRIAÇÃO DAS COLUNAS DENTRO DO DATA GRID VIEW
                 .Columns.Add("Id", "IdCarteira")                                  '0
                 .Columns.Add("Instituicao", "Instituição Financeira")     '1 
@@ -281,7 +276,7 @@ Public Class Frm_ProdutoCarteira
                 .Columns.Add("Total", "Valor Total")                      '7
                 .Columns.Add("IdAtivo", "Codigo do ativo")
 
-                '
+                'DEFINE O TAMANHO DAS COLUNAS
                 .Columns(0).Width = 50
                 .Columns(1).Width = 200
                 .Columns(2).Width = 150
@@ -292,46 +287,58 @@ Public Class Frm_ProdutoCarteira
                 .Columns(7).Width = 100
                 .Columns(8).Width = 50
 
+                'COLUNAS QUE NÃO SERÃO EXIBIDAS AO USUARIO
+                .Columns(0).Visible = False
+                .Columns(3).Visible = False
+
+            End With
+
+        Catch ex As Exception
+
+            Throw ex
+
+        End Try
 
 
-
-            Catch ex As Exception
-                Throw ex
-            End Try
-
-        End With
 
 
 
     End Sub
 
+    'ADICIONA AS INFORMAÇÕES AO GRID
     Private Sub PopularGrid()
+        Try
 
-        'Valida se o grid possui linhas 
-        If DataGridView1.SelectedRows.Count > 0 Then
-
-
-            ' traz informação do indice da linha selecionada
-            indice = DataGridView1.SelectedRows(0).Index
-
-            'Aualiza as informações da linha do grid após alterações
-            DataGridView1.Rows(indice).Cells(0).Value = Cmb_NomeCarteira.SelectedValue
-            DataGridView1.Rows(indice).Cells(1).Value = Txt_descricao.Text
-            DataGridView1.Rows(indice).Cells(2).Value = Cmb_NomeCarteira.SelectedItem("NomeCarteira")
-            DataGridView1.Rows(indice).Cells(3).Value = Cmb_TipoAtivo.SelectedIndex
-            DataGridView1.Rows(indice).Cells(4).Value = Cmb_Ativo.Text
-            DataGridView1.Rows(indice).Cells(5).Value = Double.Parse(txt_preco.Text).ToString("C2")
-            DataGridView1.Rows(indice).Cells(6).Value = Txt_quantidade.Text
-            DataGridView1.Rows(indice).Cells(7).Value = Double.Parse(Txt_TotalAplicado.Text)
-            DataGridView1.Rows(indice).Cells(8).Value = Cmb_Ativo.SelectedValue
+            'Valida se o grid possui linhas 
+            If DataGridView1.SelectedRows.Count > 0 Then
 
 
-        Else
-            'Insere os dados no grid
-            DataGridView1.Rows.Add(Cmb_NomeCarteira.SelectedValue, Txt_descricao.Text, Cmb_NomeCarteira.SelectedItem("NomeCarteira"), Cmb_TipoAtivo.SelectedIndex,
-                                   Cmb_Ativo.Text, txt_preco.Text, Txt_quantidade.Text, Txt_TotalAplicado.Text, Cmb_Ativo.SelectedValue)
-            DataGridView1.ClearSelection()
-        End If
+                ' traz informação do indice da linha selecionada
+                indice = DataGridView1.SelectedRows(0).Index
+
+                'Aualiza as informações da linha do grid após alterações
+                DataGridView1.Rows(indice).Cells(0).Value = Cmb_NomeCarteira.SelectedValue
+                DataGridView1.Rows(indice).Cells(1).Value = Txt_descricao.Text
+                DataGridView1.Rows(indice).Cells(2).Value = Cmb_NomeCarteira.SelectedItem("NomeCarteira")
+                DataGridView1.Rows(indice).Cells(3).Value = Cmb_TipoAtivo.SelectedIndex
+                DataGridView1.Rows(indice).Cells(4).Value = Cmb_Ativo.Text
+                DataGridView1.Rows(indice).Cells(5).Value = Double.Parse(txt_preco.Text).ToString("C2")
+                DataGridView1.Rows(indice).Cells(6).Value = Txt_quantidade.Text
+                DataGridView1.Rows(indice).Cells(7).Value = Double.Parse(Txt_TotalAplicado.Text)
+                DataGridView1.Rows(indice).Cells(8).Value = Cmb_Ativo.SelectedValue
+
+
+            Else
+                'Insere os dados no grid
+                DataGridView1.Rows.Add(Cmb_NomeCarteira.SelectedValue, Txt_descricao.Text, Cmb_NomeCarteira.SelectedItem("NomeCarteira"), Cmb_TipoAtivo.SelectedIndex,
+                                       Cmb_Ativo.Text, txt_preco.Text, Txt_quantidade.Text, Txt_TotalAplicado.Text, Cmb_Ativo.SelectedValue)
+                DataGridView1.ClearSelection()
+            End If
+        Catch ex As Exception
+
+            Throw ex
+        End Try
+
 
 
 
@@ -345,6 +352,7 @@ Public Class Frm_ProdutoCarteira
 
             dtInvestimento = controladorInvestimentos.ConsultaInvestimentos(ObjAtributos.AtbId)
 
+            'VALIDAÇÃO, CASO NÃO EXISTA NENHUMA LINHA CADASTRADA SERÁ INSERIDA UMA NOVA
             If dtInvestimento.Rows.Count < 1 Then
                 For i As Integer = 0 To DataGridView1.Rows.Count - 1
                     objInvestimento.NomeAtivo = DataGridView1.Rows(i).Cells(1).Value
@@ -359,7 +367,7 @@ Public Class Frm_ProdutoCarteira
                     controladorInvestimentos.InsereInvestimento(objInvestimento)
                 Next
 
-
+                'VALIDAÇÃO, CASO JÁ EXISTA LINHAS NO DT, VAI VALIDAR SE JÁ EXISTE O ATIVO INFORMADO COM ISSO NÃO SERÁ ADICIONADO UMA NOVA LINHA E SIM ATUALIZARÁ O REGISTRO JÁ INSERIDO       
             ElseIf dtInvestimento.Rows.Count >= 1 Then
                 For j As Integer = 0 To dtInvestimento.Rows.Count - 1
                     If dtInvestimento.Rows(j)("SiglaAtivo") = Cmb_Ativo.Text Then
@@ -391,6 +399,7 @@ Public Class Frm_ProdutoCarteira
 
                 Next
 
+                'CASO JÁ POSSUA INFORMAÇÕES NO DATATBLE MMAS NÃO É UM ATIVO CADASTRADO ANTERIOMENTE
                 If DataGridView1.Rows.Count >= 1 Then
 
                     For i As Integer = 0 To DataGridView1.Rows.Count - 1
@@ -424,21 +433,29 @@ Public Class Frm_ProdutoCarteira
 
     End Sub
 
+    'EVENTO DE FINALIZAR FORM COM VALIDAÇÕES RREFERENTE AO GRID
     Private Sub Frm_ProdutoCarteira_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Try
+            If DataGridView1.Rows.Count >= 1 Then
+                DialogResult = MessageBox.Show("Deseja realmente sair? os itens informados não serão salvos", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
 
-        If DataGridView1.Rows.Count >= 1 Then
-            DialogResult = MessageBox.Show("Deseja realmente sair? os itens informados não serão salvos", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
-
-            If DialogResult = DialogResult.Yes Then
-                Me.Dispose()
-                Me.Close()
-            Else DialogResult = DialogResult.No
-                e.Cancel = True
+                If DialogResult = DialogResult.Yes Then
+                    Me.Dispose()
+                    Me.Close()
+                Else DialogResult = DialogResult.No
+                    e.Cancel = True
+                End If
             End If
-        End If
+        Catch ex As Exception
+
+            Throw ex
+        End Try
+
+
 
     End Sub
 
+    'CASO AS INFORMAÇÕES TENHAM SIDO CADASTRADAS NO GRID PRECISAREM SER ALTERADAS, BASTA DAR DOIS CLIQUES EM CIMA E ALTERAR
     Private Sub DataGridView1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles DataGridView1.MouseDoubleClick
         Try
             If DataGridView1.SelectedRows.Count > 0 Then
@@ -457,14 +474,13 @@ Public Class Frm_ProdutoCarteira
 
                 Cmb_NomeCarteira.SelectedValue = DataGridView1.Rows(indice).Cells(0).Value
 
-                ''objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
-                'ControladorInvestimento.InsereInvestimento(objInvestimento)
             End If
         Catch ex As Exception
             Throw ex
         End Try
     End Sub
 
+    'EVENTOS SOBRE OS TEXTS BOX
     Private Sub Txt_quantidade_TextChanged(sender As Object, e As EventArgs) Handles Txt_quantidade.TextChanged
         Try
 
@@ -510,4 +526,6 @@ Public Class Frm_ProdutoCarteira
         End Try
 
     End Sub
+
+
 End Class

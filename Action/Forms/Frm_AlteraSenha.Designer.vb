@@ -57,6 +57,7 @@ Partial Class Frm_AlteraSenha
         Me.Controls.Add(Me.Lbl_EmConstrucao)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Frm_AlteraSenha"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Frm_AlteraSenha"
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

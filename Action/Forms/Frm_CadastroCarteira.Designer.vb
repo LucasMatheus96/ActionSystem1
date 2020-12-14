@@ -85,6 +85,7 @@ Partial Class Frm_CadastroCarteira
         Me.ClientSize = New System.Drawing.Size(320, 181)
         Me.Controls.Add(Me.Grp_CadastroCarteira)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Frm_CadastroCarteira"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Frm_CadastroCarteira"

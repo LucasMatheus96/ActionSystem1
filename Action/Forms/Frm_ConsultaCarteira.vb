@@ -14,10 +14,13 @@ Public Class Frm_ConsultaCarteira
 
         ' Adicione qualquer inicialização após a chamada InitializeComponent().
         Me.Text = "Consulta Carteira"
+        Me.FormBorderStyle = FormBorderStyle.Fixed3D
+        Dtp_FiltroInicio.Value = Date.Today
         txt_busca1.Visible = False
         txt_busca2.Visible = False
         CarregarListViewer()
         PreencheComboBox()
+
 
     End Sub
 
@@ -58,6 +61,7 @@ Public Class Frm_ConsultaCarteira
                 AlterarCarteira.IdCarteira = Integer.Parse(Lsw_VerCarteira.Items(Index).Text)
                 AlterarCarteira.Txt_NomeCarteira.Text = Lsw_VerCarteira.Items(Index).SubItems(1).Text
                 AlterarCarteira.ShowDialog()
+                Lsw_VerCarteira.Items.Clear()
                 CarregarListViewer()
             End If
 
@@ -91,6 +95,7 @@ Public Class Frm_ConsultaCarteira
             If Lsw_VerCarteira.SelectedItems.Count > 0 Then
                 objCarteira.Id = (Integer.Parse(Lsw_VerCarteira.SelectedItems(0).Text))
                 controlCarteira.ExcluirCarteira(objCarteira.Id)
+                Lsw_VerCarteira.Items.Clear()
                 CarregarListViewer()
             End If
         Catch ex As Exception
@@ -103,30 +108,35 @@ Public Class Frm_ConsultaCarteira
     'CONFIGURAÇÃO DOS CAMPOS QUE IRÃO SER MOSTRADO DE ACORDO COM A OPÇÃO SELECIONADA NO COMBOBOX
     Private Sub Cmb_Filtro_SelectedValueChanged(sender As Object, e As EventArgs) Handles Cmb_Filtro.SelectedValueChanged
 
-        If Cmb_Filtro.SelectedIndex = 0 Then
-            txt_busca1.Visible = False
-            txt_busca2.Visible = False
-            Dtp_FiltroInicio.Visible = False
-            Dtp_FiltroFinal.Visible = False
-            Lbl_a.Text = ""
-        ElseIf Cmb_Filtro.SelectedIndex = 1 Then
+        Try
+            If Cmb_Filtro.SelectedIndex = 0 Then
+                txt_busca1.Visible = False
+                txt_busca2.Visible = False
+                Dtp_FiltroInicio.Visible = False
+                Dtp_FiltroFinal.Visible = False
+                Lbl_a.Text = ""
+            ElseIf Cmb_Filtro.SelectedIndex = 1 Then
 
-            txt_busca1.Visible = False
-            txt_busca2.Visible = False
-            Dtp_FiltroInicio.Visible = True
-            Dtp_FiltroFinal.Visible = True
-            Dtp_FiltroInicio.Width = 100
-            Dtp_FiltroInicio.Width = 100
-            Lbl_a.Text = "a"
-        Else
-            txt_busca1.Visible = True
-            txt_busca1.Width = 300
-            txt_busca2.Visible = False
-            Dtp_FiltroInicio.Visible = False
-            Dtp_FiltroFinal.Visible = False
-            Lbl_a.Text = ""
+                txt_busca1.Visible = False
+                txt_busca2.Visible = False
+                Dtp_FiltroInicio.Visible = True
+                Dtp_FiltroFinal.Visible = True
+                Dtp_FiltroInicio.Width = 100
+                Dtp_FiltroInicio.Width = 100
+                Lbl_a.Text = "a"
+            Else
+                txt_busca1.Visible = True
+                txt_busca1.Width = 300
+                txt_busca2.Visible = False
+                Dtp_FiltroInicio.Visible = False
+                Dtp_FiltroFinal.Visible = False
+                Lbl_a.Text = ""
 
-        End If
+            End If
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Sub
 
 
@@ -141,7 +151,7 @@ Public Class Frm_ConsultaCarteira
 
         'PECORRER O NOVO DT E ADICIONA PARA SER EXIBIDO
         For Each linha As DataRow In dt.Rows
-            If objUsuarioLogado.Usuario = linha(11) Then
+            If ObjAtributos.AtbId = linha("iOperador") Then
                 Dim lista As New ListViewItem()
                 lista.Text = linha("Id").ToString()
                 lista.SubItems.Add(linha("NomeCarteira").ToString())
@@ -183,6 +193,11 @@ Public Class Frm_ConsultaCarteira
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
+        Try
+
+        Catch ex As Exception
+
+        End Try
         If Cmb_Filtro.SelectedIndex = 0 Then
             MessageBox.Show("Selecione um tipo de filtro")
             Cmb_Filtro.Focus()
@@ -194,7 +209,7 @@ Public Class Frm_ConsultaCarteira
             dt = controlCarteira.PesquisarCarteiraData(Dtp_FiltroInicio.Value, Dtp_FiltroFinal.Value)
 
             For Each linha As DataRow In dt.Rows
-                If objUsuarioLogado.Usuario = linha(11) Then
+                If ObjAtributos.AtbId = linha("iOperador") Then
                     Dim lista As New ListViewItem
                     lista.Text = linha("ID").ToString
                     lista.SubItems.Add(linha("NomeCarteira").ToString())
@@ -204,46 +219,28 @@ Public Class Frm_ConsultaCarteira
                     Lsw_VerCarteira.Items.Add(lista)
                 End If
             Next
-        End If
-        'BUSCA POR NOME DA CARTEIRA
+            'BUSCA POR NOME DA CARTEIRA
+            If Cmb_Filtro.SelectedIndex = 2 Then
+                Lsw_VerCarteira.Items.Clear()
+                dt = controlCarteira.PesquisarCarteira(txt_busca1.Text)
+                If String.IsNullOrEmpty(txt_busca1.Text) Then
+                    MessageBox.Show("Digite o nome da carteira")
+                Else
+                    For Each linha As DataRow In dt.Rows
+                        If ObjAtributos.AtbId = linha("iOperador") Then
+                            Dim lista As New ListViewItem
+                            lista.Text = linha("ID").ToString
+                            lista.SubItems.Add(linha("NomeCarteira").ToString())
+                            lista.SubItems.Add(linha("DataTransacao").ToString())
+                            lista.SubItems.Add(linha("Usuario").ToString())
 
-
-
-        If Cmb_Filtro.SelectedIndex = 2 Then
-            Lsw_VerCarteira.Items.Clear()
-            dt = controlCarteira.PesquisarCarteira(txt_busca1.Text)
-            If String.IsNullOrEmpty(txt_busca1.Text) Then
-                MessageBox.Show("Digite o nome da carteira")
-            Else
-                For Each linha As DataRow In dt.Rows
-                    If objUsuarioLogado.Usuario = linha("Usuario") Then
-                        Dim lista As New ListViewItem
-                        lista.Text = linha("ID").ToString
-                        lista.SubItems.Add(linha("NomeCarteira").ToString())
-                        lista.SubItems.Add(linha("DataTransacao").ToString())
-                        lista.SubItems.Add(linha("Usuario").ToString())
-
-                        Lsw_VerCarteira.Items.Add(lista)
-                    End If
-                Next
-                'Lsw_VerCarteira.Items.Clear()
-                'Dim criterioPesquisa = From aux In dt Where aux.Item("NomeCarteira") _
-                '                                      = Val(txt_busca1.Text.ToString)
-                '                       Select aux
-                'For Each linha As DataRow In criterioPesquisa
-
-                '    Dim lista As New ListViewItem()
-                '    lista.Text = linha("Id").ToString()
-                '    lista.SubItems.Add(linha("NomeCarteira").ToString())
-                '    lista.SubItems.Add(linha("DataTransacao").ToString())
-                '    lista.SubItems.Add(linha("iOperador").ToString())
-
-
-                '    Lsw_VerCarteira.Items.Add(lista)
-                'Next
-
+                            Lsw_VerCarteira.Items.Add(lista)
+                        End If
+                    Next
+                End If
             End If
         End If
+
 
     End Sub
 

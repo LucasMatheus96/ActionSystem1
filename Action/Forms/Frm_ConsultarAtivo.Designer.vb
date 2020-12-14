@@ -39,7 +39,6 @@ Partial Class Frm_ConsultarAtivo
         CType(Me.DataGridView_Acoes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView_FundoImobiliario, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Grb_RendaFixa.SuspendLayout()
-        Me.Grb_Acoes.SuspendLayout()
         Me.Grb_FundoImobiliarios.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -48,14 +47,14 @@ Partial Class Frm_ConsultarAtivo
         Me.Grb_Filtros.Controls.Add(Me.Btn_Consultar)
         Me.Grb_Filtros.Location = New System.Drawing.Point(12, 8)
         Me.Grb_Filtros.Name = "Grb_Filtros"
-        Me.Grb_Filtros.Size = New System.Drawing.Size(495, 70)
+        Me.Grb_Filtros.Size = New System.Drawing.Size(644, 70)
         Me.Grb_Filtros.TabIndex = 5
         Me.Grb_Filtros.TabStop = False
         Me.Grb_Filtros.Text = "Filtros"
         '
         'Btn_Consultar
         '
-        Me.Btn_Consultar.Location = New System.Drawing.Point(343, 22)
+        Me.Btn_Consultar.Location = New System.Drawing.Point(479, 19)
         Me.Btn_Consultar.Name = "Btn_Consultar"
         Me.Btn_Consultar.Size = New System.Drawing.Size(146, 35)
         Me.Btn_Consultar.TabIndex = 10
@@ -71,33 +70,33 @@ Partial Class Frm_ConsultarAtivo
         Me.Lsw_ListaDeAtivos.HideSelection = False
         Me.Lsw_ListaDeAtivos.Location = New System.Drawing.Point(6, 19)
         Me.Lsw_ListaDeAtivos.Name = "Lsw_ListaDeAtivos"
-        Me.Lsw_ListaDeAtivos.Size = New System.Drawing.Size(483, 96)
+        Me.Lsw_ListaDeAtivos.Size = New System.Drawing.Size(632, 96)
         Me.Lsw_ListaDeAtivos.TabIndex = 6
         Me.Lsw_ListaDeAtivos.UseCompatibleStateImageBehavior = False
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(383, 482)
+        Me.Button3.Location = New System.Drawing.Point(477, 516)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(122, 54)
+        Me.Button3.Size = New System.Drawing.Size(179, 54)
         Me.Button3.TabIndex = 9
         Me.Button3.Text = "Cancelar"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Btn_Alterar
         '
-        Me.Btn_Alterar.Location = New System.Drawing.Point(12, 483)
+        Me.Btn_Alterar.Location = New System.Drawing.Point(12, 516)
         Me.Btn_Alterar.Name = "Btn_Alterar"
-        Me.Btn_Alterar.Size = New System.Drawing.Size(146, 54)
+        Me.Btn_Alterar.Size = New System.Drawing.Size(176, 54)
         Me.Btn_Alterar.TabIndex = 7
         Me.Btn_Alterar.Text = "Alterar"
         Me.Btn_Alterar.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(207, 483)
+        Me.Button2.Location = New System.Drawing.Point(250, 516)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(140, 54)
+        Me.Button2.Size = New System.Drawing.Size(172, 54)
         Me.Button2.TabIndex = 8
         Me.Button2.Text = "Excluir"
         Me.Button2.UseVisualStyleBackColor = True
@@ -106,12 +105,12 @@ Partial Class Frm_ConsultarAtivo
         '
         Me.DataGridView_Acoes.AllowUserToAddRows = False
         Me.DataGridView_Acoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView_Acoes.Location = New System.Drawing.Point(6, 19)
+        Me.DataGridView_Acoes.Location = New System.Drawing.Point(18, 235)
         Me.DataGridView_Acoes.MultiSelect = False
         Me.DataGridView_Acoes.Name = "DataGridView_Acoes"
         Me.DataGridView_Acoes.ReadOnly = True
         Me.DataGridView_Acoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView_Acoes.Size = New System.Drawing.Size(483, 101)
+        Me.DataGridView_Acoes.Size = New System.Drawing.Size(632, 101)
         Me.DataGridView_Acoes.TabIndex = 10
         '
         'DataGridView_FundoImobiliario
@@ -120,7 +119,7 @@ Partial Class Frm_ConsultarAtivo
         Me.DataGridView_FundoImobiliario.Location = New System.Drawing.Point(6, 16)
         Me.DataGridView_FundoImobiliario.Name = "DataGridView_FundoImobiliario"
         Me.DataGridView_FundoImobiliario.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView_FundoImobiliario.Size = New System.Drawing.Size(483, 91)
+        Me.DataGridView_FundoImobiliario.Size = New System.Drawing.Size(632, 120)
         Me.DataGridView_FundoImobiliario.TabIndex = 11
         '
         'Grb_RendaFixa
@@ -130,17 +129,16 @@ Partial Class Frm_ConsultarAtivo
         Me.Grb_RendaFixa.Controls.Add(Me.Lsw_ListaDeAtivos)
         Me.Grb_RendaFixa.Location = New System.Drawing.Point(12, 85)
         Me.Grb_RendaFixa.Name = "Grb_RendaFixa"
-        Me.Grb_RendaFixa.Size = New System.Drawing.Size(495, 121)
+        Me.Grb_RendaFixa.Size = New System.Drawing.Size(644, 121)
         Me.Grb_RendaFixa.TabIndex = 12
         Me.Grb_RendaFixa.TabStop = False
         Me.Grb_RendaFixa.Text = "Titulos de rendas fixas:"
         '
         'Grb_Acoes
         '
-        Me.Grb_Acoes.Controls.Add(Me.DataGridView_Acoes)
         Me.Grb_Acoes.Location = New System.Drawing.Point(12, 216)
         Me.Grb_Acoes.Name = "Grb_Acoes"
-        Me.Grb_Acoes.Size = New System.Drawing.Size(495, 135)
+        Me.Grb_Acoes.Size = New System.Drawing.Size(644, 135)
         Me.Grb_Acoes.TabIndex = 13
         Me.Grb_Acoes.TabStop = False
         Me.Grb_Acoes.Text = "Ações:"
@@ -150,7 +148,7 @@ Partial Class Frm_ConsultarAtivo
         Me.Grb_FundoImobiliarios.Controls.Add(Me.DataGridView_FundoImobiliario)
         Me.Grb_FundoImobiliarios.Location = New System.Drawing.Point(12, 357)
         Me.Grb_FundoImobiliarios.Name = "Grb_FundoImobiliarios"
-        Me.Grb_FundoImobiliarios.Size = New System.Drawing.Size(495, 121)
+        Me.Grb_FundoImobiliarios.Size = New System.Drawing.Size(644, 142)
         Me.Grb_FundoImobiliarios.TabIndex = 14
         Me.Grb_FundoImobiliarios.TabStop = False
         Me.Grb_FundoImobiliarios.Text = "Fundo Imobiliarios"
@@ -159,7 +157,8 @@ Partial Class Frm_ConsultarAtivo
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(530, 549)
+        Me.ClientSize = New System.Drawing.Size(679, 590)
+        Me.Controls.Add(Me.DataGridView_Acoes)
         Me.Controls.Add(Me.Grb_FundoImobiliarios)
         Me.Controls.Add(Me.Grb_Acoes)
         Me.Controls.Add(Me.Grb_RendaFixa)
@@ -168,6 +167,7 @@ Partial Class Frm_ConsultarAtivo
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Grb_Filtros)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Frm_ConsultarAtivo"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Frm_ConsultarAtivo"
@@ -175,7 +175,6 @@ Partial Class Frm_ConsultarAtivo
         CType(Me.DataGridView_Acoes, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView_FundoImobiliario, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Grb_RendaFixa.ResumeLayout(False)
-        Me.Grb_Acoes.ResumeLayout(False)
         Me.Grb_FundoImobiliarios.ResumeLayout(False)
         Me.ResumeLayout(False)
 

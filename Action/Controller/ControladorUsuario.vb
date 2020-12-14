@@ -82,26 +82,26 @@ Namespace Controller
             Dim vRetorno As Boolean
 
 
-            If vlogin = "" And vSenha = "" And vUsuario = "" And vConfirmaSenha = "" Then
-                MsgBox("Preencha todos os campos para se logar")
+            If String.IsNullOrEmpty(vlogin) And String.IsNullOrEmpty(vSenha) And String.IsNullOrEmpty(vUsuario) And String.IsNullOrEmpty(vConfirmaSenha) Then
+                MessageBox.Show("Preencha todos os campos para se logar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 vRetorno = False
 
 
-            ElseIf vlogin = "" And vSenha = "" Then
-                MsgBox("Preencha todos os campos para se logar")
+            ElseIf String.IsNullOrEmpty(vlogin) And String.IsNullOrEmpty(vSenha) Then
+                MessageBox.Show("Preencha todos os campos para se logar.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 vRetorno = False
 
-            ElseIf vSenha = "" Then
+            ElseIf String.IsNullOrEmpty(vSenha) Then
 
-                MsgBox("Preencha o campo senha")
+                MessageBox.Show("Preencha o campo senha.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 vRetorno = False
 
 
-            ElseIf vlogin = "" Then
+            ElseIf String.IsNullOrEmpty(vlogin) Then
 
+                MessageBox.Show("Preencha  as informações o campo login.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-                MsgBox("Preencha as informações do campo login")
                 vRetorno = False
 
             Else

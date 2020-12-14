@@ -56,36 +56,36 @@ Partial Class Frm_CadastraRendaFixa
         Me.Grb_RendaFixa.Controls.Add(Me.lbl_TipoRendaFixa)
         Me.Grb_RendaFixa.Controls.Add(Me.txt_titulo)
         Me.Grb_RendaFixa.Controls.Add(Me.Lbl_NomeTitulo)
-        Me.Grb_RendaFixa.Location = New System.Drawing.Point(21, 36)
+        Me.Grb_RendaFixa.Location = New System.Drawing.Point(25, 24)
         Me.Grb_RendaFixa.Name = "Grb_RendaFixa"
         Me.Grb_RendaFixa.Size = New System.Drawing.Size(349, 335)
-        Me.Grb_RendaFixa.TabIndex = 1
+        Me.Grb_RendaFixa.TabIndex = 0
         Me.Grb_RendaFixa.TabStop = False
         Me.Grb_RendaFixa.Text = "Cadastrando o ativo"
         '
         'Btn_Cancelar
         '
-        Me.Btn_Cancelar.Location = New System.Drawing.Point(207, 261)
+        Me.Btn_Cancelar.Location = New System.Drawing.Point(170, 261)
         Me.Btn_Cancelar.Name = "Btn_Cancelar"
-        Me.Btn_Cancelar.Size = New System.Drawing.Size(91, 23)
+        Me.Btn_Cancelar.Size = New System.Drawing.Size(126, 33)
         Me.Btn_Cancelar.TabIndex = 8
         Me.Btn_Cancelar.Text = "Cancelar"
         Me.Btn_Cancelar.UseVisualStyleBackColor = True
         '
         'Btn_Limpar
         '
-        Me.Btn_Limpar.Location = New System.Drawing.Point(89, 261)
+        Me.Btn_Limpar.Location = New System.Drawing.Point(39, 261)
         Me.Btn_Limpar.Name = "Btn_Limpar"
-        Me.Btn_Limpar.Size = New System.Drawing.Size(91, 23)
+        Me.Btn_Limpar.Size = New System.Drawing.Size(118, 33)
         Me.Btn_Limpar.TabIndex = 7
         Me.Btn_Limpar.Text = "Limpar"
         Me.Btn_Limpar.UseVisualStyleBackColor = True
         '
         'Btn_Cadastrar
         '
-        Me.Btn_Cadastrar.Location = New System.Drawing.Point(111, 195)
+        Me.Btn_Cadastrar.Location = New System.Drawing.Point(66, 198)
         Me.Btn_Cadastrar.Name = "Btn_Cadastrar"
-        Me.Btn_Cadastrar.Size = New System.Drawing.Size(150, 57)
+        Me.Btn_Cadastrar.Size = New System.Drawing.Size(195, 57)
         Me.Btn_Cadastrar.TabIndex = 6
         Me.Btn_Cadastrar.Text = "Cadastrar"
         Me.Btn_Cadastrar.UseVisualStyleBackColor = True

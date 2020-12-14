@@ -17,21 +17,23 @@ Public Class Frm_VenderAtivo
         Txt_QuantidadeDisponivel.ReadOnly = True
         Txt_TotalVenda.ReadOnly = True
         Txt_PosicaoAtual.ReadOnly = True
+
     End Sub
 
     Private Sub Btn_Vender_Click(sender As Object, e As EventArgs) Handles Btn_Vender.Click
 
+        'EFETUA O PROCEDIMENTO DE VENDA DOS ATIVOS E FAZ VALIDAÇÕES DE ACORDO COM A QUANTIDADE
         Try
             Dim objInvestimento As New Investimento
             objInvestimento.Id = IdAtivo
-            objInvestimento.Quantidade = Txt_QuantidadeDisponivel.Text - Txt_quantidadeVenda.Text
+            objInvestimento.Quantidade = Val(Txt_QuantidadeDisponivel.Text) - Val(Txt_quantidadeVenda.Text)
             objInvestimento.PrecoTotal = Txt_PosicaoAtual.Text - Txt_TotalVenda.Text
 
-            If Txt_QuantidadeDisponivel.Text = Txt_quantidadeVenda.Text Then
+            If Val(Txt_QuantidadeDisponivel.Text) = Val(Txt_quantidadeVenda.Text) Then
 
                 controladorInvestimento.ExcluirInvestimento(IdAtivo)
 
-            ElseIf Txt_QuantidadeDisponivel.Text > Txt_quantidadeVenda.Text Then
+            ElseIf Val(Txt_QuantidadeDisponivel.Text) > Val(Txt_quantidadeVenda.Text) Then
 
                 controladorInvestimento.AlteraInvestimento(objInvestimento)
             Else
@@ -48,6 +50,7 @@ Public Class Frm_VenderAtivo
 
     End Sub
 
+    'FUNÇÃO PARA CALCULAR O TOTAL INVESTIDO
     Private Sub TotalInvestido()
 
         Try

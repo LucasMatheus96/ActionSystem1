@@ -1,4 +1,4 @@
-﻿Imports Action.classes
+﻿Imports Action.Classes
 Imports Action.Controller
 Imports Action.DAO
 
@@ -21,7 +21,7 @@ Public Class Frm_CadastraAcoes
             Cmb_Tipoacao.Items.Add(Dt.Rows(i)("NomeTipoAcao"))
         Next
 
-
+        Me.FormBorderStyle = FormBorderStyle.Fixed3D
     End Sub
 
     Private Sub Btn_Limpar_Click(sender As Object, e As EventArgs) Handles Btn_Limpar.Click
@@ -54,7 +54,7 @@ Public Class Frm_CadastraAcoes
                     objAcao.SiglaAtivo = Txt_Sigla.Text
                     objAcao.IdTipoAcao = Cmb_Tipoacao.SelectedIndex + 1
                     control.CadastrarAcao(objAcao)
-                    MsgBox("Cadastro Efetuado com sucesso")
+                    MessageBox.Show("Cadastro efetuado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     LimparCampos()
                 Else
                     objAcao.Id = IdAcao
@@ -63,7 +63,7 @@ Public Class Frm_CadastraAcoes
                     objAcao.SiglaAtivo = Txt_Sigla.Text
                     objAcao.IdTipoAcao = Cmb_Tipoacao.SelectedIndex + 1
                     control.AlterarAcao(objAcao)
-                    MsgBox("Cadastro alterado com sucesso.")
+                    MessageBox.Show("Cadastro alterado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 End If
 
@@ -84,20 +84,23 @@ Public Class Frm_CadastraAcoes
         Try
             Dim vRetorno As Boolean
             If txt_NomeEmpresa.Text = String.Empty Then
-                MsgBox("Preencha o campo Nome empresa")
+                MessageBox.Show("Preencha o campo nome da empresa.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 txt_NomeEmpresa.Focus()
                 vRetorno = False
             ElseIf Txt_SetorAtivo.Text = String.Empty Then
-                MsgBox("Preencha o campo Setor Ativo")
+                MessageBox.Show("Preencha o campo setor ativo.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Txt_SetorAtivo.Focus()
                 vRetorno = False
 
             ElseIf Txt_Sigla.Text = String.Empty Then
-                MsgBox("Preencha o Sigla")
+                MessageBox.Show("Preencha o campo sigla.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 Txt_Sigla.Focus()
                 vRetorno = False
             ElseIf Cmb_Tipoacao.SelectedIndex < 0 Then
-                MsgBox("Preencha o Tipo De ação")
+                MessageBox.Show("Preencha o tipo de ação.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
                 Cmb_Tipoacao.Focus()
                 vRetorno = False
 

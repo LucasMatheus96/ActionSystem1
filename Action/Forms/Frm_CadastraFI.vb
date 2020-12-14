@@ -20,6 +20,8 @@ Public Class Frm_CadastraFI
             Cmb_FundoImobiliario.Items.Add(dt.Rows(i)("NomeTipoFundo"))
         Next
 
+        Me.FormBorderStyle = FormBorderStyle.Fixed3D
+
     End Sub
 
     Private Sub Frm_CadastrarFI_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -27,14 +29,19 @@ Public Class Frm_CadastraFI
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Btn_Cadastrar.Click
+        Try
 
+            objFundoImobiliario.NomeAtivo = Txt_NomeFundoImobiliario.Text
+            objFundoImobiliario.SiglaAtivo = Txt_SiglaFundoImobiliario.Text
+            objFundoImobiliario.IdTipoFundoImobiliario = Cmb_FundoImobiliario.SelectedIndex + 1
+            controlFundoImobiliario.CadastrarFundoImobiliario(objFundoImobiliario)
+            MessageBox.Show("Cadastro efetuado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            LimparCampos()
 
-        objFundoImobiliario.NomeAtivo = Txt_NomeFundoImobiliario.Text
-        objFundoImobiliario.SiglaAtivo = Txt_SiglaFundoImobiliario.Text
-        objFundoImobiliario.IdTipoFundoImobiliario = Cmb_FundoImobiliario.SelectedIndex + 1
-        controlFundoImobiliario.CadastrarFundoImobiliario(objFundoImobiliario)
-        MessageBox.Show("Cadastro efetuado com sucesso.")
-        LimparCampos()
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Sub
 
     Private Sub Btn_Cancelar_Click(sender As Object, e As EventArgs) Handles Btn_Cancelar.Click
@@ -46,12 +53,15 @@ Public Class Frm_CadastraFI
     End Sub
 
     Private Sub LimparCampos()
-        Txt_NomeFundoImobiliario.Text = String.Empty
-        Txt_SiglaFundoImobiliario.Text = String.Empty
-        Cmb_FundoImobiliario.ResetText()
+        Try
+            Txt_NomeFundoImobiliario.Text = String.Empty
+            Txt_SiglaFundoImobiliario.Text = String.Empty
+            Cmb_FundoImobiliario.SelectedIndex = -1
+        Catch ex As Exception
+            Throw ex
+        End Try
+
     End Sub
 
-    Private Sub GroupBox1_Enter(sender As Object, e As EventArgs) Handles GroupBox1.Enter
 
-    End Sub
 End Class

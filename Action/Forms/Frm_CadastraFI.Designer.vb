@@ -74,11 +74,12 @@ Partial Class Frm_CadastraFI
         '
         'Cmb_FundoImobiliario
         '
+        Me.Cmb_FundoImobiliario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_FundoImobiliario.FormattingEnabled = True
         Me.Cmb_FundoImobiliario.Location = New System.Drawing.Point(33, 116)
         Me.Cmb_FundoImobiliario.Name = "Cmb_FundoImobiliario"
         Me.Cmb_FundoImobiliario.Size = New System.Drawing.Size(282, 21)
-        Me.Cmb_FundoImobiliario.TabIndex = 6
+        Me.Cmb_FundoImobiliario.TabIndex = 3
         '
         'Label1
         '
@@ -86,7 +87,7 @@ Partial Class Frm_CadastraFI
         Me.Label1.Location = New System.Drawing.Point(26, 100)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(106, 13)
-        Me.Label1.TabIndex = 5
+        Me.Label1.TabIndex = 2
         Me.Label1.Text = "Tipo fundo imóbiliario"
         '
         'Txt_SiglaFundoImobiliario
@@ -94,7 +95,7 @@ Partial Class Frm_CadastraFI
         Me.Txt_SiglaFundoImobiliario.Location = New System.Drawing.Point(32, 165)
         Me.Txt_SiglaFundoImobiliario.Name = "Txt_SiglaFundoImobiliario"
         Me.Txt_SiglaFundoImobiliario.Size = New System.Drawing.Size(81, 20)
-        Me.Txt_SiglaFundoImobiliario.TabIndex = 4
+        Me.Txt_SiglaFundoImobiliario.TabIndex = 5
         '
         'Lbl_SiglaFI
         '
@@ -102,15 +103,15 @@ Partial Class Frm_CadastraFI
         Me.Lbl_SiglaFI.Location = New System.Drawing.Point(29, 149)
         Me.Lbl_SiglaFI.Name = "Lbl_SiglaFI"
         Me.Lbl_SiglaFI.Size = New System.Drawing.Size(30, 13)
-        Me.Lbl_SiglaFI.TabIndex = 3
+        Me.Lbl_SiglaFI.TabIndex = 4
         Me.Lbl_SiglaFI.Text = "Sigla"
         '
         'Btn_Cadastrar
         '
-        Me.Btn_Cadastrar.Location = New System.Drawing.Point(101, 204)
+        Me.Btn_Cadastrar.Location = New System.Drawing.Point(81, 204)
         Me.Btn_Cadastrar.Name = "Btn_Cadastrar"
-        Me.Btn_Cadastrar.Size = New System.Drawing.Size(131, 40)
-        Me.Btn_Cadastrar.TabIndex = 2
+        Me.Btn_Cadastrar.Size = New System.Drawing.Size(178, 51)
+        Me.Btn_Cadastrar.TabIndex = 6
         Me.Btn_Cadastrar.Text = "Cadastrar"
         Me.Btn_Cadastrar.UseVisualStyleBackColor = True
         '
@@ -120,7 +121,7 @@ Partial Class Frm_CadastraFI
         Me.Lbl_NomeAtivo.Location = New System.Drawing.Point(29, 45)
         Me.Lbl_NomeAtivo.Name = "Lbl_NomeAtivo"
         Me.Lbl_NomeAtivo.Size = New System.Drawing.Size(131, 13)
-        Me.Lbl_NomeAtivo.TabIndex = 1
+        Me.Lbl_NomeAtivo.TabIndex = 0
         Me.Lbl_NomeAtivo.Text = "Nome do fundo imobiliario:"
         '
         'Txt_NomeFundoImobiliario
@@ -128,7 +129,7 @@ Partial Class Frm_CadastraFI
         Me.Txt_NomeFundoImobiliario.Location = New System.Drawing.Point(32, 64)
         Me.Txt_NomeFundoImobiliario.Name = "Txt_NomeFundoImobiliario"
         Me.Txt_NomeFundoImobiliario.Size = New System.Drawing.Size(279, 20)
-        Me.Txt_NomeFundoImobiliario.TabIndex = 0
+        Me.Txt_NomeFundoImobiliario.TabIndex = 1
         '
         'Frm_CadastraFI
         '

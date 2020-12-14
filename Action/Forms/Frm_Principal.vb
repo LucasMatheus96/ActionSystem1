@@ -58,4 +58,8 @@
         f.ShowDialog()
 
     End Sub
+
+    Private Sub CadastroToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CadastroToolStripMenuItem.Click
+
+    End Sub
 End Class

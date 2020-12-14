@@ -20,6 +20,7 @@ Public Class Frm_CadastroCarteira
         Grp_CadastroCarteira.Text = "Cadastro"
         Btn_Cadastrar.Text = "Confirmar"
         Btn_Cancelar.Text = "Cancelar"
+        Me.FormBorderStyle = FormBorderStyle.Fixed3D
     End Sub
 
     Private Sub Frm_CadastroCarteira_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -53,6 +54,7 @@ Public Class Frm_CadastroCarteira
                 NovaCarteira.DataCadastro = Now
                 NovaCarteira.operador = OperadorID
                 controlCarteira.CadastrarCarteira(NovaCarteira)
+                Txt_NomeCarteira.Text = ""
             End If
 
 

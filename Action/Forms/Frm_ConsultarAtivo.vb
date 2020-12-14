@@ -1,4 +1,4 @@
-﻿Imports Action.classes
+﻿Imports Action.Classes
 Imports Action.Controller
 
 Public Class Frm_ConsultarAtivo
@@ -25,14 +25,21 @@ Public Class Frm_ConsultarAtivo
         CriarColunas()
         Lsw_ListaDeAtivos.Items.Clear()
         CarregaListView()
+        Me.FormBorderStyle = FormBorderStyle.Fixed3D
+
 
 
     End Sub
 
     Private Sub Frm_ConsultarAtivo_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        CarregaGridViewAcoes()
-        CarregaGridViewfundoImobiliario()
+        Try
+            CarregaGridViewAcoes()
+            CarregaGridViewfundoImobiliario()
+        Catch ex As Exception
+            Throw ex
+        End Try
+
 
     End Sub
 
@@ -80,6 +87,7 @@ Public Class Frm_ConsultarAtivo
             Lsw_ListaDeAtivos.AllowColumnReorder = False
             Lsw_ListaDeAtivos.FullRowSelect = True
             Lsw_ListaDeAtivos.GridLines = True
+
         Catch ex As Exception
             Throw ex
         End Try
@@ -94,10 +102,12 @@ Public Class Frm_ConsultarAtivo
 
         Try
 
-            Lsw_ListaDeAtivos.Columns.Add("Id", 100, HorizontalAlignment.Center)
-            Lsw_ListaDeAtivos.Columns.Add("NomeAtivo", 150, HorizontalAlignment.Center)
+            Lsw_ListaDeAtivos.Columns.Add("Codigo Ativo", 80, HorizontalAlignment.Center)
+            Lsw_ListaDeAtivos.Columns.Add("Titulo", 300, HorizontalAlignment.Center)
             Lsw_ListaDeAtivos.Columns.Add("Rendimento", 150, HorizontalAlignment.Center)
             Lsw_ListaDeAtivos.Columns.Add("Sigla", 100, HorizontalAlignment.Center)
+
+
         Catch ex As Exception
             Throw ex
         End Try
@@ -111,8 +121,6 @@ Public Class Frm_ConsultarAtivo
 
             If ValidaGrids() = True Then
 
-                'If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Or DataGridView_Acoes.Rows(Index2).Selected = True Or DataGridView_FundoImobiliario.Rows(Index2).Selected = True Then
-
                 If Lsw_ListaDeAtivos.SelectedItems.Count > 0 Then
 
 
@@ -121,6 +129,8 @@ Public Class Frm_ConsultarAtivo
                     AlterarRendaFixa.idRendaFixa = Integer.Parse(Lsw_ListaDeAtivos.Items(Index).Text)
                     AlterarRendaFixa.txt_titulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(1).Text
                     AlterarRendaFixa.TxT_RentabilidadeTitulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(2).Text
+                    AlterarRendaFixa.Cmb_TipoTitulo.Text = Lsw_ListaDeAtivos.Items(Index).SubItems(3).Text
+                    AlterarRendaFixa.Btn_Cadastrar.Text = "Alterar"
                     AlterarRendaFixa.ShowDialog()
                     Lsw_ListaDeAtivos.Items.Clear()
                     CarregaListView()
@@ -196,7 +206,7 @@ Public Class Frm_ConsultarAtivo
                 If DataGridView_Acoes.SelectedRows().Count > 0 Then
                     objAcoes.Id = Integer.Parse(DataGridView_Acoes.SelectedRows(0).Cells(0).Value)
                     controlAcao.ExcluirAcao(objAcoes.Id)
-                    MessageBox.Show("Registro excluido com sucesso.")
+                    MessageBox.Show("Registro excluido com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     CarregaGridViewAcoes()
 
                 End If
@@ -204,12 +214,12 @@ Public Class Frm_ConsultarAtivo
                 If DataGridView_FundoImobiliario.SelectedRows().Count > 0 Then
                     objAcoes.Id = Integer.Parse(DataGridView_Acoes.SelectedRows(0).Cells(0).Value)
                     controlAcao.ExcluirAcao(objAcoes.Id)
-                    MessageBox.Show("Registro excluido com sucesso.")
+                    MessageBox.Show("Registro excluido com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     CarregaGridViewAcoes()
 
                 End If
             Else
-                MessageBox.Show("Selecione algum item para ser alterado")
+                MessageBox.Show("Selecione algum item para ser alterado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End If
 
         Catch ex As Exception
@@ -228,6 +238,14 @@ Public Class Frm_ConsultarAtivo
                 .Columns(0).Visible = False
                 .Columns(4).Visible = False
                 .Columns(5).Visible = False
+
+                .Columns("NomeAtivo").HeaderText = "Instituição"
+                .Columns("SiglaAtivo").HeaderText = "Sigla do ativo"
+                .Columns("SetorAtivo").HeaderText = "Setor do ativo"
+                .Columns("NomeTipoAcao").HeaderText = "Tipo ação"
+
+                .Columns(1).Width = 300
+
 
                 .ClearSelection()
             End With
@@ -249,10 +267,16 @@ Public Class Frm_ConsultarAtivo
                 .Columns(3).Visible = False
                 .Columns(4).Visible = False
 
+                .Columns("NomeAtivo").HeaderText = "Instituição/Empresa"
+                .Columns("SiglaAtivo").HeaderText = "Sigla do ativo"
+                .Columns("NomeTipoFundo").HeaderText = "Tipo do fundo"
+                .Columns("Sigla").HeaderText = "Sigla do tipo de fundo"
 
                 .Columns(1).Width = 200
-                .Columns(2).Width = 60
+                .Columns(2).Width = 100
                 .Columns(5).Width = 200
+
+
                 .ClearSelection()
 
 

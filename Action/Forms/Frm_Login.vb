@@ -105,7 +105,7 @@ Public Class Frm_Login
                 ObjAtributos.AtbNome = dt.Rows(0)("Nome")
                 ObjAtributos.AtbUsuario = dt.Rows(0)("Usuario")
                 ObjAtributos.AtbId = dt.Rows(0)("id")
-                MessageBox.Show("Acesso Autorizado")
+                MessageBox.Show("Acesso Autorizado.", "Autorizado", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Me.Close()
                 Frm_Principal.Show()
                 Frm_Principal.Tsl_UsuarioLogado.Visible = True
@@ -113,7 +113,7 @@ Public Class Frm_Login
 
 
             Else
-                MsgBox("Usuario ou senha Incorreta", MsgBoxStyle.Critical)
+                MessageBox.Show("Usuario ou senha Incorreta", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)

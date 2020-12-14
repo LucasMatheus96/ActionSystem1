@@ -63,7 +63,7 @@ Partial Class Frm_CadastraAcoes
         Me.Btn_Cancelar.Location = New System.Drawing.Point(170, 270)
         Me.Btn_Cancelar.Name = "Btn_Cancelar"
         Me.Btn_Cancelar.Size = New System.Drawing.Size(109, 23)
-        Me.Btn_Cancelar.TabIndex = 11
+        Me.Btn_Cancelar.TabIndex = 0
         Me.Btn_Cancelar.Text = "Cancelar"
         Me.Btn_Cancelar.UseVisualStyleBackColor = True
         '
@@ -96,18 +96,19 @@ Partial Class Frm_CadastraAcoes
         '
         'Cmb_Tipoacao
         '
+        Me.Cmb_Tipoacao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.Cmb_Tipoacao.FormattingEnabled = True
         Me.Cmb_Tipoacao.Location = New System.Drawing.Point(187, 165)
         Me.Cmb_Tipoacao.Name = "Cmb_Tipoacao"
         Me.Cmb_Tipoacao.Size = New System.Drawing.Size(118, 21)
-        Me.Cmb_Tipoacao.TabIndex = 6
+        Me.Cmb_Tipoacao.TabIndex = 8
         '
         'Txt_SetorAtivo
         '
         Me.Txt_SetorAtivo.Location = New System.Drawing.Point(32, 114)
         Me.Txt_SetorAtivo.Name = "Txt_SetorAtivo"
         Me.Txt_SetorAtivo.Size = New System.Drawing.Size(273, 20)
-        Me.Txt_SetorAtivo.TabIndex = 5
+        Me.Txt_SetorAtivo.TabIndex = 4
         '
         'Label1
         '
@@ -115,7 +116,7 @@ Partial Class Frm_CadastraAcoes
         Me.Label1.Location = New System.Drawing.Point(29, 98)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(59, 13)
-        Me.Label1.TabIndex = 4
+        Me.Label1.TabIndex = 3
         Me.Label1.Text = "Setor Ativo"
         '
         'Txt_Sigla
@@ -123,7 +124,7 @@ Partial Class Frm_CadastraAcoes
         Me.Txt_Sigla.Location = New System.Drawing.Point(34, 165)
         Me.Txt_Sigla.Name = "Txt_Sigla"
         Me.Txt_Sigla.Size = New System.Drawing.Size(93, 20)
-        Me.Txt_Sigla.TabIndex = 3
+        Me.Txt_Sigla.TabIndex = 6
         '
         'Lbl_SiglaAtivo
         '
@@ -131,7 +132,7 @@ Partial Class Frm_CadastraAcoes
         Me.Lbl_SiglaAtivo.Location = New System.Drawing.Point(31, 149)
         Me.Lbl_SiglaAtivo.Name = "Lbl_SiglaAtivo"
         Me.Lbl_SiglaAtivo.Size = New System.Drawing.Size(33, 13)
-        Me.Lbl_SiglaAtivo.TabIndex = 2
+        Me.Lbl_SiglaAtivo.TabIndex = 5
         Me.Lbl_SiglaAtivo.Text = "Sigla:"
         '
         'txt_NomeEmpresa
@@ -139,7 +140,7 @@ Partial Class Frm_CadastraAcoes
         Me.txt_NomeEmpresa.Location = New System.Drawing.Point(32, 60)
         Me.txt_NomeEmpresa.Name = "txt_NomeEmpresa"
         Me.txt_NomeEmpresa.Size = New System.Drawing.Size(273, 20)
-        Me.txt_NomeEmpresa.TabIndex = 1
+        Me.txt_NomeEmpresa.TabIndex = 2
         '
         'Lbl_NomeAtivo
         '
@@ -147,7 +148,7 @@ Partial Class Frm_CadastraAcoes
         Me.Lbl_NomeAtivo.Location = New System.Drawing.Point(29, 44)
         Me.Lbl_NomeAtivo.Name = "Lbl_NomeAtivo"
         Me.Lbl_NomeAtivo.Size = New System.Drawing.Size(96, 13)
-        Me.Lbl_NomeAtivo.TabIndex = 0
+        Me.Lbl_NomeAtivo.TabIndex = 1
         Me.Lbl_NomeAtivo.Text = "Nome da empresa:"
         '
         'Frm_CadastraAcoes
@@ -157,6 +158,7 @@ Partial Class Frm_CadastraAcoes
         Me.ClientSize = New System.Drawing.Size(386, 381)
         Me.Controls.Add(Me.Grp_CadastroAcao)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.Name = "Frm_CadastraAcoes"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Frm_CadastraAcoes"

@@ -90,6 +90,7 @@ Namespace DAO
                 conexaoBD.strInstrucao = " SET DATEFORMAT 'DMY'
                                           SELECT *  FROM [dbAction].[dbo].[tabRegistroInvestimento] AS RI
                                           INNER JOIN tabCarteira AS TC ON TC.Id  = RI.IdCarteira
+                                          INNER JOIN tabTipoAtivo as TA on TA.id = Ri.IdTipoAtivo
                                           WHERE TC.iOperador = @iOperador and Ri.DataTransacao between '" + dataInicial + "'" + "And" + "'" + dataFinal + "'"
                 conexaoBD.objCommand.Parameters.AddWithValue("@iOperador", idOperador)
                 conexaoBD.objCommand.Parameters.AddWithValue("@dataInicial", dataInicial)
@@ -119,6 +120,7 @@ Namespace DAO
                 conexaoBD.strInstrucao = " 
                                           SELECT *  FROM [dbAction].[dbo].[tabRegistroInvestimento] AS RI
                                           INNER JOIN tabCarteira AS TC ON TC.Id  = RI.IdCarteira
+                                          INNER JOIN tabTipoAtivo as TA on TA.id = Ri.IdTipoAtivo    
                                           WHERE TC.iOperador = @iOperador AND TC.NomeCarteira  like '%" + nomeCarteira + "%'"
 
                 conexaoBD.objCommand.Parameters.AddWithValue("@iOperador", idOperador)
@@ -146,6 +148,7 @@ Namespace DAO
                 conexaoBD.strInstrucao = " 
                                           SELECT *  FROM [dbAction].[dbo].[tabRegistroInvestimento] AS RI
                                           INNER JOIN tabCarteira AS TC ON TC.Id  = RI.IdCarteira
+                                           INNER JOIN tabTipoAtivo as TA on TA.id = Ri.IdTipoAtivo
                                           WHERE TC.iOperador = @iOperador AND RI.SiglaAtivo  like '%" + siglaAtivo + "%'"
 
                 conexaoBD.objCommand.Parameters.AddWithValue("@iOperador", idOperador)
@@ -175,6 +178,7 @@ Namespace DAO
                 conexaoBD.strInstrucao = " 
                                           SELECT *  FROM [dbAction].[dbo].[tabRegistroInvestimento] AS RI
                                           INNER JOIN tabCarteira AS TC ON TC.Id  = RI.IdCarteira
+                                          INNER JOIN tabTipoAtivo as TA on TA.id = Ri.IdTipoAtivo
                                           WHERE TC.iOperador = @iOperador AND RI.NomeAtivo  like '%" + instFinanceira + "%'"
 
                 conexaoBD.objCommand.Parameters.AddWithValue("@iOperador", idOperador)
@@ -204,6 +208,7 @@ Namespace DAO
                 conexaoBD.strInstrucao = " 
                                           SELECT *  FROM [dbAction].[dbo].[tabRegistroInvestimento] AS RI
                                           INNER JOIN tabCarteira AS TC ON TC.Id  = RI.IdCarteira
+                                           INNER JOIN tabTipoAtivo as TA on TA.id = Ri.IdTipoAtivo
                                           WHERE TC.iOperador = @iOperador AND RI.Idtipoativo =   @idtipoAtivo "
 
                 conexaoBD.objCommand.Parameters.AddWithValue("@iOperador", idOperador)
