@@ -194,52 +194,53 @@ Public Class Frm_ConsultaCarteira
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
 
         Try
+            If Cmb_Filtro.SelectedIndex = 0 Then
+                MessageBox.Show("Selecione um tipo de filtro")
+                Cmb_Filtro.Focus()
+
+
+                'FILTRO POR DATA
+            ElseIf Cmb_Filtro.SelectedIndex = 1 Then
+            Lsw_VerCarteira.Items.Clear()
+                dt = controlCarteira.PesquisarCarteiraData(Dtp_FiltroInicio.Value, Dtp_FiltroFinal.Value)
+
+                For Each linha As DataRow In dt.Rows
+                    If ObjAtributos.AtbId = linha("iOperador") Then
+                        Dim lista As New ListViewItem
+                        lista.Text = linha("ID").ToString
+                        lista.SubItems.Add(linha("NomeCarteira").ToString())
+                        lista.SubItems.Add(linha("DataTransacao").ToString())
+                        lista.SubItems.Add(linha("Usuario").ToString())
+
+                        Lsw_VerCarteira.Items.Add(lista)
+                    End If
+                Next
+                'BUSCA POR NOME DA CARTEIRA
+            ElseIf Cmb_Filtro.SelectedIndex = 2 Then
+                Lsw_VerCarteira.Items.Clear()
+                    dt = controlCarteira.PesquisarCarteira(txt_busca1.Text)
+                    If String.IsNullOrEmpty(txt_busca1.Text) Then
+                        MessageBox.Show("Digite o nome da carteira")
+                    Else
+                        For Each linha As DataRow In dt.Rows
+                            If ObjAtributos.AtbId = linha("iOperador") Then
+                                Dim lista As New ListViewItem
+                                lista.Text = linha("ID").ToString
+                                lista.SubItems.Add(linha("NomeCarteira").ToString())
+                                lista.SubItems.Add(linha("DataTransacao").ToString())
+                                lista.SubItems.Add(linha("Usuario").ToString())
+
+                                Lsw_VerCarteira.Items.Add(lista)
+                            End If
+                        Next
+                    End If
+                End If
+
 
         Catch ex As Exception
 
+            Throw ex
         End Try
-        If Cmb_Filtro.SelectedIndex = 0 Then
-            MessageBox.Show("Selecione um tipo de filtro")
-            Cmb_Filtro.Focus()
-        End If
-
-        'FILTRO POR DATA
-        If Cmb_Filtro.SelectedIndex = 1 Then
-            Lsw_VerCarteira.Items.Clear()
-            dt = controlCarteira.PesquisarCarteiraData(Dtp_FiltroInicio.Value, Dtp_FiltroFinal.Value)
-
-            For Each linha As DataRow In dt.Rows
-                If ObjAtributos.AtbId = linha("iOperador") Then
-                    Dim lista As New ListViewItem
-                    lista.Text = linha("ID").ToString
-                    lista.SubItems.Add(linha("NomeCarteira").ToString())
-                    lista.SubItems.Add(linha("DataTransacao").ToString())
-                    lista.SubItems.Add(linha("Usuario").ToString())
-
-                    Lsw_VerCarteira.Items.Add(lista)
-                End If
-            Next
-            'BUSCA POR NOME DA CARTEIRA
-            If Cmb_Filtro.SelectedIndex = 2 Then
-                Lsw_VerCarteira.Items.Clear()
-                dt = controlCarteira.PesquisarCarteira(txt_busca1.Text)
-                If String.IsNullOrEmpty(txt_busca1.Text) Then
-                    MessageBox.Show("Digite o nome da carteira")
-                Else
-                    For Each linha As DataRow In dt.Rows
-                        If ObjAtributos.AtbId = linha("iOperador") Then
-                            Dim lista As New ListViewItem
-                            lista.Text = linha("ID").ToString
-                            lista.SubItems.Add(linha("NomeCarteira").ToString())
-                            lista.SubItems.Add(linha("DataTransacao").ToString())
-                            lista.SubItems.Add(linha("Usuario").ToString())
-
-                            Lsw_VerCarteira.Items.Add(lista)
-                        End If
-                    Next
-                End If
-            End If
-        End If
 
 
     End Sub

@@ -44,7 +44,6 @@ Partial Class Frm_TelaCadastro
         Me.CheckBox_Administrador = New System.Windows.Forms.CheckBox()
         Me.Btn_Cancelar = New System.Windows.Forms.Button()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.Btn_VerUsuarios = New System.Windows.Forms.Button()
         Me.Grp_Cadastro.SuspendLayout()
         Me.Grp_Permissao.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -151,7 +150,7 @@ Partial Class Frm_TelaCadastro
         '
         Me.Btn_Confirmar.Location = New System.Drawing.Point(382, 344)
         Me.Btn_Confirmar.Name = "Btn_Confirmar"
-        Me.Btn_Confirmar.Size = New System.Drawing.Size(75, 27)
+        Me.Btn_Confirmar.Size = New System.Drawing.Size(118, 27)
         Me.Btn_Confirmar.TabIndex = 4
         Me.Btn_Confirmar.Text = "Button1"
         Me.Btn_Confirmar.UseVisualStyleBackColor = True
@@ -259,9 +258,9 @@ Partial Class Frm_TelaCadastro
         '
         'Btn_Cancelar
         '
-        Me.Btn_Cancelar.Location = New System.Drawing.Point(551, 344)
+        Me.Btn_Cancelar.Location = New System.Drawing.Point(506, 344)
         Me.Btn_Cancelar.Name = "Btn_Cancelar"
-        Me.Btn_Cancelar.Size = New System.Drawing.Size(75, 27)
+        Me.Btn_Cancelar.Size = New System.Drawing.Size(120, 27)
         Me.Btn_Cancelar.TabIndex = 5
         Me.Btn_Cancelar.Text = "Button2"
         Me.Btn_Cancelar.UseVisualStyleBackColor = True
@@ -275,21 +274,11 @@ Partial Class Frm_TelaCadastro
         Me.PictureBox1.TabIndex = 11
         Me.PictureBox1.TabStop = False
         '
-        'Btn_VerUsuarios
-        '
-        Me.Btn_VerUsuarios.Location = New System.Drawing.Point(469, 344)
-        Me.Btn_VerUsuarios.Name = "Btn_VerUsuarios"
-        Me.Btn_VerUsuarios.Size = New System.Drawing.Size(75, 27)
-        Me.Btn_VerUsuarios.TabIndex = 5
-        Me.Btn_VerUsuarios.Text = "Button1"
-        Me.Btn_VerUsuarios.UseVisualStyleBackColor = True
-        '
         'Frm_TelaCadastro
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(652, 408)
-        Me.Controls.Add(Me.Btn_VerUsuarios)
         Me.Controls.Add(Me.PictureBox1)
         Me.Controls.Add(Me.Btn_Cancelar)
         Me.Controls.Add(Me.CheckBox_Administrador)
@@ -331,5 +320,4 @@ Partial Class Frm_TelaCadastro
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Txt_ConfirmarSenha As TextBox
     Friend WithEvents Lbl_ConfirmaSenha As Label
-    Friend WithEvents Btn_VerUsuarios As Button
 End Class

@@ -32,18 +32,20 @@ Public Class Frm_VenderAtivo
             If Val(Txt_QuantidadeDisponivel.Text) = Val(Txt_quantidadeVenda.Text) Then
 
                 controladorInvestimento.ExcluirInvestimento(IdAtivo)
-
+                MessageBox.Show("Ativos vendido com sucesso", "Sucesso.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Close()
             ElseIf Val(Txt_QuantidadeDisponivel.Text) > Val(Txt_quantidadeVenda.Text) Then
 
                 controladorInvestimento.AlteraInvestimento(objInvestimento)
+                MessageBox.Show("Ativos vendido com sucesso", "Sucesso.", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Me.Close()
             Else
 
-                MessageBox.Show("Quantidades de itens a serem vendidos é maior do você possui disponivel na sua carteira")
+                MessageBox.Show("Quantidades de itens a serem vendidos é maior do você possui disponivel na sua carteira", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             End If
 
-            MessageBox.Show("Ativos vendido com sucesso", "Sucesso.", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Me.Close()
+
         Catch ex As Exception
             Throw ex
         End Try

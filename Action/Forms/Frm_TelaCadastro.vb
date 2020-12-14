@@ -36,7 +36,7 @@ Public Class Frm_TelaCadastro
         'Nomeclatura dos Botões
         Btn_Cancelar.Text = "Cancelar"
         Btn_Confirmar.Text = "Confirmar"
-        Btn_VerUsuarios.Text = "Consultar Usuarios"
+
 
         'chamadas
 
@@ -213,7 +213,7 @@ Public Class Frm_TelaCadastro
 
     End Sub
 
-    Private Sub Btn_VerUsuarios_Click(sender As Object, e As EventArgs) Handles Btn_VerUsuarios.Click
+    Private Sub Btn_VerUsuarios_Click(sender As Object, e As EventArgs) 
         Try
             Dim f As New Frm_UsuariosCadastrados
             f.ShowDialog()

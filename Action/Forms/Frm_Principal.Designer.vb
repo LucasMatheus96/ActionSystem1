@@ -90,14 +90,14 @@ Partial Class Frm_Principal
         '
         Me.CadastrarCarteiraToolStripMenuItem.Image = CType(resources.GetObject("CadastrarCarteiraToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CadastrarCarteiraToolStripMenuItem.Name = "CadastrarCarteiraToolStripMenuItem"
-        Me.CadastrarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.CadastrarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CadastrarCarteiraToolStripMenuItem.Text = "Cadastrar Carteira "
         '
         'ConsultarCarteiraToolStripMenuItem
         '
         Me.ConsultarCarteiraToolStripMenuItem.Image = CType(resources.GetObject("ConsultarCarteiraToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ConsultarCarteiraToolStripMenuItem.Name = "ConsultarCarteiraToolStripMenuItem"
-        Me.ConsultarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ConsultarCarteiraToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConsultarCarteiraToolStripMenuItem.Text = "Consultar Carteira"
         '
         'InvestimentosToolStripMenuItem
@@ -112,14 +112,14 @@ Partial Class Frm_Principal
         '
         Me.AdicionarToolStripMenuItem.Image = CType(resources.GetObject("AdicionarToolStripMenuItem.Image"), System.Drawing.Image)
         Me.AdicionarToolStripMenuItem.Name = "AdicionarToolStripMenuItem"
-        Me.AdicionarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.AdicionarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.AdicionarToolStripMenuItem.Text = "Adicionar"
         '
         'GerenciarToolStripMenuItem
         '
         Me.GerenciarToolStripMenuItem.Image = CType(resources.GetObject("GerenciarToolStripMenuItem.Image"), System.Drawing.Image)
         Me.GerenciarToolStripMenuItem.Name = "GerenciarToolStripMenuItem"
-        Me.GerenciarToolStripMenuItem.Size = New System.Drawing.Size(125, 22)
+        Me.GerenciarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.GerenciarToolStripMenuItem.Text = "Gerenciar"
         '
         'AtivosToolStripMenuItem
@@ -135,14 +135,14 @@ Partial Class Frm_Principal
         '
         Me.CadastrarAtivosToolStripMenuItem.Image = CType(resources.GetObject("CadastrarAtivosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.CadastrarAtivosToolStripMenuItem.Name = "CadastrarAtivosToolStripMenuItem"
-        Me.CadastrarAtivosToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.CadastrarAtivosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.CadastrarAtivosToolStripMenuItem.Text = "Cadastrar Ativos"
         '
         'ConsultarAtivosToolStripMenuItem
         '
         Me.ConsultarAtivosToolStripMenuItem.Image = CType(resources.GetObject("ConsultarAtivosToolStripMenuItem.Image"), System.Drawing.Image)
         Me.ConsultarAtivosToolStripMenuItem.Name = "ConsultarAtivosToolStripMenuItem"
-        Me.ConsultarAtivosToolStripMenuItem.Size = New System.Drawing.Size(161, 22)
+        Me.ConsultarAtivosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
         Me.ConsultarAtivosToolStripMenuItem.Text = "Consultar Ativos"
         '
         'UtilitariosToolStripMenuItem
@@ -260,7 +260,7 @@ Partial Class Frm_Principal
         '
         Me.UsuarioToolStripMenuItem.Name = "UsuarioToolStripMenuItem"
         Me.UsuarioToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.UsuarioToolStripMenuItem.Text = "Usuario"
+        Me.UsuarioToolStripMenuItem.Text = "Usuarios"
         '
         'Frm_Principal
         '

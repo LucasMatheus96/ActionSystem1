@@ -104,6 +104,9 @@ Namespace Controller
 
                 vRetorno = False
 
+            ElseIf vSenha.Length < 6 Then
+                MessageBox.Show("Digite uma senha com mias de 6 caracteres")
+                vRetorno = False
             Else
                 vRetorno = True
             End If

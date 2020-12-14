@@ -17,6 +17,8 @@ Public Class Frm_ProdutoCarteira
     Dim dtUsuario As New DataTable
     Dim dtInvestimento As New DataTable
     Dim indice As Integer = 0
+    Dim precoTotal As Double = 0
+
     Public Sub New()
 
         ' Esta chamada é requerida pelo designer.
@@ -132,7 +134,7 @@ Public Class Frm_ProdutoCarteira
 
                         .DataSource = dtRendaFixa
 
-                        .DisplayMember = "Sigla"
+                        .DisplayMember = "NomeAtivo"
 
                         .ValueMember = "Id"
 
@@ -217,7 +219,8 @@ Public Class Frm_ProdutoCarteira
 
 
         Catch ex As Exception
-            Throw New Exception(ex.Message)
+            'Throw New Exception(ex.Message)
+            MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
 
 
@@ -366,11 +369,14 @@ Public Class Frm_ProdutoCarteira
                     objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
                     controladorInvestimentos.InsereInvestimento(objInvestimento)
                 Next
+                MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                DataGridView1.Rows.Clear()
+                Btn_Adicionar.Text = "Adicionar"
 
                 'VALIDAÇÃO, CASO JÁ EXISTA LINHAS NO DT, VAI VALIDAR SE JÁ EXISTE O ATIVO INFORMADO COM ISSO NÃO SERÁ ADICIONADO UMA NOVA LINHA E SIM ATUALIZARÁ O REGISTRO JÁ INSERIDO       
             ElseIf dtInvestimento.Rows.Count >= 1 Then
                 For j As Integer = 0 To dtInvestimento.Rows.Count - 1
-                    If dtInvestimento.Rows(j)("SiglaAtivo") = Cmb_Ativo.Text Then
+                    If dtInvestimento.Rows(j)("SiglaAtivo") = Cmb_Ativo.Text And dtInvestimento.Rows(j)("IdCarteira") = Cmb_NomeCarteira.SelectedValue Then
                         For i As Integer = 0 To DataGridView1.Rows.Count - 1
 
                             objInvestimento.Id = dtInvestimento.Rows(j)("ID")
@@ -389,9 +395,10 @@ Public Class Frm_ProdutoCarteira
                             objInvestimento.IdCarteira = DataGridView1.Rows(i).Cells(0).Value
                             objInvestimento.IdTipoAtivo = DataGridView1.Rows(i).Cells(3).Value
                             controladorInvestimentos.AlteraInvestimento(objInvestimento)
+
                         Next
                         MessageBox.Show("Ativo adicionado com sucesso.", "Cadastrado com sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                        DataGridView1.Rows.Clear()
+
                         Btn_Adicionar.Text = "Adicionar"
 
                     End If

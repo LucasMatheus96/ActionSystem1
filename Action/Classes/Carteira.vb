@@ -2,7 +2,7 @@
 Imports Action.Controller
 Imports Action.DAO
 
-Namespace classes
+Namespace Classes
     Public Class Carteira
 
 #Region "Propriedades"
